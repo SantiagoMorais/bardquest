@@ -1,0 +1,10 @@
+{
+  "camelCase": true,
+  "declarationMap": false,
+  "searchDir": ["src"],
+  "outDir": "",
+  "dropExtension": false,
+  "watch": false,
+  "listDifferent": false,
+  "ignoreGitignore": false
+}

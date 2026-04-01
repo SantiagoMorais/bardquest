@@ -136,7 +136,7 @@ a {
   @include smooth-transition(color, $transition-base);
 
   &:hover {
-    color: darken(var(--color-info), 10%);
+    opacity: 0.8;
   }
 
   &:focus-visible {

@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# generated css module types
+**/*.module.scss.d.ts
+**/*.module.css.d.ts
