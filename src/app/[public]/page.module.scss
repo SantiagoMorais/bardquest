@@ -1,0 +1,300 @@
+@use "sass:map" as map;
+
+@import "../../styles/variables";
+@import "../../styles/mixins";
+@import "../../styles/functions";
+
+/* ====================================
+   EXEMPLO DE USO - page.module.scss
+   ==================================== */
+
+/* CONTÊINER PRINCIPAL */
+.container {
+  @include flex-column;
+  @include padding("lg");
+  gap: map.get($spacings, "xl");
+  background-color: $color-light-bg-primary;
+  min-height: 100vh;
+
+  @include respond-to("md") {
+    @include padding("2xl");
+  }
+
+  /* No modo dark */
+  body[data-theme="dark"] & {
+    background-color: $color-dark-bg-primary;
+    color: $color-dark-text-primary;
+  }
+}
+
+/* HEADER */
+.header {
+  @include flex-between;
+  @include padding("md");
+  background-color: $color-light-bg-secondary;
+  border-bottom: 1px solid $color-light-border;
+  border-radius: $radius-md;
+
+  @include respond-to("md") {
+    @include padding("lg");
+  }
+
+  body[data-theme="dark"] & {
+    background-color: $color-dark-bg-secondary;
+    border-color: $color-dark-border;
+  }
+}
+
+.headerTitle {
+  @include heading(2);
+  margin: 0;
+}
+
+.headerSubtitle {
+  @include label("small");
+  color: $color-light-text-secondary;
+
+  body[data-theme="dark"] & {
+    color: $color-dark-text-secondary;
+  }
+}
+
+/* CARD */
+.card {
+  background-color: $color-light-bg-primary;
+  border: 1px solid $color-light-border;
+  border-radius: $radius-lg;
+  @include padding("lg");
+  box-shadow: shadow("md");
+  @include smooth-transition(box-shadow, $transition-base);
+  @include hover-effect {
+    box-shadow: shadow("lg");
+  }
+
+  body[data-theme="dark"] & {
+    background-color: $color-dark-bg-secondary;
+    border-color: $color-dark-border;
+  }
+
+  @include mobile-only {
+    @include padding("md");
+    border-radius: $radius-md;
+  }
+}
+
+.cardTitle {
+  @include heading(3);
+  margin-bottom: map-get($spacings, "md");
+  color: $color-light-text-primary;
+
+  body[data-theme="dark"] & {
+    color: $color-dark-text-primary;
+  }
+}
+
+.cardContent {
+  @include body-text("medium");
+  color: $color-light-text-secondary;
+  line-height: 1.6;
+
+  body[data-theme="dark"] & {
+    color: $color-dark-text-secondary;
+  }
+}
+
+/* BUTTON */
+.button {
+  @include label("medium");
+  @include flex-center;
+  @include padding("md");
+  gap: map-get($spacings, "sm");
+  background-color: $color-info;
+  color: #ffffff;
+  border: none;
+  border-radius: $radius-md;
+  cursor: pointer;
+  @include smooth-transition(all, $transition-base);
+
+  &:hover {
+    background-color: darken($color-info, 10%);
+    box-shadow: shadow("md");
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  @include mobile-only {
+    width: 100%;
+  }
+}
+
+.buttonSecondary {
+  background-color: $color-light-bg-secondary;
+  color: $color-light-text-primary;
+  border: 1px solid $color-light-border;
+
+  &:hover {
+    background-color: $color-light-bg-tertiary;
+  }
+
+  body[data-theme="dark"] & {
+    background-color: $color-dark-bg-tertiary;
+    color: $color-dark-text-primary;
+    border-color: $color-dark-border;
+
+    &:hover {
+      background-color: $color-dark-border;
+    }
+  }
+}
+
+/* GRID RESPONSIVO */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: map-get($spacings, "lg");
+
+  @include respond-to("md") {
+    grid-template-columns: repeat(2, 1fr);
+    gap: map-get($spacings, "xl");
+  }
+
+  @include respond-to("lg") {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* LISTA COM ÍCONES */
+.listItem {
+  @include flex-center;
+  gap: map-get($spacings, "md");
+  @include padding("md");
+  background-color: $color-light-bg-secondary;
+  border-radius: $radius-md;
+  @include smooth-transition(background-color, $transition-base);
+
+  &:hover {
+    background-color: $color-light-bg-tertiary;
+  }
+
+  body[data-theme="dark"] & {
+    background-color: $color-dark-bg-tertiary;
+
+    &:hover {
+      background-color: $color-dark-border;
+    }
+  }
+}
+
+.listItemIcon {
+  font-size: 20px;
+  min-width: 20px;
+}
+
+.listItemText {
+  @include flex-column;
+  flex: 1;
+}
+
+.listItemLabel {
+  @include label("medium");
+  color: $color-light-text-primary;
+
+  body[data-theme="dark"] & {
+    color: $color-dark-text-primary;
+  }
+}
+
+.listItemDescription {
+  @include body-text("small");
+  color: $color-light-text-tertiary;
+  @include margin("xs");
+
+  body[data-theme="dark"] & {
+    color: $color-dark-text-tertiary;
+  }
+}
+
+/* BADGE */
+.badge {
+  display: inline-block;
+  @include label("small");
+  @include padding("sm");
+  background-color: $color-info;
+  color: #ffffff;
+  border-radius: $radius-full;
+}
+
+.badgeSuccess {
+  background-color: $color-success;
+}
+
+.badgeError {
+  background-color: $color-error;
+}
+
+.badgeWarning {
+  background-color: $color-warning;
+}
+
+/* SKELETON LOADING */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    $color-light-bg-secondary 25%,
+    $color-light-bg-tertiary 50%,
+    $color-light-bg-secondary 75%
+  );
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+
+  body[data-theme="dark"] & {
+    background: linear-gradient(
+      90deg,
+      $color-dark-bg-secondary 25%,
+      $color-dark-bg-tertiary 50%,
+      $color-dark-bg-secondary 75%
+    );
+  }
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* TRUNCATE TEXT */
+.truncate {
+  @include truncate;
+}
+
+.lineClamp {
+  @include line-clamp(2);
+}
+
+/* CENTRO ABSOLUTO */
+.centered {
+  @include center-absolute;
+}
+
+/* CONTAINER FULLSCREEN */
+.fullscreen {
+  @include cover;
+  z-index: z("modal");
+  @include flex-center;
+  background-color: rgba(0, 0, 0, 0.5);
+}

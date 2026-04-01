@@ -1,0 +1,100 @@
+/* ====================================
+   FUNCTIONS - Funções Sass
+   ==================================== */
+
+@use "sass:map";
+@use "sass:color" as color-utils;
+
+@import "./variables";
+
+@function px-to-rem($px) {
+  @return calc($px / 16px) * 1rem;
+}
+
+/* Converter pixel para em */
+@function px-to-em($px) {
+  @return calc($px / 16px) * 1em;
+}
+
+/* Obter cor do tema */
+@function color($key, $theme: "light") {
+  @if $theme == "light" {
+    @return map.get($colors-light, $key);
+  } @else if $theme == "dark" {
+    @return map.get($colors-dark, $key);
+  }
+  @return null;
+}
+
+/* Obter espaçamento */
+@function spacing($size) {
+  @return map.get($spacings, $size);
+}
+
+/* Calcular contraste de cor */
+@function contrast-color($bg-color) {
+  $r: color-utils.red($bg-color);
+  $g: color-utils.green($bg-color);
+  $b: color-utils.blue($bg-color);
+
+  $brightness: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
+
+  @if $brightness > 155 {
+    @return #000000;
+  } @else {
+    @return #ffffff;
+  }
+}
+
+/* Aplicar opacidade */
+@function alpha($color, $alpha) {
+  @return rgba($color, $alpha);
+}
+
+/* Escurecer cor */
+@function darken-color($color, $amount: 10%) {
+  @return color-utils.adjust($color, $lightness: -$amount);
+}
+
+/* Iluminar cor */
+@function lighten-color($color, $amount: 10%) {
+  @return color-utils.adjust($color, $lightness: $amount);
+}
+
+/* Calcular tamanho de fonte responsivo */
+@function fluid-font($min-size, $max-size, $min-vw: 320px, $max-vw: 1280px) {
+  $slope: ($max-size - $min-size) / ($max-vw - $min-vw);
+  $intercept: $min-size - $slope * $min-vw;
+
+  @return calc(#{$intercept} + #{$slope * 100vw});
+}
+
+/* Z-index organizado */
+$z-indexes: (
+  "hide": -1,
+  "base": 0,
+  "dropdown": 100,
+  "sticky": 200,
+  "fixed": 300,
+  "modal-backdrop": 400,
+  "modal": 500,
+  "popover": 600,
+  "tooltip": 700,
+);
+
+@function z($level) {
+  @return map.get($z-indexes, $level);
+}
+
+/* Sombras */
+$shadows: (
+  "sm": 0 1px 2px 0 rgba(0, 0, 0, 0.05),
+  "md": 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+  "lg": 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+  "xl": 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+  "2xl": 0 25px 50px -12px rgba(0, 0, 0, 0.25),
+);
+
+@function shadow($level) {
+  @return map.get($shadows, $level);
+}
