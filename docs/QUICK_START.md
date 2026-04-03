@@ -9,7 +9,7 @@
 
 .card {
   @include flex-column;
-  background-color: var(--base-color-beige-100);
+  background-color: var(--color-beige-100);
   padding: var(--spacing-lg);
   border-radius: var(--radius-lg);
 }
@@ -49,7 +49,7 @@ export default function Card() {
 
 | O quê          | Como                                                                    |
 | -------------- | ----------------------------------------------------------------------- |
-| **Cores**      | `var(--base-color-{brown,beige,green,blue,gold}-{900,700,500,300})`     |
+| **Cores**      | `var(--color-{brown,beige,green,blue,gold}-{900,700,500,300})`          |
 | **Tipografia** | `@include header(1-6)` \| `@include label(1-4)` \| `@include body(1-4)` |
 | **Espaço**     | `var(--spacing-{xs,sm,md,lg,xl,2xl,3xl})`                               |
 | **Responsivo** | `@include media("phone", "tablet-up", "notebook-up", "desktop-up")`     |

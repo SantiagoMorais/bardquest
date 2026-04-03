@@ -10,11 +10,11 @@
 /* ========== BREAKPOINTS / MEDIA QUERIES ========== */
 
 // Breakpoint queries
-$phone: "max-width: 767px";
-$tablet-up: "min-width: 768px";
-$notebook-up: "min-width: 1024px";
-$desktop-up: "min-width: 1366px";
-$large-desktop-up: "min-width: 1920px";
+$phone: "max-width: 76.7rem";
+$tablet-up: "min-width: 76.8rem";
+$notebook-up: "min-width: 102.4rem";
+$desktop-up: "min-width: 136.6rem";
+$large-desktop-up: "min-width: 192rem";
 
 @mixin media($size) {
   @if $size == "phone" {
@@ -214,8 +214,8 @@ $large-desktop-up: "min-width: 1920px";
 }
 
 @mixin focus-ring {
-  outline: 2px solid var(--color-info);
-  outline-offset: 2px;
+  outline: 0.2rem solid var(--color-info);
+  outline-offset: 0.2rem;
 }
 
 /* ========== UTILITÁRIOS ========== */
@@ -284,7 +284,7 @@ $large-desktop-up: "min-width: 1920px";
 }
 
 @mixin mobile-only {
-  @media (max-width: calc($breakpoint-md - 1px)) {
+  @media (max-width: calc($breakpoint-md - 0.1rem)) {
     @content;
   }
 }

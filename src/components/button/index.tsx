@@ -7,6 +7,7 @@ type IButtonProps = PropsWithChildren & {
   buttonStyle?: "primary" | "secondary" | "tertiary" | "outline" | "link";
   iconLeft?: IconType;
   iconRight?: IconType;
+  className?: string;
 };
 
 export const Button = ({
@@ -14,9 +15,16 @@ export const Button = ({
   buttonStyle,
   iconLeft: IconLeft,
   iconRight: IconRight,
+  className,
 }: IButtonProps) => {
   return (
-    <button className={cn(styles.buttonBase, buttonStyle && styles[buttonStyle])}>
+    <button
+      className={cn(
+        styles.buttonBase,
+        buttonStyle ? styles[buttonStyle] : styles.primary,
+        className
+      )}
+    >
       {IconLeft && <IconLeft className={styles.iconLeft} />}
       {children}
       {IconRight && <IconRight className={styles.iconRight} />}

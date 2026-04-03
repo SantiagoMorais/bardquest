@@ -35,67 +35,80 @@
   /* BASE COLORS - Medieval/Campos/Aventura Palette */
 
   /* Browns */
-  --base-color-brown-900: #{$base-color-brown-900};
-  --base-color-brown-700: #{$base-color-brown-700};
-  --base-color-brown-500: #{$base-color-brown-500};
-  --base-color-brown-300: #{$base-color-brown-300};
+  --color-brown-900: #{$color-brown-900};
+  --color-brown-700: #{$color-brown-700};
+  --color-brown-500: #{$color-brown-500};
+  --color-brown-300: #{$color-brown-300};
+  --color-brown-100: #{$color-brown-100};
+  --color-brown-50: #{$color-brown-50};
 
   /* Beige */
-  --base-color-beige-100: #{$base-color-beige-100};
-  --base-color-beige-300: #{$base-color-beige-300};
-  --base-color-beige-500: #{$base-color-beige-500};
+  --color-beige-100: #{$color-beige-100};
+  --color-beige-50: #{$color-beige-50};
+  --color-beige-300: #{$color-beige-300};
+  --color-beige-500: #{$color-beige-500};
 
   /* Greens */
-  --base-color-green-900: #{$base-color-green-900};
-  --base-color-green-700: #{$base-color-green-700};
-  --base-color-green-300: #{$base-color-green-300};
+  --color-green-900: #{$color-green-900};
+  --color-green-700: #{$color-green-700};
+  --color-green-300: #{$color-green-300};
+  --color-green-100: #{$color-green-100};
+  --color-green-50: #{$color-green-50};
 
   /* Blues */
-  --base-color-blue-900: #{$base-color-blue-900};
-  --base-color-blue-700: #{$base-color-blue-700};
-  --base-color-blue-500: #{$base-color-blue-500};
-  --base-color-blue-300: #{$base-color-blue-300};
+  --color-blue-900: #{$color-blue-900};
+  --color-blue-700: #{$color-blue-700};
+  --color-blue-500: #{$color-blue-500};
+  --color-blue-300: #{$color-blue-300};
+  --color-blue-100: #{$color-blue-100};
+  --color-blue-50: #{$color-blue-50};
 
   /* Golds */
-  --base-color-gold-900: #{$base-color-gold-900};
-  --base-color-gold-700: #{$base-color-gold-700};
-  --base-color-gold-500: #{$base-color-gold-500};
-  --base-color-gold-300: #{$base-color-gold-300};
+  --color-gold-900: #{$color-gold-900};
+  --color-gold-700: #{$color-gold-700};
+  --color-gold-500: #{$color-gold-500};
+  --color-gold-300: #{$color-gold-300};
+  --color-gold-100: #{$color-gold-100};
+  --color-gold-50: #{$color-gold-50};
 
   /* Light Theme Colors */
-  --base-color-light-bg-primary: #{$base-color-light-bg-primary};
-  --base-color-light-bg-secondary: #{$base-color-light-bg-secondary};
-  --base-color-light-bg-tertiary: #{$base-color-light-bg-tertiary};
+  --color-light-bg-primary: #{$color-light-bg-primary};
+  --color-light-bg-secondary: #{$color-light-bg-secondary};
+  --color-light-bg-tertiary: #{$color-light-bg-tertiary};
 
-  --base-color-light-text-primary: #{$base-color-light-text-primary};
-  --base-color-light-text-secondary: #{$base-color-light-text-secondary};
-  --base-color-light-text-tertiary: #{$base-color-light-text-tertiary};
+  --color-light-text-primary: #{$color-light-text-primary};
+  --color-light-text-secondary: #{$color-light-text-secondary};
+  --color-light-text-tertiary: #{$color-light-text-tertiary};
 
-  --base-color-light-border: #{$base-color-light-border};
-  --base-color-light-border-hover: #{$base-color-light-border-hover};
+  --color-light-border: #{$color-light-border};
+  --color-light-border-hover: #{$color-light-border-hover};
 
   /* Semantic Colors */
-  --base-color-success: #{$base-color-success};
-  --base-color-warning: #{$base-color-warning};
-  --base-color-error: #{$base-color-error};
-  --base-color-info: #{$base-color-info};
+  --color-success: #{$color-success};
+  --color-warning: #{$color-warning};
+  --color-error: #{$color-error};
+  --color-info: #{$color-info};
 
   /* ALIASES - Compatibilidade com padrão */
-  --color-bg-primary: var(--base-color-light-bg-primary);
-  --color-bg-secondary: var(--base-color-light-bg-secondary);
-  --color-bg-tertiary: var(--base-color-light-bg-tertiary);
+  --color-bg-primary: var(--color-light-bg-primary);
+  --color-bg-secondary: var(--color-light-bg-secondary);
+  --color-bg-tertiary: var(--color-light-bg-tertiary);
 
-  --color-text-primary: var(--base-color-light-text-primary);
-  --color-text-secondary: var(--base-color-light-text-secondary);
-  --color-text-tertiary: var(--base-color-light-text-tertiary);
+  --color-text-primary: var(--color-light-text-primary);
+  --color-text-secondary: var(--color-light-text-secondary);
+  --color-text-tertiary: var(--color-light-text-tertiary);
 
-  --color-border: var(--base-color-light-border);
-  --color-border-hover: var(--base-color-light-border-hover);
+  --color-border: var(--color-light-border);
+  --color-border-hover: var(--color-light-border-hover);
 
-  --color-success: var(--base-color-success);
-  --color-error: var(--base-color-error);
-  --color-warning: var(--base-color-warning);
-  --color-info: var(--base-color-info);
+  /* Texto fixo para componentes utilitários */
+  --text-color-primary: rgb(0, 0, 0);
+  --text-color-secondary: rgb(255, 255, 255);
+
+  --color-success: var(--color-success);
+  --color-error: var(--color-error);
+  --color-warning: var(--color-warning);
+  --color-info: var(--color-info);
 
   /* TYPOGRAPHY */
   --font-family-heading: #{$font-family-heading};
@@ -117,53 +130,59 @@
 /* ========== DARK THEME - Media Query ========== */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --base-color-light-bg-primary: #{$base-color-dark-bg-primary};
-    --base-color-light-bg-secondary: #{$base-color-dark-bg-secondary};
-    --base-color-light-bg-tertiary: #{$base-color-dark-bg-tertiary};
+    --color-light-bg-primary: #{$color-dark-bg-primary};
+    --color-light-bg-secondary: #{$color-dark-bg-secondary};
+    --color-light-bg-tertiary: #{$color-dark-bg-tertiary};
 
-    --base-color-light-text-primary: #{$base-color-dark-text-primary};
-    --base-color-light-text-secondary: #{$base-color-dark-text-secondary};
-    --base-color-light-text-tertiary: #{$base-color-dark-text-tertiary};
+    --color-light-text-primary: #{$color-dark-text-primary};
+    --color-light-text-secondary: #{$color-dark-text-secondary};
+    --color-light-text-tertiary: #{$color-dark-text-tertiary};
 
-    --base-color-light-border: #{$base-color-dark-border};
-    --base-color-light-border-hover: #{$base-color-dark-border-hover};
+    --color-light-border: #{$color-dark-border};
+    --color-light-border-hover: #{$color-dark-border-hover};
 
-    --color-bg-primary: var(--base-color-light-bg-primary);
-    --color-bg-secondary: var(--base-color-light-bg-secondary);
-    --color-bg-tertiary: var(--base-color-light-bg-tertiary);
+    --color-bg-primary: var(--color-light-bg-primary);
+    --color-bg-secondary: var(--color-light-bg-secondary);
+    --color-bg-tertiary: var(--color-light-bg-tertiary);
 
-    --color-text-primary: var(--base-color-light-text-primary);
-    --color-text-secondary: var(--base-color-light-text-secondary);
-    --color-text-tertiary: var(--base-color-light-text-tertiary);
+    --text-color-primary: rgb(255, 255, 255);
+    --text-color-secondary: rgb(0, 0, 0);
 
-    --color-border: var(--base-color-light-border);
-    --color-border-hover: var(--base-color-light-border-hover);
+    --color-text-primary: var(--color-light-text-primary);
+    --color-text-secondary: var(--color-light-text-secondary);
+    --color-text-tertiary: var(--color-light-text-tertiary);
+
+    --color-border: var(--color-light-border);
+    --color-border-hover: var(--color-light-border-hover);
   }
 }
 
 /* ========== DARK THEME - Data Attribute ========== */
 :root[data-theme="dark"] {
-  --base-color-light-bg-primary: #{$base-color-dark-bg-primary};
-  --base-color-light-bg-secondary: #{$base-color-dark-bg-secondary};
-  --base-color-light-bg-tertiary: #{$base-color-dark-bg-tertiary};
+  --color-light-bg-primary: #{$color-dark-bg-primary};
+  --color-light-bg-secondary: #{$color-dark-bg-secondary};
+  --color-light-bg-tertiary: #{$color-dark-bg-tertiary};
 
-  --base-color-light-text-primary: #{$base-color-dark-text-primary};
-  --base-color-light-text-secondary: #{$base-color-dark-text-secondary};
-  --base-color-light-text-tertiary: #{$base-color-dark-text-tertiary};
+  --color-light-text-primary: #{$color-dark-text-primary};
+  --color-light-text-secondary: #{$color-dark-text-secondary};
+  --color-light-text-tertiary: #{$color-dark-text-tertiary};
 
-  --base-color-light-border: #{$base-color-dark-border};
-  --base-color-light-border-hover: #{$base-color-dark-border-hover};
+  --color-light-border: #{$color-dark-border};
+  --color-light-border-hover: #{$color-dark-border-hover};
 
-  --color-bg-primary: var(--base-color-light-bg-primary);
-  --color-bg-secondary: var(--base-color-light-bg-secondary);
-  --color-bg-tertiary: var(--base-color-light-bg-tertiary);
+  --color-bg-primary: var(--color-light-bg-primary);
+  --color-bg-secondary: var(--color-light-bg-secondary);
+  --color-bg-tertiary: var(--color-light-bg-tertiary);
 
-  --color-text-primary: var(--base-color-light-text-primary);
-  --color-text-secondary: var(--base-color-light-text-secondary);
-  --color-text-tertiary: var(--base-color-light-text-tertiary);
+  --color-text-primary: var(--color-light-text-primary);
+  --color-text-secondary: var(--color-light-text-secondary);
+  --color-text-tertiary: var(--color-light-text-tertiary);
 
-  --color-border: var(--base-color-light-border);
-  --color-border-hover: var(--base-color-light-border-hover);
+  --text-color-primary: rgb(255, 255, 255);
+  --text-color-secondary: rgb(0, 0, 0);
+
+  --color-border: var(--color-light-border);
+  --color-border-hover: var(--color-light-border-hover);
 }
 
 /* ========== CSS RESET E CONFIGURAÇÕES GERAIS ========== */
@@ -177,6 +196,10 @@ html,
 body {
   width: 100%;
   height: 100%;
+}
+
+html {
+  font-size: 62.5%;
 }
 
 body {
@@ -233,8 +256,8 @@ input,
 textarea,
 select {
   font-family: var(--font-family-body);
-  font-size: 16px; /* Previne zoom no iOS */
-  border: 1px solid var(--color-border);
+  font-size: 1.6rem; /* Previne zoom no iOS */
+  border: 0.1rem solid var(--color-border);
   border-radius: var(--radius-md);
   padding: var(--spacing-sm) var(--spacing-md);
   @include smooth-transition(border-color, $transition-base);
@@ -254,42 +277,42 @@ select {
 
 /* ========== SCROLLBAR ========== */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 0.8rem;
+  height: 0.8rem;
 }
 
 ::-webkit-scrollbar-track {
-  background: $base-color-light-bg-secondary;
+  background: $color-light-bg-secondary;
 
   body[data-theme="dark"] & {
-    background: $base-color-dark-bg-secondary;
+    background: $color-dark-bg-secondary;
   }
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $base-color-light-border;
+  background: $color-light-border;
   border-radius: $radius-full;
 
   &:hover {
-    background: $base-color-light-border-hover;
+    background: $color-light-border-hover;
   }
 
   body[data-theme="dark"] & {
-    background: $base-color-dark-border;
+    background: $color-dark-border;
 
     &:hover {
-      background: $base-color-dark-border-hover;
+      background: $color-dark-border-hover;
     }
   }
 }
 
 /* ========== SELEÇÃO ========== */
 ::selection {
-  background-color: $base-color-blue-500;
-  color: $base-color-light-text-primary;
+  background-color: $color-blue-500;
+  color: $color-light-text-primary;
 }
 
 body[data-theme="dark"] ::selection {
-  background-color: $base-color-blue-500;
-  color: $base-color-dark-text-primary;
+  background-color: $color-blue-500;
+  color: $color-dark-text-primary;
 }

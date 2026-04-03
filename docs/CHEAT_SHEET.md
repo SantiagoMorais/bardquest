@@ -8,16 +8,16 @@
 
 ```scss
 // Browns
-var(--base-color-brown-900)  // Escuro
-var(--base-color-brown-700)  // Base
-var(--base-color-brown-500)  // Claro
-var(--base-color-brown-300)  // Muito claro
+var(--color-brown-900)  // Escuro
+var(--color-brown-700)  // Base
+var(--color-brown-500)  // Claro
+var(--color-brown-300)  // Muito claro
 
 // Beige - Greens - Blues - Golds
-var(--base-color-beige-100|300|500)
-var(--base-color-green-900|700|300)
-var(--base-color-blue-900|700|500|300)
-var(--base-color-gold-900|700|500|300)
+var(--color-beige-100|300|500)
+var(--color-green-900|700|300)
+var(--color-blue-900|700|500|300)
+var(--color-gold-900|700|500|300)
 ```
 
 ---
@@ -87,8 +87,8 @@ var(--radius-full)     // 9999px (círculo)
 
 ```scss
 .card {
-  background-color: var(--base-color-beige-100);
-  border: 2px solid var(--base-color-brown-300);
+  background-color: var(--color-beige-100);
+  border: 2px solid var(--color-brown-300);
   border-radius: var(--radius-lg);
   padding: var(--spacing-lg);
 }
@@ -99,12 +99,12 @@ var(--radius-full)     // 9999px (círculo)
 ```scss
 .button {
   @include label(2);
-  background-color: var(--base-color-gold-500);
+  background-color: var(--color-gold-500);
   padding: var(--spacing-sm) var(--spacing-lg);
   border-radius: var(--radius-md);
 
   &:hover {
-    background-color: var(--base-color-gold-700);
+    background-color: var(--color-gold-700);
   }
 }
 ```
@@ -113,8 +113,8 @@ var(--radius-full)     // 9999px (círculo)
 
 ```scss
 .success {
-  background-color: var(--base-color-green-300);
-  border-left: 4px solid var(--base-color-green-900);
+  background-color: var(--color-green-300);
+  border-left: 4px solid var(--color-green-900);
   padding: var(--spacing-md);
 }
 ```

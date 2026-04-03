@@ -72,15 +72,15 @@ gold-300: #E89B3C (rgba 232,155,60)  - Claro
 rgba(107, 90, 74, 1) | #6B5A4A
 █████████████████ Marrom muito escuro - Texto em backgrounds claros
 
-Brown 700 (--base-color-brown-700)
+Brown 700 (--color-brown-700)
 rgba(139, 115, 85, 1) | #8B7355
 ██████████████████ Marrom base - Elementos medievais
 
-Brown 500 (--base-color-brown-500)
+Brown 500 (--color-brown-500)
 rgba(169, 139, 118, 1) | #A98B76
 ███████████████████ Marrom terra - Cor primária quente
 
-Brown 300 (--base-color-brown-300)
+Brown 300 (--color-brown-300)
 rgba(191, 162, 140, 1) | #BFA28C
 ████████████████████ Marrom claro - Backgrounds suaves
 
@@ -94,15 +94,15 @@ rgba(191, 162, 140, 1) | #BFA28C
 
 ```
 
-Beige 100 (--base-color-beige-100)
+Beige 100 (--color-beige-100)
 rgba(243, 228, 201, 1) | #F3E4C9
 █████████████████████ Bege muito claro - Background primário light
 
-Beige 300 (--base-color-beige-300)
+Beige 300 (--color-beige-300)
 rgba(232, 212, 176, 1) | #E8D4B0
 ██████████████████████ Bege warm - Backgrounds secundários
 
-Beige 500 (--base-color-beige-500)
+Beige 500 (--color-beige-500)
 rgba(212, 196, 168, 1) | #D4C4A8
 ███████████████████████ Bege natural - Borders e dividers
 
@@ -116,15 +116,15 @@ rgba(212, 196, 168, 1) | #D4C4A8
 
 ```
 
-Green 900 (--base-color-green-900)
+Green 900 (--color-green-900)
 rgba(107, 142, 63, 1) | #6B8E3F
 ████████████████ Verde escuro - Texto, ícones ativativos
 
-Green 700 (--base-color-green-700)
+Green 700 (--color-green-700)
 rgba(168, 173, 127, 1) | #A8AD7F
 █████████████████ Verde natural - Elementos secundários
 
-Green 300 (--base-color-green-300)
+Green 300 (--color-green-300)
 rgba(186, 191, 148, 1) | #BABF94
 ██████████████████ Verde claro - Backgrounds, status success
 
@@ -138,19 +138,19 @@ rgba(186, 191, 148, 1) | #BABF94
 
 ```
 
-Blue 900 (--base-color-blue-900)
+Blue 900 (--color-blue-900)
 rgba(30, 58, 138, 1) | #1E3A8A
 ███████ Azul profundo - Texto em backgrounds claros, títulos
 
-Blue 700 (--base-color-blue-700)
+Blue 700 (--color-blue-700)
 rgba(56, 86, 184, 1) | #3856B8
 ████████ Azul aventura - Links, elementos interativos
 
-Blue 500 (--base-color-blue-500)
+Blue 500 (--color-blue-500)
 rgba(74, 119, 168, 1) | #4A77A8
 █████████ Azul céu - Info, elementos destacados
 
-Blue 300 (--base-color-blue-300)
+Blue 300 (--color-blue-300)
 rgba(132, 168, 208, 1) | #84A8D0
 ██████████ Azul claro - Backgrounds light, hover states
 
@@ -164,19 +164,19 @@ rgba(132, 168, 208, 1) | #84A8D0
 
 ```
 
-Gold 900 (--base-color-gold-900)
+Gold 900 (--color-gold-900)
 rgba(90, 63, 31, 1) | #5A3F1F
 ███████ Dourado escuro - Acentos escuros
 
-Gold 700 (--base-color-gold-700)
+Gold 700 (--color-gold-700)
 rgba(168, 105, 31, 1) | #A8691F
 ████████ Dourado base - Botões, elementos ativos
 
-Gold 500 (--base-color-gold-500)
+Gold 500 (--color-gold-500)
 rgba(212, 128, 42, 1) | #D4802A
 █████████ Dourado laranja - Buttons primários, destaque
 
-Gold 300 (--base-color-gold-300)
+Gold 300 (--color-gold-300)
 rgba(232, 155, 60, 1) | #E89B3C
 ██████████ Dourado claro - Hover states, backgrounds warm
 
@@ -190,27 +190,27 @@ rgba(232, 155, 60, 1) | #E89B3C
 
 ```
 
-Light BG Primary (--base-color-light-bg-primary)
+Light BG Primary (--color-light-bg-primary)
 rgba(252, 250, 247, 1) | #FCF8F7
 ████████████ Off-white quente - Background principal
 
-Light BG Secondary (--base-color-light-bg-secondary)
+Light BG Secondary (--color-light-bg-secondary)
 rgba(243, 238, 230, 1) | #F3EEE6
 ████████████████ Bege claro - Cards, containers
 
-Light BG Tertiary (--base-color-light-bg-tertiary)
+Light BG Tertiary (--color-light-bg-tertiary)
 rgba(232, 225, 214, 1) | #E8E1D6
 ██████████████████ Bege médio - Elevated surfaces
 
-Light Text Primary (--base-color-light-text-primary)
+Light Text Primary (--color-light-text-primary)
 rgba(45, 35, 25, 1) | #2D231A
 ██ Marrom muito escuro - Texto principal
 
-Light Text Secondary (--base-color-light-text-secondary)
+Light Text Secondary (--color-light-text-secondary)
 rgba(107, 90, 74, 1) | #6B5A4A
 ████ Marrom médio - Texto secundário
 
-Light Text Tertiary (--base-color-light-text-tertiary)
+Light Text Tertiary (--color-light-text-tertiary)
 rgba(155, 135, 115, 1) | #9B8773
 ██████ Marrom claro - Texto desabilitado, hints
 
@@ -222,27 +222,27 @@ rgba(155, 135, 115, 1) | #9B8773
 
 ```
 
-Dark BG Primary (--base-color-dark-bg-primary)
+Dark BG Primary (--color-dark-bg-primary)
 rgba(30, 24, 19, 1) | #1E1813
 ██ Marrom escurissímo - Background principal dark
 
-Dark BG Secondary (--base-color-dark-bg-secondary)
+Dark BG Secondary (--color-dark-bg-secondary)
 rgba(48, 38, 30, 1) | #302626
 ███ Marrom muito escuro - Cards dark
 
-Dark BG Tertiary (--base-color-dark-bg-tertiary)
+Dark BG Tertiary (--color-dark-bg-tertiary)
 rgba(64, 52, 42, 1) | #403426
 ████ Marrom escuro - Elevated dark
 
-Dark Text Primary (--base-color-dark-text-primary)
+Dark Text Primary (--color-dark-text-primary)
 rgba(248, 243, 236, 1) | #F8F3EC
 ███████████ Off-white quente - Texto principal dark
 
-Dark Text Secondary (--base-color-dark-text-secondary)
+Dark Text Secondary (--color-dark-text-secondary)
 rgba(200, 180, 160, 1) | #C8B4A0
 ████████ Bege - Texto secundário dark
 
-Dark Text Tertiary (--base-color-dark-text-tertiary)
+Dark Text Tertiary (--color-dark-text-tertiary)
 rgba(155, 135, 115, 1) | #9B8773
 ██████ Marrom claro - Texto desabilitado dark
 
@@ -254,19 +254,19 @@ rgba(155, 135, 115, 1) | #9B8773
 
 ```
 
-Success (--base-color-success)
+Success (--color-success)
 rgba(107, 142, 63, 1) | #6B8E3F
 ███████████ Verde campo - ✓ Sucesso, ativo
 
-Warning (--base-color-warning)
+Warning (--color-warning)
 rgba(232, 155, 60, 1) | #E89B3C
 ████████████ Laranja quente - ⚠️ Aviso, atenção
 
-Error (--base-color-error)
+Error (--color-error)
 rgba(220, 110, 110, 1) | #DC6E6E
 ██████████ Vermelho - ❌ Erro, perigo
 
-Info (--base-color-info)
+Info (--color-info)
 rgba(74, 119, 168, 1) | #4A77A8
 █████████ Azul céu - ℹ️ Informação
 
@@ -278,19 +278,19 @@ rgba(74, 119, 168, 1) | #4A77A8
 
 ### Página Light
 
-- **Background**: `--base-color-light-bg-primary` (Off-white)
-- **Cards**: `--base-color-light-bg-secondary` (Bege claro)
-- **Texto**: `--base-color-light-text-primary` (Marrom escuro)
-- **Acentos**: `--base-color-blue-500` (Azul céu)
-- **Botões primários**: `--base-color-gold-500` (Dourado)
+- **Background**: `--color-light-bg-primary` (Off-white)
+- **Cards**: `--color-light-bg-secondary` (Bege claro)
+- **Texto**: `--color-light-text-primary` (Marrom escuro)
+- **Acentos**: `--color-blue-500` (Azul céu)
+- **Botões primários**: `--color-gold-500` (Dourado)
 
 ### Página Dark
 
-- **Background**: `--base-color-dark-bg-primary` (Marrom escuro)
-- **Cards**: `--base-color-dark-bg-secondary` (Marrom muito escuro)
-- **Texto**: `--base-color-dark-text-primary` (Off-white)
-- **Acentos**: `--base-color-blue-500` (Azul céu - mantém)
-- **Botões**: `--base-color-gold-500` (Dourado - mantém)
+- **Background**: `--color-dark-bg-primary` (Marrom escuro)
+- **Cards**: `--color-dark-bg-secondary` (Marrom muito escuro)
+- **Texto**: `--color-dark-text-primary` (Off-white)
+- **Acentos**: `--color-blue-500` (Azul céu - mantém)
+- **Botões**: `--color-gold-500` (Dourado - mantém)
 
 ---
 
@@ -299,43 +299,43 @@ rgba(74, 119, 168, 1) | #4A77A8
 ```scss
 // Card Medieval
 .card {
-  background-color: var(--base-color-beige-100);
-  border: 2px solid var(--base-color-brown-300);
-  color: var(--base-color-brown-900);
+  background-color: var(--color-beige-100);
+  border: 2px solid var(--color-brown-300);
+  color: var(--color-brown-900);
 }
 
 // Botão de Ação
 .button {
-  background-color: var(--base-color-gold-500);
+  background-color: var(--color-gold-500);
   color: white;
 
   &:hover {
-    background-color: var(--base-color-gold-700);
+    background-color: var(--color-gold-700);
   }
 }
 
 // Status de Sucesso
 .success {
-  background-color: var(--base-color-green-300);
-  color: var(--base-color-green-900);
-  border-left: 4px solid var(--base-color-green-900);
+  background-color: var(--color-green-300);
+  color: var(--color-green-900);
+  border-left: 4px solid var(--color-green-900);
 }
 
 // Link de Aventura
 a {
-  color: var(--base-color-blue-700);
+  color: var(--color-blue-700);
 
   &:hover {
-    color: var(--base-color-blue-900);
+    color: var(--color-blue-900);
     text-decoration: underline;
   }
 }
 
 // Container Info
 .info {
-  background-color: var(--base-color-blue-300);
-  color: var(--base-color-blue-900);
-  border-left: 4px solid var(--base-color-blue-700);
+  background-color: var(--color-blue-300);
+  color: var(--color-blue-900);
+  border-left: 4px solid var(--color-blue-700);
 }
 ````
 
