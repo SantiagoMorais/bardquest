@@ -1,12 +1,48 @@
 /* ====================================
    MIXINS - Funções reutilizáveis
+   Baseado na estrutura da empresa
    ==================================== */
 
 @use "sass:map";
 
 @import "./variables";
 
-@mixin heading($level: 1) {
+/* ========== BREAKPOINTS / MEDIA QUERIES ========== */
+
+// Breakpoint queries
+$phone: "max-width: 767px";
+$tablet-up: "min-width: 768px";
+$notebook-up: "min-width: 1024px";
+$desktop-up: "min-width: 1366px";
+$large-desktop-up: "min-width: 1920px";
+
+@mixin media($size) {
+  @if $size == "phone" {
+    @media (#{$phone}) {
+      @content;
+    }
+  } @else if $size == "tablet-up" {
+    @media (#{$tablet-up}) {
+      @content;
+    }
+  } @else if $size == "notebook-up" {
+    @media (#{$notebook-up}) {
+      @content;
+    }
+  } @else if $size == "desktop-up" {
+    @media (#{$desktop-up}) {
+      @content;
+    }
+  } @else if $size == "large-desktop-up" {
+    @media (#{$large-desktop-up}) {
+      @content;
+    }
+  }
+}
+
+/* ========== TYPOGRAPHY - HEADERS/HEADINGS ========== */
+
+@mixin header($level: 1) {
   font-family: $font-family-heading;
 
   @if $level == 1 {
@@ -25,46 +61,82 @@
     font-size: map.get($typography-h4, "size");
     font-weight: map.get($typography-h4, "weight");
     line-height: map.get($typography-h4, "line-height");
+  } @else if $level == 5 {
+    font-size: map.get($typography-h5, "size");
+    font-weight: map.get($typography-h5, "weight");
+    line-height: map.get($typography-h5, "line-height");
+  } @else if $level == 6 {
+    font-size: map.get($typography-h6, "size");
+    font-weight: map.get($typography-h6, "weight");
+    line-height: map.get($typography-h6, "line-height");
   }
 }
 
-@mixin label($size: "medium") {
+/* Legacy: heading mantém funcionando */
+@mixin heading($level: 1) {
+  @include header($level);
+}
+
+/* ========== TYPOGRAPHY - LABELS ========== */
+
+@mixin label($level: 2) {
   font-family: $font-family-body;
 
-  @if $size == "large" {
-    font-size: map.get($typography-label-large, "size");
-    font-weight: map.get($typography-label-large, "weight");
-    line-height: map.get($typography-label-large, "line-height");
-  } @else if $size == "medium" {
-    font-size: map.get($typography-label-medium, "size");
-    font-weight: map.get($typography-label-medium, "weight");
-    line-height: map.get($typography-label-medium, "line-height");
-  } @else if $size == "small" {
-    font-size: map.get($typography-label-small, "size");
-    font-weight: map.get($typography-label-small, "weight");
-    line-height: map.get($typography-label-small, "line-height");
+  @if $level == 1 {
+    font-size: map.get($typography-label-1, "size");
+    font-weight: map.get($typography-label-1, "weight");
+    line-height: map.get($typography-label-1, "line-height");
+  } @else if $level == 2 {
+    font-size: map.get($typography-label-2, "size");
+    font-weight: map.get($typography-label-2, "weight");
+    line-height: map.get($typography-label-2, "line-height");
+  } @else if $level == 3 {
+    font-size: map.get($typography-label-3, "size");
+    font-weight: map.get($typography-label-3, "weight");
+    line-height: map.get($typography-label-3, "line-height");
+  } @else if $level == 4 {
+    font-size: map.get($typography-label-4, "size");
+    font-weight: map.get($typography-label-4, "weight");
+    line-height: map.get($typography-label-4, "line-height");
   }
 }
 
+/* ========== TYPOGRAPHY - BODY TEXT ========== */
+
+@mixin body($level: 2) {
+  font-family: $font-family-body;
+
+  @if $level == 1 {
+    font-size: map.get($typography-body-1, "size");
+    font-weight: map.get($typography-body-1, "weight");
+    line-height: map.get($typography-body-1, "line-height");
+  } @else if $level == 2 {
+    font-size: map.get($typography-body-2, "size");
+    font-weight: map.get($typography-body-2, "weight");
+    line-height: map.get($typography-body-2, "line-height");
+  } @else if $level == 3 {
+    font-size: map.get($typography-body-3, "size");
+    font-weight: map.get($typography-body-3, "weight");
+    line-height: map.get($typography-body-3, "line-height");
+  } @else if $level == 4 {
+    font-size: map.get($typography-body-4, "size");
+    font-weight: map.get($typography-body-4, "weight");
+    line-height: map.get($typography-body-4, "line-height");
+  }
+}
+
+/* Legacy: body-text mantém funcionando */
 @mixin body-text($size: "medium") {
-  font-family: $font-family-body;
-
   @if $size == "large" {
-    font-size: map.get($typography-body-large, "size");
-    font-weight: map.get($typography-body-large, "weight");
-    line-height: map.get($typography-body-large, "line-height");
+    @include body(1);
   } @else if $size == "medium" {
-    font-size: map.get($typography-body-medium, "size");
-    font-weight: map.get($typography-body-medium, "weight");
-    line-height: map.get($typography-body-medium, "line-height");
+    @include body(2);
   } @else if $size == "small" {
-    font-size: map.get($typography-body-small, "size");
-    font-weight: map.get($typography-body-small, "weight");
-    line-height: map.get($typography-body-small, "line-height");
+    @include body(3);
   }
 }
 
-/* LAYOUT - Flexbox e Grid */
+/* ========== LAYOUT - Flexbox e Grid ========== */
 
 @mixin flex-center {
   display: flex;
@@ -88,25 +160,25 @@
   place-items: center;
 }
 
-/* ESPAÇAMENTO */
+/* ========== ESPAÇAMENTO - Usando CSS Variables ========== */
 
 @mixin padding($value) {
-  padding: map-get($spacings, $value) or $value;
+  padding: var(--spacing-#{$value});
 }
 
 @mixin margin($value) {
-  margin: map-get($spacings, $value) or $value;
+  margin: var(--spacing-#{$value});
 }
 
 @mixin gap($value) {
-  gap: map-get($spacings, $value) or $value;
+  gap: var(--spacing-#{$value});
 }
 
-/* TEMAS - Light/Dark */
+/* ========== TEMAS - Light/Dark ========== */
 
 @mixin light-theme {
-  background-color: $color-light-bg-primary;
-  color: $color-light-text-primary;
+  background-color: $base-color-light-bg-primary;
+  color: $base-color-light-text-primary;
 
   &[data-theme="light"],
   body[data-theme="light"] & {
@@ -115,8 +187,8 @@
 }
 
 @mixin dark-theme {
-  background-color: $color-dark-bg-primary;
-  color: $color-dark-text-primary;
+  background-color: $base-color-dark-bg-primary;
+  color: $base-color-dark-text-primary;
 
   @media (prefers-color-scheme: dark) {
     @content;
@@ -128,45 +200,7 @@
   }
 }
 
-/* RESPONSIVIDADE */
-
-@mixin respond-to($breakpoint) {
-  @if $breakpoint == "sm" {
-    @media (min-width: $breakpoint-sm) {
-      @content;
-    }
-  } @else if $breakpoint == "md" {
-    @media (min-width: $breakpoint-md) {
-      @content;
-    }
-  } @else if $breakpoint == "lg" {
-    @media (min-width: $breakpoint-lg) {
-      @content;
-    }
-  } @else if $breakpoint == "xl" {
-    @media (min-width: $breakpoint-xl) {
-      @content;
-    }
-  } @else if $breakpoint == "2xl" {
-    @media (min-width: $breakpoint-2xl) {
-      @content;
-    }
-  }
-}
-
-@mixin mobile-only {
-  @media (max-width: calc($breakpoint-md - 1px)) {
-    @content;
-  }
-}
-
-@mixin desktop-only {
-  @media (min-width: $breakpoint-md) {
-    @content;
-  }
-}
-
-/* EFEITOS */
+/* ========== EFEITOS E TRANSITIONS ========== */
 
 @mixin smooth-transition($property: all, $duration: $transition-base) {
   transition: $property $duration;
@@ -180,11 +214,11 @@
 }
 
 @mixin focus-ring {
-  outline: 2px solid $color-info;
+  outline: 2px solid var(--color-info);
   outline-offset: 2px;
 }
 
-/* UTILITÁRIOS */
+/* ========== UTILITÁRIOS ========== */
 
 @mixin truncate {
   overflow: hidden;
@@ -221,4 +255,42 @@
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+/* ========== LEGACY - Compatibilidade com código antigo ========== */
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == "sm" {
+    @media (min-width: $breakpoint-sm) {
+      @content;
+    }
+  } @else if $breakpoint == "md" {
+    @media (min-width: $breakpoint-md) {
+      @content;
+    }
+  } @else if $breakpoint == "lg" {
+    @media (min-width: $breakpoint-lg) {
+      @content;
+    }
+  } @else if $breakpoint == "xl" {
+    @media (min-width: $breakpoint-xl) {
+      @content;
+    }
+  } @else if $breakpoint == "2xl" {
+    @media (min-width: $breakpoint-2xl) {
+      @content;
+    }
+  }
+}
+
+@mixin mobile-only {
+  @media (max-width: calc($breakpoint-md - 1px)) {
+    @content;
+  }
+}
+
+@mixin desktop-only {
+  @media (min-width: $breakpoint-md) {
+    @content;
+  }
 }

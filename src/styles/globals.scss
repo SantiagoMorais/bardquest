@@ -1,39 +1,101 @@
 /* ====================================
    GLOBALS - Estilos globais
+   Baseado na estrutura da empresa
    ==================================== */
 
 @import "./variables";
 @import "./mixins";
 @import "./functions";
 
-/* ========== CSS CUSTOM PROPERTIES ========== */
+/* ========== CSS CUSTOM PROPERTIES - LIGHT THEME (PADRÃO) ========== */
 :root {
   /* SPACING - Escala de espaçamento */
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 16px;
-  --spacing-lg: 24px;
-  --spacing-xl: 32px;
-  --spacing-2xl: 48px;
-  --spacing-3xl: 64px;
+  --spacing-xs: #{$spacing-xs};
+  --spacing-sm: #{$spacing-sm};
+  --spacing-md: #{$spacing-md};
+  --spacing-lg: #{$spacing-lg};
+  --spacing-xl: #{$spacing-xl};
+  --spacing-2xl: #{$spacing-2xl};
+  --spacing-3xl: #{$spacing-3xl};
 
-  /* COLORS - Tema Light (padrão) */
-  --color-bg-primary: #{$color-light-bg-primary};
-  --color-bg-secondary: #{$color-light-bg-secondary};
-  --color-bg-tertiary: #{$color-light-bg-tertiary};
+  /* FONT SIZES */
+  --fonts-size-3xs: #{$fonts-size-3xs};
+  --fonts-size-2xs: #{$fonts-size-2xs};
+  --fonts-size-xs: #{$fonts-size-xs};
+  --fonts-size-sm: #{$fonts-size-sm};
+  --fonts-size-base: #{$fonts-size-base};
+  --fonts-size-md: #{$fonts-size-md};
+  --fonts-size-lg: #{$fonts-size-lg};
+  --fonts-size-xl: #{$fonts-size-xl};
+  --fonts-size-2xl: #{$fonts-size-2xl};
+  --fonts-size-3xl: #{$fonts-size-3xl};
+  --fonts-size-4xl: #{$fonts-size-4xl};
+  --fonts-size-5xl: #{$fonts-size-5xl};
 
-  --color-text-primary: #{$color-light-text-primary};
-  --color-text-secondary: #{$color-light-text-secondary};
-  --color-text-tertiary: #{$color-light-text-tertiary};
+  /* BASE COLORS - Medieval/Campos/Aventura Palette */
 
-  --color-border: #{$color-light-border};
-  --color-border-hover: #{$color-light-border-hover};
+  /* Browns */
+  --base-color-brown-900: #{$base-color-brown-900};
+  --base-color-brown-700: #{$base-color-brown-700};
+  --base-color-brown-500: #{$base-color-brown-500};
+  --base-color-brown-300: #{$base-color-brown-300};
 
-  /* SEMANTIC COLORS */
-  --color-success: #{$color-success};
-  --color-error: #{$color-error};
-  --color-warning: #{$color-warning};
-  --color-info: #{$color-info};
+  /* Beige */
+  --base-color-beige-100: #{$base-color-beige-100};
+  --base-color-beige-300: #{$base-color-beige-300};
+  --base-color-beige-500: #{$base-color-beige-500};
+
+  /* Greens */
+  --base-color-green-900: #{$base-color-green-900};
+  --base-color-green-700: #{$base-color-green-700};
+  --base-color-green-300: #{$base-color-green-300};
+
+  /* Blues */
+  --base-color-blue-900: #{$base-color-blue-900};
+  --base-color-blue-700: #{$base-color-blue-700};
+  --base-color-blue-500: #{$base-color-blue-500};
+  --base-color-blue-300: #{$base-color-blue-300};
+
+  /* Golds */
+  --base-color-gold-900: #{$base-color-gold-900};
+  --base-color-gold-700: #{$base-color-gold-700};
+  --base-color-gold-500: #{$base-color-gold-500};
+  --base-color-gold-300: #{$base-color-gold-300};
+
+  /* Light Theme Colors */
+  --base-color-light-bg-primary: #{$base-color-light-bg-primary};
+  --base-color-light-bg-secondary: #{$base-color-light-bg-secondary};
+  --base-color-light-bg-tertiary: #{$base-color-light-bg-tertiary};
+
+  --base-color-light-text-primary: #{$base-color-light-text-primary};
+  --base-color-light-text-secondary: #{$base-color-light-text-secondary};
+  --base-color-light-text-tertiary: #{$base-color-light-text-tertiary};
+
+  --base-color-light-border: #{$base-color-light-border};
+  --base-color-light-border-hover: #{$base-color-light-border-hover};
+
+  /* Semantic Colors */
+  --base-color-success: #{$base-color-success};
+  --base-color-warning: #{$base-color-warning};
+  --base-color-error: #{$base-color-error};
+  --base-color-info: #{$base-color-info};
+
+  /* ALIASES - Compatibilidade com padrão */
+  --color-bg-primary: var(--base-color-light-bg-primary);
+  --color-bg-secondary: var(--base-color-light-bg-secondary);
+  --color-bg-tertiary: var(--base-color-light-bg-tertiary);
+
+  --color-text-primary: var(--base-color-light-text-primary);
+  --color-text-secondary: var(--base-color-light-text-secondary);
+  --color-text-tertiary: var(--base-color-light-text-tertiary);
+
+  --color-border: var(--base-color-light-border);
+  --color-border-hover: var(--base-color-light-border-hover);
+
+  --color-success: var(--base-color-success);
+  --color-error: var(--base-color-error);
+  --color-warning: var(--base-color-warning);
+  --color-info: var(--base-color-info);
 
   /* TYPOGRAPHY */
   --font-family-heading: #{$font-family-heading};
@@ -52,37 +114,59 @@
   --transition-slow: #{$transition-slow};
 }
 
-/* TEMA DARK */
+/* ========== DARK THEME - Media Query ========== */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --color-bg-primary: #{$color-dark-bg-primary};
-    --color-bg-secondary: #{$color-dark-bg-secondary};
-    --color-bg-tertiary: #{$color-dark-bg-tertiary};
+    --base-color-light-bg-primary: #{$base-color-dark-bg-primary};
+    --base-color-light-bg-secondary: #{$base-color-dark-bg-secondary};
+    --base-color-light-bg-tertiary: #{$base-color-dark-bg-tertiary};
 
-    --color-text-primary: #{$color-dark-text-primary};
-    --color-text-secondary: #{$color-dark-text-secondary};
-    --color-text-tertiary: #{$color-dark-text-tertiary};
+    --base-color-light-text-primary: #{$base-color-dark-text-primary};
+    --base-color-light-text-secondary: #{$base-color-dark-text-secondary};
+    --base-color-light-text-tertiary: #{$base-color-dark-text-tertiary};
 
-    --color-border: #{$color-dark-border};
-    --color-border-hover: #{$color-dark-border-hover};
+    --base-color-light-border: #{$base-color-dark-border};
+    --base-color-light-border-hover: #{$base-color-dark-border-hover};
+
+    --color-bg-primary: var(--base-color-light-bg-primary);
+    --color-bg-secondary: var(--base-color-light-bg-secondary);
+    --color-bg-tertiary: var(--base-color-light-bg-tertiary);
+
+    --color-text-primary: var(--base-color-light-text-primary);
+    --color-text-secondary: var(--base-color-light-text-secondary);
+    --color-text-tertiary: var(--base-color-light-text-tertiary);
+
+    --color-border: var(--base-color-light-border);
+    --color-border-hover: var(--base-color-light-border-hover);
   }
 }
 
-/* TEMA DARK (DATA ATTRIBUTE) */
+/* ========== DARK THEME - Data Attribute ========== */
 :root[data-theme="dark"] {
-  --color-bg-primary: #{$color-dark-bg-primary};
-  --color-bg-secondary: #{$color-dark-bg-secondary};
-  --color-bg-tertiary: #{$color-dark-bg-tertiary};
+  --base-color-light-bg-primary: #{$base-color-dark-bg-primary};
+  --base-color-light-bg-secondary: #{$base-color-dark-bg-secondary};
+  --base-color-light-bg-tertiary: #{$base-color-dark-bg-tertiary};
 
-  --color-text-primary: #{$color-dark-text-primary};
-  --color-text-secondary: #{$color-dark-text-secondary};
-  --color-text-tertiary: #{$color-dark-text-tertiary};
+  --base-color-light-text-primary: #{$base-color-dark-text-primary};
+  --base-color-light-text-secondary: #{$base-color-dark-text-secondary};
+  --base-color-light-text-tertiary: #{$base-color-dark-text-tertiary};
 
-  --color-border: #{$color-dark-border};
-  --color-border-hover: #{$color-dark-border-hover};
+  --base-color-light-border: #{$base-color-dark-border};
+  --base-color-light-border-hover: #{$base-color-dark-border-hover};
+
+  --color-bg-primary: var(--base-color-light-bg-primary);
+  --color-bg-secondary: var(--base-color-light-bg-secondary);
+  --color-bg-tertiary: var(--base-color-light-bg-tertiary);
+
+  --color-text-primary: var(--base-color-light-text-primary);
+  --color-text-secondary: var(--base-color-light-text-secondary);
+  --color-text-tertiary: var(--base-color-light-text-tertiary);
+
+  --color-border: var(--base-color-light-border);
+  --color-border-hover: var(--base-color-light-border-hover);
 }
 
-/* Reset e configurações gerais */
+/* ========== CSS RESET E CONFIGURAÇÕES GERAIS ========== */
 * {
   margin: 0;
   padding: 0;
@@ -104,32 +188,32 @@ body {
     color var(--transition-base);
 }
 
-/* Tipografia padrão */
+/* ========== TIPOGRAFIA PADRÃO ========== */
 h1 {
-  @include heading(1);
+  @include header(1);
 }
 
 h2 {
-  @include heading(2);
+  @include header(2);
 }
 
 h3 {
-  @include heading(3);
+  @include header(3);
 }
 
 h4 {
-  @include heading(4);
+  @include header(4);
 }
 
 p {
-  @include body-text("medium");
+  @include body(2);
 }
 
 label {
-  @include label("medium");
+  @include label(2);
 }
 
-/* Links */
+/* ========== LINKS ========== */
 a {
   color: var(--color-info);
   text-decoration: none;
@@ -144,7 +228,7 @@ a {
   }
 }
 
-/* Inputs */
+/* ========== INPUTS ========== */
 input,
 textarea,
 select {
@@ -168,44 +252,44 @@ select {
   }
 }
 
-/* Scrollbar */
+/* ========== SCROLLBAR ========== */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: $color-light-bg-secondary;
+  background: $base-color-light-bg-secondary;
 
   body[data-theme="dark"] & {
-    background: $color-dark-bg-secondary;
+    background: $base-color-dark-bg-secondary;
   }
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $color-light-border;
+  background: $base-color-light-border;
   border-radius: $radius-full;
 
   &:hover {
-    background: $color-light-border-hover;
+    background: $base-color-light-border-hover;
   }
 
   body[data-theme="dark"] & {
-    background: $color-dark-border;
+    background: $base-color-dark-border;
 
     &:hover {
-      background: $color-dark-border-hover;
+      background: $base-color-dark-border-hover;
     }
   }
 }
 
-/* Seleção */
+/* ========== SELEÇÃO ========== */
 ::selection {
-  background-color: $color-info;
-  color: $color-light-text-primary;
+  background-color: $base-color-blue-500;
+  color: $base-color-light-text-primary;
 }
 
 body[data-theme="dark"] ::selection {
-  background-color: $color-info;
-  color: $color-dark-text-primary;
+  background-color: $base-color-blue-500;
+  color: $base-color-dark-text-primary;
 }
