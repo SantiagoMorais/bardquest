@@ -6,6 +6,7 @@
 
   flex-direction: column;
   padding: var(--spacing-md);
+  background-color: var(--color-blue-50);
 }
 
 .logo {
@@ -14,46 +15,14 @@
   height: auto;
 }
 
-.loginCard {
+.card {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-md);
   border: 0.1rem solid var(--color-border);
-  padding: var(--spacing-lg);
+  padding: var(--spacing-lg) var(--spacing-lg);
   border-radius: var(--radius-md);
-  background-color: var(--color-beige-50);
-}
+  background-color: var(--text-color-secondary);
 
-.title {
-  @include header(4);
-  color: var(--color-text-primary);
-  text-align: center;
-}
-
-.subtitle {
-  @include body(1);
-  color: var(--color-text-secondary);
-  text-align: start;
-}
-
-.inputsContainer {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
-}
-
-.label {
-  @include label(2);
-  color: var(--color-light-text-secondary);
-}
-
-.buttonsContainer {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-md);
-  justify-content: center;
-}
-
-.buttonStyle {
-  flex: 1;
+  min-width: 50rem;
 }

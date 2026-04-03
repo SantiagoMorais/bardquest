@@ -1,0 +1,33 @@
+.title {
+  @include header(4);
+  color: var(--color-text-primary);
+  text-align: center;
+}
+
+.subtitle {
+  @include body(1);
+  color: var(--color-text-secondary);
+  text-align: start;
+}
+
+.inputsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.label {
+  @include label(2);
+  color: var(--color-light-text-secondary);
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  justify-content: center;
+}
+
+.buttonStyle {
+  flex: 1;
+}

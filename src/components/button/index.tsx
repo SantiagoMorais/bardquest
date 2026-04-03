@@ -1,14 +1,15 @@
-import { PropsWithChildren } from "react";
+import { ButtonHTMLAttributes, PropsWithChildren } from "react";
 import styles from "./index.module.scss";
 import cn from "classnames";
 import { IconBase, IconBaseProps, IconContext, IconType } from "react-icons";
 
-type IButtonProps = PropsWithChildren & {
-  buttonStyle?: "primary" | "secondary" | "tertiary" | "outline" | "link";
-  iconLeft?: IconType;
-  iconRight?: IconType;
-  className?: string;
-};
+type IButtonProps = PropsWithChildren &
+  ButtonHTMLAttributes<HTMLButtonElement> & {
+    buttonStyle?: "primary" | "secondary" | "tertiary" | "outline" | "link";
+    iconLeft?: IconType;
+    iconRight?: IconType;
+    className?: string;
+  };
 
 export const Button = ({
   children,
@@ -16,6 +17,7 @@ export const Button = ({
   iconLeft: IconLeft,
   iconRight: IconRight,
   className,
+  ...props
 }: IButtonProps) => {
   return (
     <button
@@ -24,6 +26,7 @@ export const Button = ({
         buttonStyle ? styles[buttonStyle] : styles.primary,
         className
       )}
+      {...props}
     >
       {IconLeft && <IconLeft className={styles.iconLeft} />}
       {children}
