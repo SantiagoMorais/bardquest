@@ -1,4 +1,5 @@
 import { Button } from "@/components/button";
+import { Input } from "@/components/input";
 import styles from "./index.module.scss";
 import { TypeState } from "@/interfaces/typestate";
 
@@ -11,40 +12,28 @@ export const RegisterCard = ({ setSectionSelected }: IRegisterCardProps) => {
     <>
       <h2 className={styles.title}>Cadastro</h2>
       <div className={styles.inputsContainer}>
-        <label className={styles.label} htmlFor="register-email">
-          Email:
-        </label>
-        <input
+        <Input
+          label="Email:"
           type="text"
           name="register-email"
-          id="register-email"
           placeholder="Digite o seu e-mail"
         />
-        <label className={styles.label} htmlFor="register-username">
-          Nome de usuário:
-        </label>
-        <input
+        <Input
+          label="Nome de usuário:"
           type="text"
           name="register-username"
-          id="register-username"
           placeholder="Digite o seu nome de usuário"
         />
-        <label className={styles.label} htmlFor="register-password">
-          Senha:
-        </label>
-        <input
+        <Input
+          label="Senha:"
           type="password"
           name="register-password"
-          id="register-password"
           placeholder="Digite a sua senha"
         />
-        <label className={styles.label} htmlFor="register-confirmPassword">
-          Confirmar Senha:
-        </label>
-        <input
+        <Input
+          label="Confirmar Senha:"
           type="password"
           name="register-confirmPassword"
-          id="register-confirmPassword"
           placeholder="Confirme a sua senha"
         />
       </div>

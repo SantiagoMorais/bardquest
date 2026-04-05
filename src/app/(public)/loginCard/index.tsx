@@ -1,4 +1,5 @@
 import { Button } from "@/components/button";
+import { Input } from "@/components/input";
 import styles from "./index.module.scss";
 import { TypeState } from "@/interfaces/typestate";
 
@@ -16,17 +17,16 @@ export const LoginCard = ({ setSectionSelected }: ILoginCardProps) => {
       </h2>
 
       <div className={styles.inputsContainer}>
-        <label className={styles.label} htmlFor="email">
-          Email:
-        </label>
-        <input type="text" name="email" id="email" placeholder="Digite o seu e-mail" />
-        <label className={styles.label} htmlFor="password">
-          Senha:
-        </label>
-        <input
+        <Input
+          label="Email:"
+          type="text"
+          name="email"
+          placeholder="Digite o seu e-mail"
+        />
+        <Input
+          label="Senha:"
           type="password"
           name="password"
-          id="password"
           placeholder="Digite a sua senha"
         />
       </div>

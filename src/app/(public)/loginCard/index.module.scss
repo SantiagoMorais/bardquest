@@ -1,5 +1,5 @@
 .title {
-  @include header(4);
+  @include header(5);
   color: var(--color-text-primary);
   text-align: center;
 }
@@ -30,4 +30,10 @@
 
 .buttonStyle {
   flex: 1;
+}
+
+@include media("tablet-up") {
+  .title {
+    @include header(4);
+  }
 }
