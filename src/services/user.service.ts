@@ -1,16 +1,70 @@
-import { env } from "@/env";
-import { ICreateUser, IUpdateUser, IUser } from "@/interfaces/user-type";
-import axios from "axios";
+import { IUser } from "@/interfaces/api/user";
+import { ISignUpRequest, ISignUpResponse } from "@/interfaces/sign-up-type";
+import { supabase } from "@/lib/supabase";
 
-export const createUser = async (data: ICreateUser) => {
-  await axios.post(env.DATABASE_BASE_API_ACCESS + "/users", data);
-};
+export class AuthService {
+  /**
+   * Passo 1: Registra o usuário apenas no Supabase Authentication.
+   * Não tenta inserir no banco de dados ainda para evitar erros de RLS/Confirmação.
+   */
+  static signUp = async ({
+    email,
+    password,
+    username,
+  }: ISignUpRequest): Promise<ISignUpResponse | null> => {
+    try {
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          // Guardamos o username nos metadados para recuperar no primeiro login
+          data: {
+            display_name: username,
+          },
+        },
+      });
 
-export const updateUser = async (data: IUpdateUser) => {
-  await axios.put(env.DATABASE_BASE_API_ACCESS + "/users/" + data.id, data);
-};
+      if (error) throw error;
+      return data;
+    } catch (error) {
+      console.error("Error during auth sign up:", error);
+      throw error;
+    }
+  };
 
-export const getUserById = async (id: string): Promise<IUser> => {
-  const { data } = await axios.get<IUser>(env.DATABASE_BASE_API_ACCESS + "/users/" + id);
-  return data;
-};
+  /**
+   * Passo 2: Cria o perfil na tabela 'public.users'.
+   * Deve ser chamado após o usuário estar logado e confirmado.
+   */
+  static syncUserProfile = async (user: {
+    id: string;
+    email?: string;
+    username: string;
+  }): Promise<IUser | null> => {
+    try {
+      const { data, error } = await supabase
+        .from("users")
+        .insert({
+          id: user.id,
+          email: user.email ?? "",
+          username: user.username,
+          xp: 0,
+          level: 1,
+          streak: 0,
+        })
+        .select()
+        .single();
+
+      if (error) {
+        // Se o erro for "Duplicate Key", significa que o perfil já existe, o que é OK.
+        if (error.code === "23505") return data;
+        throw error;
+      }
+
+      return data;
+    } catch (error) {
+      console.error("Error syncing user profile:", error);
+      throw error;
+    }
+  };
+}
