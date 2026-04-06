@@ -54,16 +54,10 @@ export const toast = {
   success: (input: string | ToastInput) => {
     emitToast(createToast("success", input));
   },
-  sucess: (input: string | ToastInput) => {
-    emitToast(createToast("success", input));
-  },
   error: (input: string | ToastInput) => {
     emitToast(createToast("error", input));
   },
   warn: (input: string | ToastInput) => {
-    emitToast(createToast("warn", input));
-  },
-  warning: (input: string | ToastInput) => {
     emitToast(createToast("warn", input));
   },
   info: (input: string | ToastInput) => {
