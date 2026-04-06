@@ -1,12 +1,11 @@
 "use client";
 
-import Image from "next/image";
-import styles from "./page.module.scss";
 import logo from "@/assets/logo-bardquest.png";
-import { Button } from "@/components/button";
+import Image from "next/image";
 import { useState } from "react";
 import { LoginCard } from "./loginCard";
-import { RegisterCard } from "./registerCard";
+import styles from "./page.module.scss";
+import { RegisterCardWrapper } from "./registerCardWrapper";
 
 export default function Home() {
   const [sectionSelected, setSectionSelected] = useState<"login" | "register">("login");
@@ -18,7 +17,7 @@ export default function Home() {
         {sectionSelected === "login" ? (
           <LoginCard setSectionSelected={setSectionSelected} />
         ) : (
-          <RegisterCard setSectionSelected={setSectionSelected} />
+          <RegisterCardWrapper setSectionSelected={setSectionSelected} />
         )}
       </div>
     </main>

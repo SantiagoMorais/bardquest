@@ -1,16 +1,17 @@
 import { z } from "zod";
 
 const envSchema = z.object({
-  DATABASE_ACCOUNT_PASSWORD: z.string().min(1),
-  DATABASE_BASE_API_ACCESS: z.string().url(),
-  DATABASE_PUBLIC_KEY: z.string().min(1),
-  DATABASE_ANON_KEY: z.string().min(1),
+  NEXT_PUBLIC_SUPABASE_URL: z.url(),
+  NEXT_PUBLIC_SUPABASE_PUBLIC_KEY: z.string().min(1),
 });
 
-const _env = envSchema.safeParse(process.env);
+const _env = envSchema.safeParse({
+  NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
+  NEXT_PUBLIC_SUPABASE_PUBLIC_KEY: process.env.NEXT_PUBLIC_SUPABASE_PUBLIC_KEY,
+});
 
 if (!_env.success) {
-  console.error("Invalid environment variables:", _env.error.format());
+  console.error("Invalid environment variables:", _env.error);
   throw new Error("Invalid environment variables");
 }
 

@@ -19,14 +19,16 @@ export const LoginCard = ({ setSectionSelected }: ILoginCardProps) => {
       <div className={styles.inputsContainer}>
         <Input
           label="Email:"
-          type="text"
-          name="email"
+          type="email"
+          name="login-email"
+          autoComplete="email"
           placeholder="Digite o seu e-mail"
         />
         <Input
           label="Senha:"
           type="password"
-          name="password"
+          name="login-password"
+          autoComplete="current-password"
           placeholder="Digite a sua senha"
         />
       </div>

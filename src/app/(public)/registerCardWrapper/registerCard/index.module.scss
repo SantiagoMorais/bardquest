@@ -1,3 +1,9 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
 .title {
   @include header(4);
   color: var(--color-text-primary);
