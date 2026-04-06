@@ -95,6 +95,16 @@ $color-warning: rgba(232, 155, 60, 1); // #E89B3C - Laranja quente
 $color-error: rgba(220, 110, 110, 1); // #DC6E6E - Vermelho adaptado
 $color-info: rgba(74, 119, 168, 1); // #4A77A8 - Azul céu
 
+/* Toast Colors - Borda e Fundo por variante */
+$color-toast-success-border: rgba(32, 166, 66, 1);
+$color-toast-success-background: rgba(224, 255, 231, 1);
+$color-toast-error-border: rgba(235, 57, 57, 1);
+$color-toast-error-background: rgba(255, 227, 227, 1);
+$color-toast-warning-border: rgba(242, 171, 18, 1);
+$color-toast-warning-background: rgba(255, 243, 204, 1);
+$color-toast-info-border: rgba(29, 127, 255, 1);
+$color-toast-info-background: rgba(225, 241, 255, 1);
+
 /* Color Maps para fácil acesso */
 $colors-light: (
   "bg-primary": $color-light-bg-primary,

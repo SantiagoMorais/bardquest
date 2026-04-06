@@ -90,6 +90,16 @@
   --color-error: #{$color-error};
   --color-info: #{$color-info};
 
+  /* Toast Colors */
+  --color-toast-success-border: #{$color-toast-success-border};
+  --color-toast-success-background: #{$color-toast-success-background};
+  --color-toast-error-border: #{$color-toast-error-border};
+  --color-toast-error-background: #{$color-toast-error-background};
+  --color-toast-warning-border: #{$color-toast-warning-border};
+  --color-toast-warning-background: #{$color-toast-warning-background};
+  --color-toast-info-border: #{$color-toast-info-border};
+  --color-toast-info-background: #{$color-toast-info-background};
+
   /* ALIASES - Compatibilidade com padrão */
   --color-bg-primary: var(--color-light-bg-primary);
   --color-bg-secondary: var(--color-light-bg-secondary);
