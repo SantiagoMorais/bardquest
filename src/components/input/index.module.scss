@@ -1,3 +1,5 @@
+/* index.module.scss */
+
 .container {
   display: flex;
   flex-direction: column;
@@ -5,4 +7,59 @@
 
 .label {
   @include label(3);
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  input {
+    width: 100%;
+    padding-right: 2.75rem; /* espaço para o ícone não sobrepor o texto */
+  }
+
+  .eyeButton {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: inherit;
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.errorMessage {
+  @include label(4);
+  color: $color-error;
+
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  margin-top: 0;
+
+  transition:
+    max-height $transition-slow ease-out,
+    opacity $transition-slow ease-out,
+    margin-top $transition-slow ease-out;
+
+  &.visible {
+    max-height: 4rem;
+    opacity: 1;
+    margin-top: $spacing-xs;
+  }
 }
