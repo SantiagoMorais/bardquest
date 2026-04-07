@@ -1,13 +1,12 @@
-export interface IUser {
-  id: string;
-  created_at: string;
+import { IAuditInfo } from "../audit-info";
+
+export interface IUser extends IAuditInfo {
   username: string;
   email: string;
   xp: number;
   level: number;
   streak: number;
   last_practice_date: string | null;
-  updated_at: string;
 }
 
 export interface IUserProfile {
