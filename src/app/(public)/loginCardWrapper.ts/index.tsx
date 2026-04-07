@@ -7,26 +7,28 @@ import { useForm } from "react-hook-form";
 import { LoginCard } from "./loginCard";
 import { TypeState } from "@/interfaces/typestate";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 
 interface ILoginCardWrapperProps {
   setSectionSelected: TypeState<"login" | "register">;
 }
 
 export const LoginCardWrapper = ({ setSectionSelected }: ILoginCardWrapperProps) => {
+  const router = useRouter();
+
   const signinMutation = useMutation({
     mutationFn: AuthService.signIn,
     onSuccess: (data) => {
       toast.success(
         `Seja bem-vindo${data.user?.email ?? " viajante"}! Sua aventura te aguarda.`
       );
+      router.replace("/dashboard");
     },
     onError: (error) => {
       console.error("Error on signIn:", error);
       toast.error(
         "Verifique suas credenciais e tente novamente. Se o problema persistir, entre em contato com o suporte."
       );
-      redirect("/dashboard");
     },
   });
 

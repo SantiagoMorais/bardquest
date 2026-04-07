@@ -1,0 +1,16 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1;
+  margin-left: 0;
+  padding-top: 5.6rem;
+
+  @include media("tablet-up") {
+    margin-left: 6.4rem;
+    padding-top: 0;
+    padding: var(--spacing-lg);
+  }
+}

@@ -12,20 +12,20 @@ interface ToastItem {
   title: string;
   description?: string;
   variant: ToastVariant;
-  duration: number;
+  durationSeconds: number;
 }
 
 type ToastInput = {
   title: string;
   description?: string;
-  duration?: number;
+  durationSeconds?: number;
 };
 
 type ToastListener = (item: ToastItem) => void;
 
 const listeners = new Set<ToastListener>();
 
-const DEFAULT_DURATION = 3500;
+const DEFAULT_DURATION_SECONDS = 3.5;
 
 const createToast = (variant: ToastVariant, input: string | ToastInput): ToastItem => {
   if (typeof input === "string") {
@@ -33,7 +33,7 @@ const createToast = (variant: ToastVariant, input: string | ToastInput): ToastIt
       id: crypto.randomUUID(),
       title: input,
       variant,
-      duration: DEFAULT_DURATION,
+      durationSeconds: DEFAULT_DURATION_SECONDS,
     };
   }
 
@@ -42,7 +42,7 @@ const createToast = (variant: ToastVariant, input: string | ToastInput): ToastIt
     title: input.title,
     description: input.description,
     variant,
-    duration: input.duration ?? DEFAULT_DURATION,
+    durationSeconds: input.durationSeconds ?? DEFAULT_DURATION_SECONDS,
   };
 };
 
@@ -95,7 +95,7 @@ export const Toaster = () => {
             [styles.warn]: item.variant === "warn",
             [styles.info]: item.variant === "info",
           })}
-          duration={item.duration}
+          duration={item.durationSeconds * 1000}
           onOpenChange={(isOpen) => {
             if (!isOpen) {
               removeToast(item.id);

@@ -1,0 +1,303 @@
+/* =============================================
+   HEADER / SIDEBAR
+   Desktop: sidebar vertical colapsável (left)
+   Mobile:  barra horizontal no topo
+   ============================================= */
+
+/* ── MOBILE ────────────────────────────────── */
+.mobileHeader {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: var(--color-bg-primary);
+  border-bottom: 0.1rem solid var(--color-border);
+  box-shadow: 0 0.2rem 1.2rem rgba(0, 0, 0, 0.08);
+
+  @include media("tablet-up") {
+    display: none;
+  }
+}
+
+.mobileInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-sm) var(--spacing-md);
+  height: 5.6rem;
+}
+
+.mobileLogo {
+  height: 3.2rem;
+  width: auto;
+  object-fit: contain;
+}
+
+.mobileMenuBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+
+  &:hover {
+    background: var(--color-bg-tertiary);
+  }
+}
+
+.burger,
+.burger::before,
+.burger::after {
+  display: block;
+  width: 2.2rem;
+  height: 0.2rem;
+  background: var(--color-text-primary);
+  border-radius: var(--radius-full);
+  transition:
+    transform var(--transition-base),
+    opacity var(--transition-base);
+}
+
+.burger {
+  position: relative;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+  }
+
+  &::before {
+    top: -0.7rem;
+  }
+  &::after {
+    top: 0.7rem;
+  }
+
+  &.open {
+    background: transparent;
+
+    &::before {
+      transform: translateY(0.7rem) rotate(45deg);
+    }
+
+    &::after {
+      transform: translateY(-0.7rem) rotate(-45deg);
+    }
+  }
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height var(--transition-slow) ease-out;
+  border-top: 0.1rem solid transparent;
+}
+
+.mobileNavOpen {
+  max-height: 24rem;
+  border-top-color: var(--color-border);
+}
+
+.mobileNavItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--fonts-size-sm);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: background var(--transition-fast);
+
+  &:hover {
+    background: var(--color-bg-secondary);
+  }
+
+  &.danger {
+    color: var(--color-error);
+  }
+}
+
+/* ── DESKTOP SIDEBAR ───────────────────────── */
+.sidebar {
+  display: none;
+
+  @include media("tablet-up") {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+
+    width: 6.4rem;
+    overflow: hidden;
+    transition: width 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    background: var(--color-bg-primary);
+    border-right: 0.1rem solid var(--color-border);
+    box-shadow: 0.2rem 0 1.6rem rgba(0, 0, 0, 0.06);
+  }
+}
+
+.sidebarExpanded {
+  @include media("tablet-up") {
+    width: 22rem;
+  }
+}
+
+/* Logo */
+.logoArea {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  height: 6.4rem;
+  overflow: hidden;
+  border-bottom: 0.1rem solid var(--color-border);
+  flex-shrink: 0;
+  transition:
+    height 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    padding 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  .sidebarExpanded & {
+    height: 10rem;
+    padding: var(--spacing-md);
+    align-items: center; /* garante centralização vertical */
+    justify-content: flex-start;
+  }
+}
+
+.logo {
+  width: 3.2rem;
+  height: 3.2rem;
+  object-fit: contain;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  transition:
+    width 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    height 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  .sidebarExpanded & {
+    width: 5.6rem;
+    height: 5.6rem;
+  }
+}
+
+.logoLabel {
+  font-size: var(--fonts-size-sm);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+
+  opacity: 0;
+  transform: translateX(-0.6rem);
+  transition:
+    opacity 120ms ease 0ms,
+    transform 120ms ease 0ms;
+
+  .sidebarExpanded & {
+    opacity: 1;
+    transform: translateX(0);
+    transition:
+      opacity 180ms ease 160ms,
+      transform 180ms ease 160ms;
+  }
+}
+
+/* Nav links */
+.nav {
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-sm) 0;
+  flex: 1;
+  gap: 0.2rem;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
+  white-space: nowrap;
+  overflow: hidden;
+  min-height: 4.4rem;
+
+  &:hover {
+    background: var(--color-bg-secondary);
+    color: var(--color-text-primary);
+  }
+
+  &.danger {
+    margin-top: auto;
+    color: var(--color-error);
+
+    &:hover {
+      background: var(--color-toast-error-background);
+    }
+  }
+}
+
+.navIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2rem;
+}
+
+.navLabel {
+  font-size: var(--fonts-size-xs);
+  font-weight: 500;
+
+  /* fechando: some imediatamente */
+  opacity: 0;
+  transform: translateX(-0.6rem);
+  transition:
+    opacity 100ms ease 0ms,
+    transform 100ms ease 0ms;
+
+  /* abrindo: aparece depois da sidebar ter espaço */
+  .sidebarExpanded & {
+    opacity: 1;
+    transform: translateX(0);
+    transition:
+      opacity 180ms ease 180ms,
+      transform 180ms ease 180ms;
+  }
+}
+
+/* Hint de colapso */
+.collapseHint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-sm);
+  border-top: 0.1rem solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.chevron {
+  color: var(--color-text-tertiary);
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
