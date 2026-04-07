@@ -3,14 +3,16 @@
   min-height: 100vh;
 }
 
+$base-spacing: 6.4rem;
+
 .main {
   flex: 1;
   margin-left: 0;
-  padding-top: 5.6rem;
+  padding-top: $base-spacing;
+}
 
-  @include media("tablet-up") {
-    margin-left: 6.4rem;
-    padding-top: 0;
-    padding: var(--spacing-lg);
+@include media("tablet-up") {
+  .main {
+    padding: $base-spacing 0 0 $base-spacing;
   }
 }

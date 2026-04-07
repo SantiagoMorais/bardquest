@@ -1,35 +1,15 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
-import {
-  LuLayoutDashboard,
-  LuUserRound,
-  LuChevronRight,
-  LuSwords,
-  LuCrown,
-  LuTrendingUp,
-} from "react-icons/lu";
-import styles from "./index.module.scss";
-import Image from "next/image";
 import logo from "@/assets/logo-bardquest-minor.png";
+import { mobileNavItems, sidebarNavItems } from "@/utils/navbarOptions";
+import classNames from "classnames";
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+import { LuChevronRight, LuUserRound } from "react-icons/lu";
+import styles from "./index.module.scss";
 import { LogoutButton } from "./logoutButton";
 import { StreakBadge } from "./streakBadge";
-import classNames from "classnames";
-
-const mobileNavItems = [
-  { href: "/dashboard", label: "Dashboard", icon: LuLayoutDashboard },
-  { href: "/perfil", label: "Perfil", icon: LuUserRound },
-  { href: "/grimorio?tipo=chefes", label: "Grimório de Chefes", icon: LuSwords },
-  { href: "/grimorio?tipo=reinos", label: "Grimório de Reinos", icon: LuCrown },
-  {
-    href: "/grimorio?tipo=evolucao",
-    label: "Grimório de Evolução",
-    icon: LuTrendingUp,
-  },
-];
-
-const sidebarNavItems = mobileNavItems.filter((item) => item.href !== "/perfil");
 
 const STREAK = 7;
 
