@@ -1,5 +1,6 @@
 import { JSX, useId, Ref, useState } from "react";
 import styles from "./index.module.scss";
+import classNames from "classnames";
 import { LuEye, LuEyeOff } from "react-icons/lu";
 
 type IInputProps = JSX.IntrinsicElements["input"] & {
@@ -39,7 +40,7 @@ export const Input = ({ label, error, ref, ...props }: IInputProps) => {
           </button>
         )}
       </div>
-      <span className={`${styles.errorMessage} ${error?.isError ? styles.visible : ""}`}>
+      <span className={classNames(styles.errorMessage, error?.isError && styles.visible)}>
         {error?.message}
       </span>
     </div>

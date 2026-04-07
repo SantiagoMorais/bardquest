@@ -1,0 +1,76 @@
+/* ── STREAK ────────────────────────────────── */
+.streak {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-full);
+  background: var(--color-bg-secondary);
+  border: 0.1rem solid var(--color-border);
+  cursor: pointer;
+}
+
+/* 🔥 ICON */
+.streakIcon {
+  width: 18px;
+  height: 18px;
+  transform-origin: center bottom;
+  transition:
+    filter 0.3s ease,
+    opacity 0.3s ease;
+
+  /* estado "apagado" */
+  opacity: 0.6;
+  filter: grayscale(0.6);
+}
+
+/* 🔥 ATIVO */
+.streakActive .streakIcon {
+  opacity: 1;
+  filter: none;
+}
+
+/* 🔥 HOVER = VIDA */
+.streak:hover .streakIcon {
+  animation: flameFlicker 0.6s infinite ease-in-out;
+  filter: drop-shadow(0 0 6px rgba(249, 115, 22, 0.7))
+    drop-shadow(0 0 12px rgba(249, 115, 22, 0.4));
+}
+
+/* 🔢 COUNT */
+.streakCount {
+  font-size: var(--fonts-size-2xs);
+  font-weight: 700;
+  color: var(--color-text-tertiary);
+  line-height: 1;
+  transition: color 0.3s;
+}
+
+.streakActive .streakCount {
+  color: #f97316;
+}
+
+/* 🔥 ANIMAÇÃO REALISTA */
+@keyframes flameFlicker {
+  0% {
+    transform: scaleY(1) scaleX(1) rotate(0deg);
+  }
+  15% {
+    transform: scaleY(1.15) scaleX(0.9) rotate(-1deg);
+  }
+  30% {
+    transform: scaleY(0.95) scaleX(1.05) rotate(1deg);
+  }
+  45% {
+    transform: scaleY(1.2) scaleX(0.85) rotate(-0.5deg);
+  }
+  60% {
+    transform: scaleY(0.98) scaleX(1.02) rotate(0.5deg);
+  }
+  75% {
+    transform: scaleY(1.1) scaleX(0.92) rotate(-0.8deg);
+  }
+  100% {
+    transform: scaleY(1.05) scaleX(0.95) rotate(0deg);
+  }
+}

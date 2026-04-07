@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Cinzel } from "next/font/google";
 import "../styles/globals.scss";
 import { Providers } from "../components/providers";
+import classNames from "classnames";
 
 const fontSans = Inter({
   variable: "--font-sans",
@@ -25,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={`${fontSans.variable} ${fontTitle.variable}`}>
+    <html lang="pt-BR" className={classNames(fontSans.variable, fontTitle.variable)}>
       <body>
         <Providers>{children}</Providers>
       </body>
