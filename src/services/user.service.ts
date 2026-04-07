@@ -1,5 +1,10 @@
 import { IUser } from "@/interfaces/api/user";
-import { ISignUpRequest, ISignUpResponse } from "@/interfaces/sign-up-type";
+import {
+  ISignInRequest,
+  ISignInResponse,
+  ISignUpRequest,
+  ISignUpResponse,
+} from "@/interfaces/sign-up-type";
 import { supabase } from "@/lib/supabase";
 
 export class AuthService {
@@ -32,10 +37,34 @@ export class AuthService {
     }
   };
 
-  /**
-   * Passo 2: Cria o perfil na tabela 'public.users'.
-   * Deve ser chamado após o usuário estar logado e confirmado.
-   */
+  static signIn = async ({
+    email,
+    password,
+  }: ISignInRequest): Promise<ISignInResponse> => {
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (error) throw error;
+      return data;
+    } catch (error) {
+      console.error("Error during auth sign in:", error);
+      throw error;
+    }
+  };
+
+  static signOut = async (): Promise<void> => {
+    try {
+      const { error } = await supabase.auth.signOut();
+      if (error) throw error;
+    } catch (error) {
+      console.error("Error during auth sign out:", error);
+      throw error;
+    }
+  }
+
   static syncUserProfile = async (user: {
     id: string;
     email?: string;

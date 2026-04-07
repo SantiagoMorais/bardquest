@@ -22,7 +22,7 @@ export const RegisterCardWrapper = ({
       setSectionSelected("login");
     },
     onError: (error) => {
-      console.error("Erro na mutation:", error);
+      console.error("Error on sign up:", error);
       toast.error(
         "Erro ao criar conta. Tente novamente ou entre em contato com o suporte."
       );

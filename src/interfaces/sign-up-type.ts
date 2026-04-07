@@ -1,4 +1,4 @@
-import { Session, User } from "@supabase/supabase-js";
+import { Session, User, WeakPassword } from "@supabase/supabase-js";
 import z from "zod";
 
 export const signUpSchema = z
@@ -34,4 +34,23 @@ export type ISignUpResponse =
   | {
       user: null;
       session: null;
+    };
+
+export const signInSchema = z.object({
+  email: z.email("Insira um email válido"),
+  password: z.string().min(1, "A senha é obrigatória"),
+});
+
+export type ISignInRequest = z.infer<typeof signInSchema>;
+
+export type ISignInResponse =
+  | {
+      user: User;
+      session: Session;
+      weakPassword?: WeakPassword;
+    }
+  | {
+      user: null;
+      session: null;
+      weakPassword?: null | undefined;
     };
