@@ -5,12 +5,12 @@ import { useAuth } from "@/hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import { ProfileService } from "@/services/profile.service";
 import { LoadingScreen } from "../loadingScreen";
-import { OnboardingModal } from "./onboardingModal";
+import { OnboardingModalWrapper } from "./onBoardingModalWrapper";
 
 type IOnboardingGuardProps = PropsWithChildren;
 
 export const OnboardingGuard = ({ children }: IOnboardingGuardProps) => {
-  const user = useAuth();
+  const { user, isLoading: isAuthLoading } = useAuth();
 
   const { data: profile, isLoading } = useQuery({
     queryKey: ["user-profile", user?.id],
@@ -19,11 +19,11 @@ export const OnboardingGuard = ({ children }: IOnboardingGuardProps) => {
     staleTime: Infinity,
   });
 
-  if (isLoading) return <LoadingScreen />;
+  if (isAuthLoading || isLoading) return <LoadingScreen />;
 
-  if (user && !profile) {
-    return <OnboardingModal user={user} />;
-  }
+  if (!user) return <LoadingScreen />;
+
+  if (!profile) return <OnboardingModalWrapper user={user} />;
 
   return <>{children}</>;
 };
