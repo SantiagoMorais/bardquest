@@ -1,12 +1,12 @@
-import { IUser, IUserProfile } from "@/interfaces/api/user";
+import { IUserProfile } from "@/interfaces/api/user";
 import { supabase } from "@/lib/supabase";
 
 export class ProfileService {
-  static getById = async (userId: string): Promise<IUser | null> => {
+  static getById = async (userId: string): Promise<IUserProfile | null> => {
     const { data, error } = await supabase
-      .from("users")
+      .from("user_profiles")
       .select("*")
-      .eq("id", userId)
+      .eq("user_id", userId)
       .single();
 
     if (error) {
@@ -20,7 +20,7 @@ export class ProfileService {
     profile: Omit<IUserProfile, "updated_at">
   ): Promise<IUserProfile | null> => {
     const { data, error } = await supabase
-      .from("users")
+      .from("user_profiles")
       .insert(profile)
       .select()
       .single();
@@ -31,7 +31,7 @@ export class ProfileService {
 
   static getUserPreferences = async (userId: string): Promise<IUserProfile | null> => {
     const { data, error } = await supabase
-      .from("users")
+      .from("user_profiles")
       .select("*")
       .eq("user_id", userId)
       .single();

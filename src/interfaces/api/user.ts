@@ -16,9 +16,18 @@ export interface IUserProfile {
   interests: IUserInterests; // JSONB
   current_kingdom_id: number;
   updated_at: string;
+  age: number | null;
 }
 
 export interface IUserInterests {
   categories: string[]; // ['anime', 'games', 'classical']
   keywords: string[]; // ['naruto', 'maplestory', 'bach']
+}
+
+export interface IUserProfileWithUser extends Omit<
+  IUserProfile,
+  "updated_at" | "current_kingdom_id" | "user_id"
+> {
+  user: IUser;
+  experience: "begginer" | "basic" | "intermediate" | "advanced";
 }

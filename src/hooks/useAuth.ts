@@ -17,22 +17,32 @@ import { supabase } from "@/lib/supabase";
  * const user = useAuth();
  * if (user) console.log("Logged in as:", user.email);
  */
-export function useAuth(): User | null {
+export function useAuth(): { user: User | null; isLoading: boolean } {
   const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    let isMounted = true;
+
     supabase.auth.getSession().then(({ data: { session } }) => {
+      if (!isMounted) return;
       setUser(session?.user ?? null);
+      setIsLoading(false);
     });
 
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (!isMounted) return;
       setUser(session?.user ?? null);
+      setIsLoading(false);
     });
 
-    return () => subscription.unsubscribe();
+    return () => {
+      isMounted = false;
+      subscription.unsubscribe();
+    };
   }, []);
 
-  return user;
+  return { user, isLoading };
 }
