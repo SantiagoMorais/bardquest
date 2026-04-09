@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import styles from "./index.module.scss";
-import { AuthService } from "@/services/user.service";
+import { AuthService } from "@/services/auth.service";
 import { toast } from "@/components/toast";
 import { ISignInRequest, signInSchema } from "@/interfaces/sign-up-type";
 import { useForm } from "react-hook-form";

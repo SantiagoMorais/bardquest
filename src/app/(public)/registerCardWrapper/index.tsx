@@ -2,7 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "@/components/toast";
 import { ISignUpRequest, signUpSchema } from "@/interfaces/sign-up-type";
 import { TypeState } from "@/interfaces/typestate";
-import { AuthService } from "@/services/user.service";
+import { AuthService } from "@/services/auth.service";
 import { useMutation } from "@tanstack/react-query";
 import { redirect } from "next/navigation";
 import { RegisterCard } from "./registerCard";

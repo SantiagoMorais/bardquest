@@ -4,7 +4,7 @@ import { useAuth } from "@/hooks/useAuth";
 import styles from "./page.module.scss";
 
 export default function Dashboard() {
-  const user = useAuth();
+  const { user } = useAuth();
 
   return (
     <section className={styles.container}>
