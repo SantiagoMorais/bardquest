@@ -4,7 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { LuLogOut } from "react-icons/lu";
 import styles from "./index.module.scss";
-import { AuthService } from "@/services/user.service";
+import { AuthService } from "@/services/auth.service";
 import { toast } from "@/components/toast";
 import classNames from "classnames";
 
