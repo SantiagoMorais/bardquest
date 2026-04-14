@@ -3,104 +3,103 @@
    Baseado na estrutura da empresa
    ==================================== */
 
-@import "./variables";
 @import "./mixins";
 @import "./functions";
 
-/* ========== CSS CUSTOM PROPERTIES - LIGHT THEME (PADRÃO) ========== */
+/* ========== CSS CUSTOM PROPERTIES ========== */
 :root {
   /* SPACING - Escala de espaçamento */
-  --spacing-xs: #{$spacing-xs};
-  --spacing-sm: #{$spacing-sm};
-  --spacing-md: #{$spacing-md};
-  --spacing-lg: #{$spacing-lg};
-  --spacing-xl: #{$spacing-xl};
-  --spacing-2xl: #{$spacing-2xl};
-  --spacing-3xl: #{$spacing-3xl};
+  --spacing-xs: 0.4rem;
+  --spacing-sm: 0.8rem;
+  --spacing-md: 1.6rem;
+  --spacing-lg: 2.4rem;
+  --spacing-xl: 3.2rem;
+  --spacing-2xl: 4.8rem;
+  --spacing-3xl: 6.4rem;
 
   /* FONT SIZES */
-  --fonts-size-3xs: #{$fonts-size-3xs};
-  --fonts-size-2xs: #{$fonts-size-2xs};
-  --fonts-size-xs: #{$fonts-size-xs};
-  --fonts-size-sm: #{$fonts-size-sm};
-  --fonts-size-base: #{$fonts-size-base};
-  --fonts-size-md: #{$fonts-size-md};
-  --fonts-size-lg: #{$fonts-size-lg};
-  --fonts-size-xl: #{$fonts-size-xl};
-  --fonts-size-2xl: #{$fonts-size-2xl};
-  --fonts-size-3xl: #{$fonts-size-3xl};
-  --fonts-size-4xl: #{$fonts-size-4xl};
-  --fonts-size-5xl: #{$fonts-size-5xl};
+  --fonts-size-3xs: 1rem;
+  --fonts-size-2xs: 1.2rem;
+  --fonts-size-xs: 1.4rem;
+  --fonts-size-sm: 1.6rem;
+  --fonts-size-base: 1.8rem;
+  --fonts-size-md: 2rem;
+  --fonts-size-lg: 2.4rem;
+  --fonts-size-xl: 2.8rem;
+  --fonts-size-2xl: 3.2rem;
+  --fonts-size-3xl: 3.6rem;
+  --fonts-size-4xl: 4.4rem;
+  --fonts-size-5xl: 5.6rem;
 
   /* BASE COLORS - Medieval/Campos/Aventura Palette */
 
   /* Browns */
-  --color-brown-900: #{$color-brown-900};
-  --color-brown-700: #{$color-brown-700};
-  --color-brown-500: #{$color-brown-500};
-  --color-brown-300: #{$color-brown-300};
-  --color-brown-100: #{$color-brown-100};
-  --color-brown-50: #{$color-brown-50};
+  --color-brown-900: rgba(107, 90, 74, 1);
+  --color-brown-700: rgba(139, 115, 85, 1);
+  --color-brown-500: rgba(169, 139, 118, 1);
+  --color-brown-300: rgba(191, 162, 140, 1);
+  --color-brown-100: rgba(223, 206, 190, 1);
+  --color-brown-50: rgba(241, 233, 224, 1);
 
   /* Beige */
-  --color-beige-100: #{$color-beige-100};
-  --color-beige-50: #{$color-beige-50};
-  --color-beige-300: #{$color-beige-300};
-  --color-beige-500: #{$color-beige-500};
-  --color-surface-beige-50: #{$color-surface-beige-50};
+  --color-beige-100: rgba(243, 228, 201, 1);
+  --color-beige-50: rgba(250, 243, 230, 1);
+  --color-beige-300: rgba(232, 212, 176, 1);
+  --color-beige-500: rgba(212, 196, 168, 1);
+  --color-surface-beige-50: rgba(250, 243, 230, 0.5);
 
   /* Greens */
-  --color-green-900: #{$color-green-900};
-  --color-green-700: #{$color-green-700};
-  --color-green-300: #{$color-green-300};
-  --color-green-100: #{$color-green-100};
-  --color-green-50: #{$color-green-50};
+  --color-green-900: rgba(107, 142, 63, 1);
+  --color-green-700: rgba(168, 173, 127, 1);
+  --color-green-300: rgba(186, 191, 148, 1);
+  --color-green-100: rgba(220, 228, 196, 1);
+  --color-green-50: rgba(241, 246, 232, 1);
 
   /* Blues */
-  --color-blue-900: #{$color-blue-900};
-  --color-blue-700: #{$color-blue-700};
-  --color-blue-500: #{$color-blue-500};
-  --color-blue-300: #{$color-blue-300};
-  --color-blue-100: #{$color-blue-100};
-  --color-blue-50: #{$color-blue-50};
+  --color-blue-900: rgba(17, 64, 187, 1);
+  --color-blue-700: rgba(36, 103, 236, 1);
+  --color-blue-500: rgba(64, 145, 255, 1);
+  --color-blue-300: rgba(132, 190, 255, 1);
+  --color-blue-100: rgba(217, 236, 255, 1);
+  --color-blue-50: rgba(240, 248, 255, 1);
 
   /* Golds */
-  --color-gold-900: #{$color-gold-900};
-  --color-gold-700: #{$color-gold-700};
-  --color-gold-500: #{$color-gold-500};
-  --color-gold-300: #{$color-gold-300};
-  --color-gold-100: #{$color-gold-100};
-  --color-gold-50: #{$color-gold-50};
+  --color-gold-900: rgba(90, 63, 31, 1);
+  --color-gold-700: rgba(168, 105, 31, 1);
+  --color-gold-500: rgba(212, 128, 42, 1);
+  --color-gold-300: rgba(232, 155, 60, 1);
+  --color-gold-100: rgba(245, 219, 186, 1);
+  --color-gold-50: rgba(253, 244, 232, 1);
 
   /* Light Theme Colors */
-  --color-light-bg-primary: #{$color-light-bg-primary};
-  --color-light-bg-secondary: #{$color-light-bg-secondary};
-  --color-light-bg-tertiary: #{$color-light-bg-tertiary};
+  --color-light-bg-primary: rgba(252, 250, 247, 1);
+  --color-light-bg-secondary: rgba(243, 238, 230, 1);
+  --color-light-bg-tertiary: rgba(232, 225, 214, 1);
 
-  --color-light-text-primary: #{$color-light-text-primary};
-  --color-light-text-secondary: #{$color-light-text-secondary};
-  --color-light-text-tertiary: #{$color-light-text-tertiary};
+  --color-light-text-primary: rgba(45, 35, 25, 1);
+  --color-light-text-secondary: rgba(107, 90, 74, 1);
+  --color-light-text-tertiary: rgba(155, 135, 115, 1);
 
-  --color-light-border: #{$color-light-border};
-  --color-light-border-hover: #{$color-light-border-hover};
+  --color-light-border: rgba(212, 196, 168, 1);
+  --color-light-border-hover: rgba(191, 162, 140, 1);
 
   /* Semantic Colors */
-  --color-success: #{$color-success};
-  --color-warning: #{$color-warning};
-  --color-error: #{$color-error};
-  --color-info: #{$color-info};
+  --color-success: rgba(107, 142, 63, 1);
+  --color-warning: rgba(232, 155, 60, 1);
+  --color-error: rgba(220, 110, 110, 1);
+  --color-info: rgba(74, 119, 168, 1);
 
   /* Toast Colors */
-  --color-toast-success-border: #{$color-toast-success-border};
-  --color-toast-success-background: #{$color-toast-success-background};
-  --color-toast-error-border: #{$color-toast-error-border};
-  --color-toast-error-background: #{$color-toast-error-background};
-  --color-toast-warning-border: #{$color-toast-warning-border};
-  --color-toast-warning-background: #{$color-toast-warning-background};
-  --color-toast-info-border: #{$color-toast-info-border};
-  --color-toast-info-background: #{$color-toast-info-background};
+  --color-toast-success-border: rgba(32, 166, 66, 1);
+  --color-toast-success-background: rgba(224, 255, 231, 1);
+  --color-toast-error-border: rgba(235, 57, 57, 1);
+  --color-toast-error-background: rgba(255, 227, 227, 1);
+  --color-toast-warning-border: rgba(242, 171, 18, 1);
+  --color-toast-warning-background: rgba(255, 243, 204, 1);
+  --color-toast-info-border: rgba(29, 127, 255, 1);
+  --color-toast-info-background: rgba(225, 241, 255, 1);
 
-  /* ALIASES - Compatibilidade com padrão */
+  /* ALIASES */
   --color-bg-primary: var(--color-light-bg-primary);
   --color-bg-secondary: var(--color-light-bg-secondary);
   --color-bg-tertiary: var(--color-light-bg-tertiary);
@@ -112,88 +111,56 @@
   --color-border: var(--color-light-border);
   --color-border-hover: var(--color-light-border-hover);
 
-  /* Texto fixo para componentes utilitários */
-  --text-color-primary: rgb(0, 0, 0);
-  --text-color-secondary: rgb(255, 255, 255);
+  /* Cores ALFA */
+  --color-brown-alfa-20: rgba(45, 35, 25, 0.2);
+  --color-brown-alfa-50: rgba(45, 35, 25, 0.5);
+  --color-brown-alfa-80: rgba(45, 35, 25, 0.8);
 
-  --color-success: var(--color-success);
-  --color-error: var(--color-error);
-  --color-warning: var(--color-warning);
-  --color-info: var(--color-info);
+  --color-blue-alfa-20: rgba(64, 145, 255, 0.2);
+  --color-blue-alfa-50: rgba(64, 145, 255, 0.5);
+  --color-blue-alfa-80: rgba(64, 145, 255, 0.8);
+
+  --color-green-alfa-20: rgba(107, 142, 63, 0.2);
+  --color-green-alfa-50: rgba(107, 142, 63, 0.5);
+  --color-green-alfa-80: rgba(107, 142, 63, 0.8);
+
+  --color-gold-alfa-20: rgba(212, 128, 42, 0.2);
+  --color-gold-alfa-50: rgba(212, 128, 42, 0.5);
+  --color-gold-alfa-80: rgba(212, 128, 42, 0.8);
+
+  /* Texto utilitário — default (escuro sobre claro) e invert (claro sobre escuro) */
+  --text-color-primary: rgba(0, 0, 0, 1);
+  --text-color-secondary: rgba(255, 255, 255, 1);
+
+  /* Novas variáveis de texto invert — para elementos com fundo escuro (ex: overlays, badges escuros) */
+  --color-text-invert-primary: rgba(248, 243, 236, 1);
+  --color-text-invert-secondary: rgba(200, 180, 160, 1);
+  --color-text-invert-tertiary: rgba(155, 135, 115, 1);
+
+  /* Scrollbar colors explícitas (antes viviam no dark theme) */
+  --color-scrollbar-track: rgba(243, 238, 230, 1);
+  --color-scrollbar-thumb: rgba(212, 196, 168, 1);
+  --color-scrollbar-thumb-hover: rgba(191, 162, 140, 1);
 
   /* TYPOGRAPHY */
-  --font-family-heading: #{$font-family-heading};
-  --font-family-body: #{$font-family-body};
+  --font-family-heading:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  --font-family-body:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 
   /* BORDER RADIUS */
-  --radius-sm: #{$radius-sm};
-  --radius-md: #{$radius-md};
-  --radius-lg: #{$radius-lg};
-  --radius-xl: #{$radius-xl};
-  --radius-full: #{$radius-full};
+  --radius-sm: 0.4rem;
+  --radius-md: 0.8rem;
+  --radius-lg: 1.2rem;
+  --radius-xl: 1.6rem;
+  --radius-full: 999.9rem;
 
   /* TRANSITIONS */
-  --transition-fast: #{$transition-fast};
-  --transition-base: #{$transition-base};
-  --transition-slow: #{$transition-slow};
-}
-
-/* ========== DARK THEME - Media Query ========== */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --color-light-bg-primary: #{$color-dark-bg-primary};
-    --color-light-bg-secondary: #{$color-dark-bg-secondary};
-    --color-light-bg-tertiary: #{$color-dark-bg-tertiary};
-
-    --color-light-text-primary: #{$color-dark-text-primary};
-    --color-light-text-secondary: #{$color-dark-text-secondary};
-    --color-light-text-tertiary: #{$color-dark-text-tertiary};
-
-    --color-light-border: #{$color-dark-border};
-    --color-light-border-hover: #{$color-dark-border-hover};
-
-    --color-bg-primary: var(--color-light-bg-primary);
-    --color-bg-secondary: var(--color-light-bg-secondary);
-    --color-bg-tertiary: var(--color-light-bg-tertiary);
-
-    --text-color-primary: rgb(255, 255, 255);
-    --text-color-secondary: rgb(0, 0, 0);
-
-    --color-text-primary: var(--color-light-text-primary);
-    --color-text-secondary: var(--color-light-text-secondary);
-    --color-text-tertiary: var(--color-light-text-tertiary);
-
-    --color-border: var(--color-light-border);
-    --color-border-hover: var(--color-light-border-hover);
-  }
-}
-
-/* ========== DARK THEME - Data Attribute ========== */
-:root[data-theme="dark"] {
-  --color-light-bg-primary: #{$color-dark-bg-primary};
-  --color-light-bg-secondary: #{$color-dark-bg-secondary};
-  --color-light-bg-tertiary: #{$color-dark-bg-tertiary};
-
-  --color-light-text-primary: #{$color-dark-text-primary};
-  --color-light-text-secondary: #{$color-dark-text-secondary};
-  --color-light-text-tertiary: #{$color-dark-text-tertiary};
-
-  --color-light-border: #{$color-dark-border};
-  --color-light-border-hover: #{$color-dark-border-hover};
-
-  --color-bg-primary: var(--color-light-bg-primary);
-  --color-bg-secondary: var(--color-light-bg-secondary);
-  --color-bg-tertiary: var(--color-light-bg-tertiary);
-
-  --color-text-primary: var(--color-light-text-primary);
-  --color-text-secondary: var(--color-light-text-secondary);
-  --color-text-tertiary: var(--color-light-text-tertiary);
-
-  --text-color-primary: rgb(255, 255, 255);
-  --text-color-secondary: rgb(0, 0, 0);
-
-  --color-border: var(--color-light-border);
-  --color-border-hover: var(--color-light-border-hover);
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 200ms ease-in-out;
+  --transition-slow: 300ms ease-in-out;
 }
 
 /* ========== CSS RESET E CONFIGURAÇÕES GERAIS ========== */
@@ -251,7 +218,7 @@ label {
 a {
   color: var(--color-info);
   text-decoration: none;
-  @include smooth-transition(color, $transition-base);
+  @include smooth-transition(color, 200ms ease-in-out);
 
   &:hover {
     opacity: 0.8;
@@ -267,22 +234,16 @@ input,
 textarea,
 select {
   font-family: var(--font-family-body);
-  font-size: 1.6rem; /* Previne zoom no iOS */
+  font-size: 1.6rem;
   border: 0.1rem solid var(--color-border);
   border-radius: var(--radius-md);
   padding: var(--spacing-sm) var(--spacing-md);
-  @include smooth-transition(border-color, $transition-base);
+  @include smooth-transition(border-color, 200ms ease-in-out);
 
   &:focus {
     outline: none;
     border-color: var(--color-info);
     @include focus-ring;
-  }
-
-  :root[data-theme="dark"] & {
-    background-color: var(--color-bg-secondary);
-    color: var(--color-text-primary);
-    border-color: var(--color-border);
   }
 }
 
@@ -293,37 +254,24 @@ select {
 }
 
 ::-webkit-scrollbar-track {
-  background: $color-light-bg-secondary;
-
-  body[data-theme="dark"] & {
-    background: $color-dark-bg-secondary;
-  }
+  background: var(--color-scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $color-light-border;
-  border-radius: $radius-full;
+  background: var(--color-scrollbar-thumb);
+  border-radius: 999.9rem;
 
   &:hover {
-    background: $color-light-border-hover;
-  }
-
-  body[data-theme="dark"] & {
-    background: $color-dark-border;
-
-    &:hover {
-      background: $color-dark-border-hover;
-    }
+    background: var(--color-scrollbar-thumb-hover);
   }
 }
 
 /* ========== SELEÇÃO ========== */
 ::selection {
-  background-color: $color-blue-500;
-  color: $color-light-text-primary;
+  background-color: rgba(64, 145, 255, 1);
+  color: rgba(45, 35, 25, 1);
 }
 
-body[data-theme="dark"] ::selection {
-  background-color: $color-blue-500;
-  color: $color-dark-text-primary;
+ul {
+  list-style: none;
 }

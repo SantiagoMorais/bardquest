@@ -4,7 +4,7 @@
   "private": true,
   "author": "Felipe Santiago Morais",
   "scripts": {
-    "dev": "concurrently \"next dev\" \"npm run types:watch\"",
+    "dev": "next dev --turbopack",
     "types:watch": "tcm src --camelCase -p \"**/*.module.scss\" --watch",
     "types:generate": "tcm src --camelCase -p \"**/*.module.scss\"",
     "build": "npm run types:generate && next build",

@@ -1,9 +1,5 @@
 .container {
-  padding: var(--spacing-sm);
-}
-
-@include media("tablet-up") {
-  .container {
-    padding: var(--spacing-md);
-  }
+  height: 100%;
+  display: flex;
+  overflow: hidden;
 }

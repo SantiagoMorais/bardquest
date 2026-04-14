@@ -1,13 +1,14 @@
-export type SongStatus = 'learning' | 'mastered' | 'wishlist';
-export type SongSource = 'kingdom' | 'custom' | 'ai_generated';
+export type SongDifficulty = "beginner" | "easy" | "medium" | "hard";
+export type SongStatus = "not_started" | "in_progress" | "done";
+export type SongSource = "custom" | "ai_generated";
 
 export interface ISong {
   id: string;
   created_at: string;
   title: string;
-  difficulty: string; // 'beginner', 'intermediate', 'advanced'
+  difficulty: SongDifficulty;
   xp_reward: number;
-  realm_id: string | null;
+  kingdom_id: string | null;
   is_boss: boolean;
   artist: string | null;
   version_tag: string | null;
@@ -19,11 +20,12 @@ export interface IUserSong {
   user_id: string;
   song_id: string;
   status: SongStatus;
-  completed_at: string | null;
   source: SongSource;
-  // Campos redundantes para busca rápida ou músicas custom sem template
+  completed_at: string | null;
+
   title: string;
+  artist: string | null;
   sheet_music_url: string | null;
-  file_path: string | null; // Caminho no Storage do Supabase
+  file_path: string | null;
   version_tag: string | null;
 }
