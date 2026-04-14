@@ -29,20 +29,20 @@ export async function middleware(request: NextRequest) {
     }
   );
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  // const {
+  //   data: { user },
+  // } = await supabase.auth.getUser();
 
   const isRoot = request.nextUrl.pathname === "/";
   const isDashboard = request.nextUrl.pathname.startsWith("/dashboard");
 
-  if (user && isRoot) {
-    return NextResponse.redirect(new URL("/dashboard", request.url));
-  }
+  // if (user && isRoot) {
+  //   return NextResponse.redirect(new URL("/dashboard", request.url));
+  // }
 
-  if (!user && isDashboard) {
-    return NextResponse.redirect(new URL("/", request.url));
-  }
+  // if (!user && isDashboard) {
+  //   return NextResponse.redirect(new URL("/", request.url));
+  // }
 
   return response;
 }

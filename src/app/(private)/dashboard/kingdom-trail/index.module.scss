@@ -65,6 +65,7 @@
   width: 100%;
   position: relative;
   padding-bottom: var(--spacing-xl);
+  overflow-x: hidden;
 }
 
 .kingdomListItem {
@@ -81,7 +82,7 @@
     scale: 105%;
 
     .kingdomFrame {
-      filter: drop-shadow(0 0 2rem var(--color-blue-900));
+      filter: drop-shadow(0 0 1rem var(--color-blue-900));
     }
   }
 }
