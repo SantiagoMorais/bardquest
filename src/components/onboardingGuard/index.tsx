@@ -14,14 +14,17 @@ export const OnboardingGuard = ({ children }: IOnboardingGuardProps) => {
 
   const { data: profile, isLoading } = useQuery({
     queryKey: ["user-profile", user?.id],
-    queryFn: () => ProfileService.getById(user!.id),
+    queryFn: ({ queryKey }) => {
+      const [, userId] = queryKey as [string, string];
+      return ProfileService.getById(userId);
+    },
     enabled: !!user?.id,
     staleTime: Infinity,
   });
 
   if (isAuthLoading || isLoading) return <LoadingScreen />;
 
-  if (!user) return <LoadingScreen />;
+  if (!user) return null;
 
   if (!profile) return <OnboardingModalWrapper user={user} />;
 

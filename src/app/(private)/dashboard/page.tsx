@@ -12,6 +12,7 @@ import { Modal } from "@/components/modal";
 import { Button } from "@/components/button";
 import { useScreenSize } from "@/hooks/useScreenSize";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 
 export default function Dashboard() {
   const { user } = useAuth();
