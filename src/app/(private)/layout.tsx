@@ -4,10 +4,8 @@ import { PropsWithChildren } from "react";
 
 export default function PrivateLayout({ children }: PropsWithChildren) {
   return (
-    // <OnboardingGuard>
-    //   <Layout>
-    <>{children}</>
-    //     </Layout>
-    // </OnboardingGuard>
+    <Layout>
+      <OnboardingGuard>{children}</OnboardingGuard>
+    </Layout>
   );
 }
