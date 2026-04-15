@@ -1,0 +1,93 @@
+@use "@/styles/mixins" as m;
+
+.kingdomModal {
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.kingdomImageContainer {
+  height: 40rem;
+  width: 100%;
+  border-radius: var(--spacing-md);
+  overflow: hidden;
+  position: relative;
+}
+
+.kingdomImage {
+  object-fit: cover;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.cardTitle {
+  @include m.heading(4);
+  text-align: center;
+  padding-block: var(--spacing-sm);
+  position: relative;
+  background: linear-gradient(to right, transparent, var(--color-gold-100), transparent);
+  color: var(--color-gold-900);
+
+  &::after {
+    content: "";
+    display: block;
+    height: 0.2rem;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--color-gold-300),
+      transparent
+    );
+    opacity: 0.8;
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    height: 0.2rem;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--color-gold-300),
+      transparent
+    );
+    opacity: 0.8;
+  }
+}
+
+.kingdomDescription {
+  @include m.body(4);
+  text-align: center;
+  position: relative;
+  padding-bottom: var(--spacing-sm);
+
+  &::after {
+    content: "";
+    display: block;
+    height: 0.1rem;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--color-gold-300),
+      transparent
+    );
+    opacity: 0.8;
+  }
+}

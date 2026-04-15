@@ -1,3 +1,5 @@
+@use "@/styles/mixins" as m;
+
 .formContainer {
   display: flex;
   flex-direction: column;
@@ -5,13 +7,13 @@
 }
 
 .title {
-  @include header(4);
+  @include m.header(4);
   color: var(--color-text-primary);
   text-align: center;
 }
 
 .subtitle {
-  @include body(1);
+  @include m.body(1);
   color: var(--color-text-secondary);
   text-align: start;
 }
@@ -23,7 +25,7 @@
 }
 
 .label {
-  @include label(2);
+  @include m.label(2);
   color: var(--color-light-text-secondary);
 }
 

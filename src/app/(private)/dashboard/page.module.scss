@@ -3,21 +3,3 @@
   display: flex;
   overflow: hidden;
 }
-
-.kingdomModal {
-  padding: var(--spacing-md);
-  display: flex;
-  flex-direction: column;
-}
-
-.kingdomImageContainer {
-  height: 40rem;
-  width: 100%;
-  border-radius: var(--spacing-md);
-  overflow: hidden;
-  position: relative;
-}
-
-.kingdomImage {
-  object-fit: cover;
-}

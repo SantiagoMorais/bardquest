@@ -1,3 +1,5 @@
+@use "@/styles/mixins" as m;
+
 $sidebar-collapsed: 6.4rem;
 $sidebar-expanded: 22rem;
 $topbar-height: 6.4rem;
@@ -290,7 +292,7 @@ $topbar-height: 6.4rem;
   }
 }
 
-@include media("tablet-up") {
+@include m.media("tablet-up") {
   .mobileHeader {
     display: none;
   }

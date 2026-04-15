@@ -1,6 +1,6 @@
 "use client";
 
-import { PropsWithChildren, useEffect, useRef } from "react";
+import { PropsWithChildren, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { LuX } from "react-icons/lu";
 import styles from "./index.module.scss";
@@ -13,6 +13,11 @@ type IModalProps = PropsWithChildren & {
 
 export const Modal = ({ isOpen, onClose, children, persistent = false }: IModalProps) => {
   const overlayRef = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Fecha com ESC
   useEffect(() => {
@@ -32,7 +37,7 @@ export const Modal = ({ isOpen, onClose, children, persistent = false }: IModalP
     };
   }, [isOpen]);
 
-  if (!isOpen) return null;
+  if (!isOpen || !mounted || typeof document === "undefined") return null;
 
   return createPortal(
     <div

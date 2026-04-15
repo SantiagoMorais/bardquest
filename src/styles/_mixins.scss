@@ -5,7 +5,7 @@
 
 @use "sass:map";
 
-@import "./variables";
+@use "./variables" as *;
 
 /* ========== BREAKPOINTS / MEDIA QUERIES ========== */
 

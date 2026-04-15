@@ -13,7 +13,6 @@ const nextConfig: NextConfig = {
   },
   sassOptions: {
     includePaths: [path.join(process.cwd(), "src")],
-    additionalData: `@import "@/styles/variables";\n@import "@/styles/mixins";\n@import "@/styles/functions";`,
   },
 };
 

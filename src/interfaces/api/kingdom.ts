@@ -32,7 +32,7 @@ export interface IKingdom {
   base_difficulty_range: [number, number];
 
   lore: IKingdomPartType<IKingdomLorePart>;
-  songs: IKingdomPartType<IKingdomSong>;
+  songs: IKingdomPartType<string>;
 
   categories: string[];
   created_at: string;
@@ -53,8 +53,8 @@ export interface IKingdomFeedback {
   created_at: string;
 }
 
-export interface IKingdomWithSongs extends IKingdom {
-  songs_metadata?: ISong[];
+export interface IKingdomWithFullSongs extends IKingdom {
+  songs_parts: IKingdomPartType<ISong>;
 }
 
 // const { data, error } = await supabase
@@ -70,3 +70,24 @@ export interface IKingdomWithSongs extends IKingdom {
 //   `)
 //   .eq('id', kingdomId)
 //   .single();
+
+
+// const { data: kingdom } = await supabase
+//   .from('kingdoms')
+//   .select(`
+//     *,
+//     songs_metadata: songs_catalog ( * )
+//   `)
+//   .eq('id', kingdomId)
+//   .single();
+
+// // Agora você organiza no Front-end
+// const fullKingdom: IKingdomWithFullSongs = {
+//   ...kingdom,
+//   songs_parts: {
+//     part_1: kingdom.songs_metadata.find(s => s.id === kingdom.songs.part_1),
+//     part_2: kingdom.songs_metadata.find(s => s.id === kingdom.songs.part_2),
+//     part_3: kingdom.songs_metadata.find(s => s.id === kingdom.songs.part_3),
+//     final_part: kingdom.songs_metadata.find(s => s.id === kingdom.songs.final_part),
+//   }
+// };

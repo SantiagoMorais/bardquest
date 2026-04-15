@@ -1,3 +1,5 @@
+@use "@/styles/mixins" as m;
+
 /* index.module.scss */
 
 .container {
@@ -6,7 +8,7 @@
 }
 
 .label {
-  @include label(3);
+  @include m.label(3);
 }
 
 .inputWrapper {
@@ -44,8 +46,8 @@
 }
 
 .errorMessage {
-  @include label(4);
-  color: $color-error;
+  @include m.label(4);
+  color: var(--color-error);
 
   max-height: 0;
   opacity: 0;
@@ -53,13 +55,13 @@
   margin-top: 0;
 
   transition:
-    max-height $transition-slow ease-out,
-    opacity $transition-slow ease-out,
-    margin-top $transition-slow ease-out;
+    max-height var(--transition-slow) ease-out,
+    opacity var(--transition-slow) ease-out,
+    margin-top var(--transition-slow) ease-out;
 
   &.visible {
     max-height: 4rem;
     opacity: 1;
-    margin-top: $spacing-xs;
+    margin-top: var(--spacing-xs);
   }
 }

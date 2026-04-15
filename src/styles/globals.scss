@@ -3,8 +3,9 @@
    Baseado na estrutura da empresa
    ==================================== */
 
-@import "./mixins";
-@import "./functions";
+@use "./variables" as *;
+@use "./functions" as *;
+@use "./mixins" as *;
 
 /* ========== CSS CUSTOM PROPERTIES ========== */
 :root {

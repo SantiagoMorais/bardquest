@@ -1,3 +1,5 @@
+@use "@/styles/mixins" as m;
+
 .step {
   display: flex;
   flex: 1;
@@ -103,7 +105,7 @@
   }
 }
 
-@include media("tablet_up") {
+@include m.media("tablet_up") {
   .fields {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }

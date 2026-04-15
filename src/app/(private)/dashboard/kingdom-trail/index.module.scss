@@ -1,3 +1,5 @@
+@use "@/styles/mixins" as m;
+
 .container {
   position: relative;
   width: 100%;
@@ -7,7 +9,7 @@
 }
 
 .title {
-  @include heading(5);
+  @include m.heading(5);
   color: var(--color-gold-500);
   text-align: center;
   margin-bottom: var(--spacing-lg);
@@ -87,8 +89,8 @@
   }
 }
 
-.kindomIndex {
-  @include label(2);
+.kingdomIndex {
+  @include m.label(2);
 }
 
 .kingdomImageContainer {
@@ -120,7 +122,7 @@
 }
 
 .kingdomTitle {
-  @include label(1);
+  @include m.label(1);
   color: var(--color-text-invert-primary);
   position: absolute;
   bottom: 7%;
@@ -131,7 +133,7 @@
   background-color: var(--color-brown-alfa-50);
 }
 
-@include media("tablet-up") {
+@include m.media("tablet-up") {
   .container {
     width: 40dvw;
     max-width: 60rem;
