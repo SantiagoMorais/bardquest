@@ -5,16 +5,18 @@
   height: 100dvh;
 }
 
-$base-spacing: 6.4rem;
+$header-height: 6.4rem;
+$xp-bar-height: 2rem;
 
 .main {
   flex: 1;
-  margin-left: 0;
-  padding-top: $base-spacing;
+  padding-top: $header-height;
+  padding-bottom: $xp-bar-height;
+  overflow-y: auto;
 }
 
 @include m.media("tablet-up") {
   .main {
-    padding: $base-spacing 0 0 $base-spacing;
+    padding: $header-height 0 $xp-bar-height $header-height;
   }
 }

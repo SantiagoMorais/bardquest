@@ -5,7 +5,9 @@ import { PropsWithChildren } from "react";
 export default function PrivateLayout({ children }: PropsWithChildren) {
   return (
     <Layout>
-      <OnboardingGuard>{children}</OnboardingGuard>
+      <OnboardingGuard>
+        <>{children}</>
+      </OnboardingGuard>
     </Layout>
   );
 }

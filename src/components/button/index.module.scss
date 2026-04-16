@@ -11,15 +11,15 @@
 }
 
 .buttonBase.sm {
-  padding: var(--spacing-sm) var(--spacing-md);
+  padding: var(--spacing-xs) var(--spacing-sm);
 }
 
 .buttonBase.md {
-  padding: var(--spacing-md) var(--spacing-lg);
+  padding: var(--spacing-sm) var(--spacing-lg);
 }
 
 .buttonBase.lg {
-  padding: var(--spacing-lg) var(--spacing-xl);
+  padding: var(--spacing-md) var(--spacing-xl);
 }
 
 .buttonBase.primary {

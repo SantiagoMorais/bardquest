@@ -1,0 +1,139 @@
+@use "@/styles/mixins" as m;
+
+.button {
+  position: fixed;
+  bottom: 4.8rem; // acima da XP bar (3.6rem) + folga
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 101;
+
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-xs) var(--spacing-lg);
+  padding-left: var(--spacing-xl); // espaço pro diamante
+
+  background: var(--color-beige-50);
+  border: 0.15rem solid var(--color-gold-500);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+
+  font-size: var(--fonts-size-xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gold-900);
+
+  transition:
+    background var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-fast);
+
+  box-shadow: 0 0.2rem 1.2rem var(--color-gold-alfa-20);
+
+  &:hover:not(:disabled) {
+    background: var(--color-gold-50);
+    border-color: var(--color-gold-700);
+    box-shadow: 0 0.4rem 2rem var(--color-gold-alfa-50);
+    transform: translateX(-50%) translateY(-0.2rem);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  &--done {
+    background: var(--color-green-50);
+    border-color: var(--color-green-300);
+    color: var(--color-green-900);
+    cursor: default;
+    box-shadow: none;
+
+    .diamond {
+      background: var(--color-green-300);
+      border-color: var(--color-green-900);
+    }
+  }
+
+  &:disabled {
+    opacity: 1; // manter legível mesmo disabled
+  }
+}
+
+/* diamante decorativo flutuando à esquerda */
+.diamond {
+  position: absolute;
+  left: -1.2rem;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+
+  width: 2rem;
+  height: 2rem;
+  background: var(--color-gold-300);
+  border: 0.15rem solid var(--color-gold-700);
+  border-radius: 0.3rem;
+
+  transition:
+    background var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.icon {
+  font-size: var(--fonts-size-xs);
+}
+
+.label {
+  line-height: 1;
+}
+
+.streak {
+  font-size: var(--fonts-size-2xs);
+  padding: 0.2rem var(--spacing-xs);
+  background: var(--color-gold-100);
+  border-radius: var(--radius-full);
+  color: var(--color-gold-900);
+  font-weight: 700;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-md);
+}
+
+.modalTitle {
+  @include m.header(4);
+}
+
+.modalContent {
+  @include m.body(3);
+}
+
+.modalFooter {
+  padding-top: var(--spacing-md);
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: end;
+}
+
+@include m.media("tablet-up") {
+  .button {
+    left: calc(50% + 3.2rem); // compensar o aside de 6.4rem
+    transform: translateX(-50%);
+
+    &:hover:not(:disabled) {
+      transform: translateX(-50%) translateY(-0.2rem);
+    }
+
+    &:active:not(:disabled) {
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+}
