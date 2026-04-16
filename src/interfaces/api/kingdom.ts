@@ -29,7 +29,7 @@ export interface IKingdom {
   identity: string;
   image_url: string | null;
   level: number;
-  base_difficulty_range: [number, number];
+  difficulty: number;
 
   lore: IKingdomPartType<IKingdomLorePart>;
   songs: IKingdomPartType<string>;
@@ -70,7 +70,6 @@ export interface IKingdomWithFullSongs extends IKingdom {
 //   `)
 //   .eq('id', kingdomId)
 //   .single();
-
 
 // const { data: kingdom } = await supabase
 //   .from('kingdoms')
