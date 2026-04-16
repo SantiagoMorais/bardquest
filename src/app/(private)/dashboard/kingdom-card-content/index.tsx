@@ -57,14 +57,10 @@ export const KingdomCardContent = ({
           alt="Imagem padrão do reino"
         />
       </div>
-
       <div className={styles.cardContent}>
         <h2 className={styles.cardTitle}>{kingdom.name}</h2>
-
         <div className={styles.kingdomDescription}>{kingdom.description}</div>
-
         <KingdomSongsList kingdom={kingdom} songStatuses={SONG_STATUSES} />
-
         <Button
           iconLeft={LuBookOpen}
           buttonStyle="secondary"
@@ -72,7 +68,6 @@ export const KingdomCardContent = ({
         >
           Crônicas do Reino
         </Button>
-
         {!isTabletUp && (
           <Button
             iconLeft={LuChevronLeft}

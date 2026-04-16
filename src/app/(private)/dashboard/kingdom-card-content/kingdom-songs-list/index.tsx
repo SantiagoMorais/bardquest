@@ -22,8 +22,6 @@ interface IKingdomSongsListProps {
   songStatuses?: Partial<Record<string, IKingdomSongStatus>>;
 }
 
-
-
 export const KingdomSongsList = ({
   kingdom,
   songStatuses = {},

@@ -95,11 +95,11 @@
 
 .kingdomImageContainer {
   position: relative;
-  width: 80dvw;
-  min-width: 30rem;
-  max-width: 40rem;
+  width: 100%;
+  min-width: 20rem;
+  max-width: 30rem;
   aspect-ratio: 16 / 9;
-  height: calc(80dvw * 9 / 16);
+  height: calc(30rem * 9 / 16);
   max-height: calc(40rem * 9 / 16);
   padding-bottom: var(--spacing-sm);
   border-radius: var(--spacing-md);
@@ -137,7 +137,7 @@
 @include m.media("tablet-up") {
   .container {
     width: 40dvw;
-    max-width: 50rem;
+    max-width: 40rem;
     border-right: var(--color-border) 0.1rem solid;
     overflow-x: hidden;
   }

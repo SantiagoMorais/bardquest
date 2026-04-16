@@ -13,12 +13,14 @@ import styles from "./page.module.scss";
 
 export default function Dashboard() {
   const { user } = useAuth();
-  const [kingdomSelected, setKingdomSelected] = useState<string>();
+  const [kingdomSelected, setKingdomSelected] = useState<string | undefined>("k-002");
   const { isTabletUp } = useScreenSize();
 
   // TODO: buscar reinos reais do usuário via API
   // Mostrar apenas os reinos desbloqueados (já vêm filtrados da API)
   const currentKingdomId = "k-002"; // TODO: vem do perfil do usuário
+
+  const kingdom = MOCK_KINGDOMS.find((k) => k.id === kingdomSelected);
 
   return (
     <section className={styles.container}>
@@ -27,7 +29,7 @@ export default function Dashboard() {
         <div className={styles.desktopContent}>
           <KingdomCardContent
             setKingdomSelected={setKingdomSelected}
-            kingdom={MOCK_KINGDOMS[0]}
+            kingdom={kingdom!}
           />
         </div>
       ) : (
@@ -37,7 +39,7 @@ export default function Dashboard() {
         >
           <KingdomCardContent
             setKingdomSelected={setKingdomSelected}
-            kingdom={MOCK_KINGDOMS[0]}
+            kingdom={kingdom!}
           />
         </Modal>
       )}
