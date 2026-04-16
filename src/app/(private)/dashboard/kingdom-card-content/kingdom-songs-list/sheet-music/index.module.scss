@@ -1,0 +1,139 @@
+/* ── Sheet music: already has URL ── */
+.sheetMusicHas {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-md);
+  height: 3.5rem;
+  background: var(--color-beige-50);
+  border: 0.15rem solid var(--color-beige-300);
+  border-radius: var(--radius-md);
+  width: fit-content;
+}
+
+.sheetMusicIcon {
+  color: var(--color-gold-700);
+  flex-shrink: 0;
+}
+
+.sheetMusicLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--fonts-size-xs);
+  font-weight: 600;
+  color: var(--color-info);
+  text-decoration: none;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.sheetMusicRemove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--radius-full);
+  border: none;
+  background: transparent;
+  color: var(--color-text-tertiary);
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
+  margin-left: var(--spacing-xs);
+
+  &:hover {
+    background: var(--color-brown-100);
+    color: var(--color-brown-900);
+  }
+}
+
+/* ── Sheet music: uploading ── */
+.sheetMusicUploading {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: var(--fonts-size-xs);
+  color: var(--color-text-tertiary);
+  padding: var(--spacing-xs) var(--spacing-md);
+  background: var(--color-bg-secondary);
+  border: 0.15rem dashed var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.sheetMusicSpinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── Sheet music: dropzone ── */
+.sheetMusicDropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-bg-primary);
+  border: 0.15rem dashed var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  text-align: center;
+  transition:
+    border-color var(--transition-base),
+    background var(--transition-base);
+
+  &:hover,
+  &:focus-visible {
+    border-color: var(--color-gold-300);
+    background: var(--color-gold-50);
+    outline: none;
+
+    .sheetMusicDropIcon,
+    .sheetMusicDropLabel {
+      color: var(--color-gold-700);
+    }
+  }
+
+  &--dragging {
+    border-color: var(--color-gold-500);
+    background: var(--color-gold-50);
+    box-shadow: 0 0 0 0.3rem var(--color-gold-alfa-20);
+
+    .sheetMusicDropIcon,
+    .sheetMusicDropLabel {
+      color: var(--color-gold-700);
+    }
+  }
+}
+
+.sheetMusicDropIcon {
+  color: var(--color-text-tertiary);
+  transition: color var(--transition-base);
+}
+
+.sheetMusicDropLabel {
+  font-size: var(--fonts-size-xs);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  transition: color var(--transition-base);
+}
+
+.sheetMusicDropHint {
+  font-size: var(--fonts-size-3xs);
+  color: var(--color-text-tertiary);
+  letter-spacing: 0.04em;
+}
+
+.sheetMusicInput {
+  display: none;
+}

@@ -11,6 +11,7 @@ type IButtonProps = PropsWithChildren &
     iconRight?: IconType;
     className?: string;
     isLoading?: boolean;
+    size?: "sm" | "md" | "lg";
   };
 
 export const Button = ({
@@ -21,13 +22,17 @@ export const Button = ({
   className,
   isLoading,
   disabled,
+  size = "md",
   ...props
 }: IButtonProps) => {
+  const sizeClass = (styles as Record<string, string>)[size];
+
   return (
     <button
       className={cn(
         styles.buttonBase,
         buttonStyle ? styles[buttonStyle] : styles.primary,
+        sizeClass,
         isLoading && styles.loading,
         className
       )}

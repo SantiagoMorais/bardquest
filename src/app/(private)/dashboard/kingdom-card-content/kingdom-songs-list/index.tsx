@@ -1,58 +1,28 @@
 "use client";
 
-import { useState } from "react";
-import cn from "classnames";
-import styles from "./index.module.scss";
-import { IKingdom, IKingdomSong } from "@/interfaces/api/kingdom";
+import { IKingdomSong, IKingdomWithFullSongs } from "@/interfaces/api/kingdom";
 import { ISong } from "@/interfaces/api/song";
-import { SongStatus } from "@/interfaces/kingdom-card";
-
-// ---------------------------------------------------------------------------
-// Types
-// ---------------------------------------------------------------------------
+import { IKingdomSongStatus } from "@/interfaces/kingdom-card";
+import cn from "classnames";
+import { useState } from "react";
+import { LuCheck, LuRotateCcw } from "react-icons/lu";
+import styles from "./index.module.scss";
+import { SheetMusic } from "./sheet-music";
+import { STATUS_ICON, STATUS_LABEL } from "@/utils/status-label-and-icon";
+import { StatusAction } from "./statuus-action";
 
 interface SongWithMeta extends IKingdomSong {
   part: "part_1" | "part_2" | "part_3" | "final_part";
   meta?: ISong;
-  status: SongStatus;
+  status: IKingdomSongStatus;
 }
 
 interface IKingdomSongsListProps {
-  kingdom: IKingdom & { songs_metadata?: ISong[] };
-  /** Map de song id/title -> status do usuario (injetado pelo parent/store) */
-  songStatuses?: Partial<Record<string, SongStatus>>;
+  kingdom: IKingdomWithFullSongs;
+  songStatuses?: Partial<Record<string, IKingdomSongStatus>>;
 }
 
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
 
-const STATUS_LABEL: Record<SongStatus, string> = {
-  pending: "À fazer",
-  practicing: "Em progresso",
-  completed: "Concluída",
-};
-
-const STATUS_ICON: Record<SongStatus, string> = {
-  pending: "🎵",
-  practicing: "🎶",
-  completed: "✦",
-};
-
-const DIFFICULTY_LABEL: Record<string, string> = {
-  beginner: "Iniciante",
-  easy: "Fácil",
-  medium: "Médio",
-  hard: "Difícil",
-};
-
-function getDifficultyStars(difficulty: string): number {
-  return { beginner: 1, easy: 2, medium: 3, hard: 4 }[difficulty] ?? 2;
-}
-
-// ---------------------------------------------------------------------------
-// Component
-// ---------------------------------------------------------------------------
 
 export const KingdomSongsList = ({
   kingdom,
@@ -66,9 +36,9 @@ export const KingdomSongsList = ({
   const buildSong = (
     part: "part_1" | "part_2" | "part_3" | "final_part"
   ): SongWithMeta => {
-    const songId = kingdom.songs[part];
-    const meta = kingdom.songs_metadata?.find((s) => s.id === songId);
-    const title = meta?.title ?? "Cancao desconhecida";
+    const meta = kingdom.songs_parts[part];
+    const songId = meta.id;
+    const title = meta?.title ?? "Canção desconhecida";
     const artist = meta?.artist ?? "Artista desconhecido";
     return {
       title,
@@ -86,7 +56,7 @@ export const KingdomSongsList = ({
   const allBasesDone = baseSongs.every((s) => s.status === "completed");
   const bossLocked = !allBasesDone;
 
-  const getSongCardClass = (status: SongStatus) =>
+  const getSongCardClass = (status: IKingdomSongStatus) =>
     cn(
       css.songCard,
       status === "completed"
@@ -96,7 +66,7 @@ export const KingdomSongsList = ({
           : null
     );
 
-  const getSongBadgeClass = (status: SongStatus) =>
+  const getSongBadgeClass = (status: IKingdomSongStatus) =>
     cn(
       css.songStatusBadge,
       status === "completed"
@@ -106,7 +76,7 @@ export const KingdomSongsList = ({
           : css["badge--not_started"]
     );
 
-  const getBossCardClass = (status: SongStatus, isLocked: boolean) =>
+  const getBossCardClass = (status: IKingdomSongStatus, isLocked: boolean) =>
     cn(
       css.bossCard,
       isLocked
@@ -211,48 +181,37 @@ export const KingdomSongsList = ({
           </div>
 
           {selectedSong.meta && (
-            <div className={styles.detailMeta}>
-              <div className={styles.metaItem}>
-                <span className={styles.metaLabel}>Dificuldade</span>
-                <span className={styles.metaValue}>
-                  {DIFFICULTY_LABEL[selectedSong.meta.difficulty] ??
-                    selectedSong.meta.difficulty}
-                  {"  "}
-                  {"★".repeat(getDifficultyStars(selectedSong.meta.difficulty))}
-                  {"☆".repeat(4 - getDifficultyStars(selectedSong.meta.difficulty))}
-                </span>
-              </div>
-
-              <div className={styles.metaItem}>
-                <span className={styles.metaLabel}>Recompensa</span>
-                <span className={styles.metaValue}>
-                  ✦ {selectedSong.meta.xp_reward} XP
-                </span>
-              </div>
-
-              {selectedSong.meta.version_tag && (
+            <>
+              <div className={styles.detailMeta}>
                 <div className={styles.metaItem}>
-                  <span className={styles.metaLabel}>Versão</span>
+                  <span className={styles.metaLabel}>Recompensa</span>
                   <span className={styles.metaValue}>
-                    {selectedSong.meta.version_tag}
+                    ✦ {selectedSong.meta.xp_reward} XP
                   </span>
                 </div>
-              )}
+              </div>
 
-              {selectedSong.meta.sheet_music_url && (
-                <div className={styles.metaItem}>
-                  <span className={styles.metaLabel}>Partitura</span>
-                  <a
-                    href={selectedSong.meta.sheet_music_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.metaLink}
-                  >
-                    Ver partitura →
-                  </a>
+              <div className={styles.detailDivider} />
+
+              <div className={styles.detailActions}>
+                {/* Partitura */}
+                <div className={styles.actionBlock}>
+                  <span className={styles.actionBlockLabel}>Partitura</span>
+                  <SheetMusic
+                    url={selectedSong.meta.sheet_music_url}
+                    songId={selectedSong.meta.id}
+                  />
                 </div>
-              )}
-            </div>
+
+                <div className={styles.actionBlock}>
+                  <span className={styles.actionBlockLabel}>Progresso</span>
+                  <StatusAction
+                    status={selectedSong.status}
+                    songId={selectedSong.meta.id}
+                  />
+                </div>
+              </div>
+            </>
           )}
 
           {selectedSong.part === "final_part" && (

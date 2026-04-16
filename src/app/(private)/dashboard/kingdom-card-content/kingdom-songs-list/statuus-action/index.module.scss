@@ -1,0 +1,64 @@
+.statusBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-md);
+  height: 3.5rem;
+  border-radius: var(--radius-md);
+  font-size: var(--fonts-size-xs);
+  font-weight: 600;
+  border: 0.15rem solid transparent;
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
+  white-space: nowrap;
+
+  &:hover {
+    transform: translateY(-0.1rem);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  /* Iniciar prática → azul */
+  &--practice {
+    background: var(--color-blue-50);
+    border-color: var(--color-blue-300);
+    color: var(--color-blue-900);
+
+    &:hover {
+      background: var(--color-blue-100);
+      border-color: var(--color-blue-500);
+    }
+  }
+
+  /* Marcar como concluída → verde */
+  &--complete {
+    background: var(--color-green-50);
+    border-color: var(--color-green-300);
+    color: var(--color-green-900);
+
+    &:hover {
+      background: var(--color-green-100);
+      border-color: var(--color-green-700, var(--color-green-900));
+    }
+  }
+
+  /* Desmarcar → marrom neutro */
+  &--unmark {
+    background: var(--color-green-100);
+    border-color: var(--color-green-300);
+    color: var(--color-green-900);
+    cursor: default;
+    user-select: none;
+
+    &:hover {
+      background: var(--color-green-50);
+      border-color: var(--color-green-700);
+    }
+  }
+}

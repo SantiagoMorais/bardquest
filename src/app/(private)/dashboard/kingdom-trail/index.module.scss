@@ -85,6 +85,7 @@
 
     .kingdomFrame {
       filter: drop-shadow(0 0 1rem var(--color-blue-900));
+      user-select: none;
     }
   }
 }
@@ -119,6 +120,7 @@
   position: absolute;
   transform: scale(100%, 110%);
   transition: all 0.3s;
+  user-select: none;
 }
 
 .kingdomTitle {
@@ -136,7 +138,7 @@
 @include m.media("tablet-up") {
   .container {
     width: 40dvw;
-    max-width: 60rem;
+    max-width: 50rem;
     border-right: var(--color-border) 0.1rem solid;
     overflow-x: hidden;
   }

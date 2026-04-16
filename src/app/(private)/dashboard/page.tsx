@@ -23,10 +23,18 @@ export default function Dashboard() {
   return (
     <section className={styles.container}>
       <KingdomTrail kingdoms={MOCK_KINGDOMS} setKingdomSelected={setKingdomSelected} />
-      {!kingdomSelected && isTabletUp ? (
-        <></>
+      {kingdomSelected && isTabletUp ? (
+        <div className={styles.desktopContent}>
+          <KingdomCardContent
+            setKingdomSelected={setKingdomSelected}
+            kingdom={MOCK_KINGDOMS[0]}
+          />
+        </div>
       ) : (
-        <Modal isOpen>
+        <Modal
+          isOpen={!!kingdomSelected && !isTabletUp}
+          onClose={() => setKingdomSelected(undefined)}
+        >
           <KingdomCardContent
             setKingdomSelected={setKingdomSelected}
             kingdom={MOCK_KINGDOMS[0]}
