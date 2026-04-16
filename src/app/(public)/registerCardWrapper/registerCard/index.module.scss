@@ -1,15 +1,28 @@
 @use "@/styles/mixins" as m;
 
+.title {
+  @include m.header(4);
+  color: var(--color-gold-900);
+  text-align: center;
+
+  position: relative;
+  padding-block: var(--spacing-sm);
+
+  &::after {
+    content: "✦";
+    display: block;
+    font-size: var(--fonts-size-xs);
+    color: var(--color-gold-300);
+    margin-top: var(--spacing-sm);
+    letter-spacing: 0.6em;
+    text-indent: 0.6em;
+  }
+}
+
 .formContainer {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-lg);
-}
-
-.title {
-  @include m.header(4);
-  color: var(--color-text-primary);
-  text-align: center;
 }
 
 .subtitle {
@@ -32,7 +45,7 @@
 .buttonsContainer {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
+  gap: var(--spacing-sm);
   justify-content: center;
 }
 

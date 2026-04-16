@@ -2,30 +2,75 @@
 
 .container {
   @include m.flex-center;
-  width: 100dvw;
-  height: 100dvh;
-  gap: var(--spacing-2xl);
-
+  max-width: 100dvw;
+  min-height: 100dvh;
+  gap: var(--spacing-xl);
   flex-direction: column;
   padding: var(--spacing-md);
-  background-color: var(--color-blue-50);
+  overflow-x: hidden;
+
+  background-color: var(--color-beige-50);
+  background-image:
+    radial-gradient(ellipse at 20% 20%, rgba(168, 105, 31, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 80%, rgba(107, 90, 74, 0.07) 0%, transparent 60%);
 }
 
 .logo {
-  width: 80dvw;
-  max-width: 60rem;
+  width: 72dvw;
+  max-width: 46rem;
   height: auto;
+  filter: drop-shadow(0 0.4rem 1.2rem rgba(90, 63, 31, 0.18));
 }
 
 .card {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
-  border: 0.1rem solid var(--color-border);
-  padding: var(--spacing-lg) var(--spacing-lg);
-  border-radius: var(--radius-md);
-  background-color: var(--text-color-secondary);
+  // gap: var(--spacing-md);
+  padding: var(--spacing-xl) var(--spacing-lg);
+  border-radius: var(--radius-lg);
 
   width: 90dvw;
-  max-width: 50rem;
+  max-width: 46rem;
+
+  background-color: var(--color-light-bg-primary);
+  border: 0.1rem solid var(--color-beige-300);
+  box-shadow:
+    0 0.2rem 0.8rem rgba(107, 90, 74, 0.1),
+    0 0.8rem 3.2rem rgba(107, 90, 74, 0.08),
+    inset 0 0.1rem 0 rgba(255, 255, 255, 0.7);
+
+  /* linha ornamental no topo */
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: var(--spacing-xl);
+    right: var(--spacing-xl);
+    height: 0.2rem;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--color-gold-300),
+      var(--color-gold-500),
+      var(--color-gold-300),
+      transparent
+    );
+    border-radius: var(--radius-full);
+  }
+}
+
+@include m.media("notebook-up") {
+  .container {
+    padding: var(--spacing-3xl) var(--spacing-lg);
+  }
+
+  .logo {
+    max-width: 54rem;
+  }
+
+  .card {
+    padding: var(--spacing-2xl) var(--spacing-xl);
+  }
 }
