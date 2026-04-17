@@ -1,4 +1,3 @@
-import { IUser } from "@/interfaces/api/user";
 import {
   ISignInRequest,
   ISignInResponse,
@@ -8,10 +7,6 @@ import {
 import { supabase } from "@/lib/supabase";
 
 export class AuthService {
-  /**
-   * Passo 1: Registra o usuário apenas no Supabase Authentication.
-   * Não tenta inserir no banco de dados ainda para evitar erros de RLS/Confirmação.
-   */
   static signUp = async ({
     email,
     password,

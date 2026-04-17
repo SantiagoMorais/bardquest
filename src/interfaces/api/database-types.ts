@@ -1,6 +1,7 @@
 import { IKingdom, IKingdomFeedback } from "./kingdom";
 import { ISong, IUserSong } from "./song";
-import { IUser, IUserProfile } from "./user";
+import { IUserProfile } from "./user";
+import { IUser } from "./users-type";
 
 export interface IDatabase {
   public: {

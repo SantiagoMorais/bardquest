@@ -1,4 +1,5 @@
-import { IUser, IUserProfile, IUserProfileWithUser } from "@/interfaces/api/user";
+import { IUserProfile, IUserProfileWithUser } from "@/interfaces/api/user";
+import { IUser } from "@/interfaces/api/users-type";
 import { supabase } from "@/lib/supabase";
 
 export class UserService {
