@@ -1,0 +1,20 @@
+@use "@/styles/mixins" as m;
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.dividerLine {
+  flex: 1;
+  height: 0.1rem;
+  background: linear-gradient(to right, transparent, var(--color-beige-300), transparent);
+}
+
+.dividerLabel {
+  @include m.label(2);
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  white-space: nowrap;
+}

@@ -1,0 +1,26 @@
+.statChip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  padding: var(--spacing-xs) var(--spacing-md);
+  background: var(--color-beige-50);
+  border: 0.1rem solid var(--color-beige-300);
+  border-radius: var(--radius-md);
+  flex: 1;
+}
+
+.statLabel {
+  font-size: var(--fonts-size-3xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+.statValue {
+  font-size: var(--fonts-size-md);
+  font-weight: 700;
+  color: var(--color-gold-900);
+  line-height: 1;
+}
