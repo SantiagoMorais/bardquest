@@ -1,4 +1,3 @@
-/* ── Overlay ─────────────────────────────── */
 .overlay {
   position: fixed;
   inset: 0;
@@ -10,7 +9,6 @@
 
   background: var(--color-bg-primary);
 
-  /* Textura de pergaminho via gradiente */
   &::before {
     content: "";
     position: absolute;
@@ -22,7 +20,6 @@
     pointer-events: none;
   }
 
-  /* Borda ornamental */
   &::after {
     content: "";
     position: absolute;
@@ -35,7 +32,6 @@
   }
 }
 
-/* ── Notas flutuantes ────────────────────── */
 .floatingNote {
   position: absolute;
   font-size: clamp(1.6rem, 3vw, 2.8rem);
@@ -45,7 +41,6 @@
   pointer-events: none;
   animation: floatUp 6s ease-in infinite;
 
-  /* Distribuição em X baseada no índice */
   &:nth-child(1) {
     left: 8%;
     animation-delay: 0s;
@@ -78,7 +73,6 @@
   }
 }
 
-/* ── Stage (conteúdo central) ────────────── */
 .stage {
   position: relative;
   z-index: 1;
@@ -88,7 +82,6 @@
   gap: var(--spacing-xl);
 }
 
-/* ── Pentagrama ──────────────────────────── */
 .staff {
   position: relative;
   width: min(32rem, 80vw);
@@ -135,7 +128,6 @@
   animation: noteTravel 2.4s cubic-bezier(0.45, 0, 0.55, 1) infinite;
 }
 
-/* ── Título ──────────────────────────────── */
 .titleGroup {
   display: flex;
   align-items: center;
@@ -170,7 +162,6 @@
   animation: logoFloat 3.6s ease-in-out infinite;
 }
 
-/* ── Subtítulo com ellipsis animado ──────── */
 .subtitle {
   font-size: var(--fonts-size-xs);
   font-weight: 500;
@@ -189,7 +180,6 @@
   }
 }
 
-/* ── Keyframes ───────────────────────────── */
 @keyframes floatUp {
   0% {
     opacity: 0;

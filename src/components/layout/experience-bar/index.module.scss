@@ -21,6 +21,7 @@
   align-items: center;
 
   &::before {
+  /* entalhe curvo no canto esquerdo superior */
     content: "";
     position: absolute;
     inset: 0;
@@ -78,7 +79,6 @@
   border-left: 0.1rem solid var(--color-gold-700);
   min-width: 8rem;
 
-  /* entalhe curvo no canto esquerdo superior */
   &::before {
     content: "";
     position: absolute;
@@ -112,7 +112,7 @@
 
 @include m.media("tablet-up") {
   .wrapper {
-    left: 6.4rem; // largura do aside
+    left: 6.4rem;
   }
 
   .barTrack {

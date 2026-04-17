@@ -23,14 +23,12 @@ export default function Perfil() {
 
   return (
     <main className={styles.page}>
-      {/* ── Page title ── */}
       <div className={styles.pageHeader}>
         <h2 className={styles.pageTitle}>✦ Pergaminho do Bardo</h2>
       </div>
 
       <SectionDivider label="Perfil" />
 
-      {/* ── Profile grid ── */}
       <div className={styles.profileGrid}>
         <div className={styles.avatarColumn}>
           <div className={styles.avatarWrapper}>

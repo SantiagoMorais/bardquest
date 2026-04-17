@@ -1,15 +1,7 @@
-/* ====================================
-   MIXINS - Funções reutilizáveis
-   Baseado na estrutura da empresa
-   ==================================== */
-
 @use "sass:map";
 
 @use "./variables" as *;
 
-/* ========== BREAKPOINTS / MEDIA QUERIES ========== */
-
-// Breakpoint queries
 $phone: "max-width: 76.7rem";
 $tablet-up: "min-width: 76.8rem";
 $notebook-up: "min-width: 102.4rem";
@@ -39,8 +31,6 @@ $large-desktop-up: "min-width: 192rem";
     }
   }
 }
-
-/* ========== TYPOGRAPHY - HEADERS/HEADINGS ========== */
 
 @mixin header($level: 1) {
   font-family: $font-family-heading;
@@ -72,12 +62,9 @@ $large-desktop-up: "min-width: 192rem";
   }
 }
 
-/* Legacy: heading mantém funcionando */
 @mixin heading($level: 1) {
   @include header($level);
 }
-
-/* ========== TYPOGRAPHY - LABELS ========== */
 
 @mixin label($level: 2) {
   font-family: $font-family-body;
@@ -101,8 +88,6 @@ $large-desktop-up: "min-width: 192rem";
   }
 }
 
-/* ========== TYPOGRAPHY - BODY TEXT ========== */
-
 @mixin body($level: 2) {
   font-family: $font-family-body;
 
@@ -125,7 +110,6 @@ $large-desktop-up: "min-width: 192rem";
   }
 }
 
-/* Legacy: body-text mantém funcionando */
 @mixin body-text($size: "medium") {
   @if $size == "large" {
     @include body(1);
@@ -135,8 +119,6 @@ $large-desktop-up: "min-width: 192rem";
     @include body(3);
   }
 }
-
-/* ========== LAYOUT - Flexbox e Grid ========== */
 
 @mixin flex-center {
   display: flex;
@@ -160,8 +142,6 @@ $large-desktop-up: "min-width: 192rem";
   place-items: center;
 }
 
-/* ========== ESPAÇAMENTO - Usando CSS Variables ========== */
-
 @mixin padding($value) {
   padding: var(--spacing-#{$value});
 }
@@ -173,8 +153,6 @@ $large-desktop-up: "min-width: 192rem";
 @mixin gap($value) {
   gap: var(--spacing-#{$value});
 }
-
-/* ========== TEMAS - Light/Dark ========== */
 
 @mixin light-theme {
   background-color: $base-color-light-bg-primary;
@@ -200,8 +178,6 @@ $large-desktop-up: "min-width: 192rem";
   }
 }
 
-/* ========== EFEITOS E TRANSITIONS ========== */
-
 @mixin smooth-transition($property: all, $duration: $transition-base) {
   transition: $property $duration;
 }
@@ -217,8 +193,6 @@ $large-desktop-up: "min-width: 192rem";
   outline: 0.2rem solid var(--color-info);
   outline-offset: 0.2rem;
 }
-
-/* ========== UTILITÁRIOS ========== */
 
 @mixin truncate {
   overflow: hidden;
@@ -256,8 +230,6 @@ $large-desktop-up: "min-width: 192rem";
   width: 100%;
   height: 100%;
 }
-
-/* ========== LEGACY - Compatibilidade com código antigo ========== */
 
 @mixin respond-to($breakpoint) {
   @if $breakpoint == "sm" {

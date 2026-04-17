@@ -7,7 +7,6 @@ const NOTES = ["♩", "♪", "♫", "♬", "♭", "♮"];
 export const LoadingScreen = () => {
   return (
     <div className={styles.overlay} role="status" aria-label="Carregando...">
-      {/* Partículas de notas flutuando ao fundo */}
       {NOTES.map((note, i) => (
         <span
           key={i}
@@ -20,13 +19,11 @@ export const LoadingScreen = () => {
       ))}
 
       <div className={styles.stage}>
-        {/* Pentagrama animado */}
         <div className={styles.staff}>
           {[0, 1, 2, 3, 4].map((line) => (
             <div key={line} className={styles.staffLine} />
           ))}
 
-          {/* Nota quicando no pentagrama */}
           <div className={styles.bounceNote} aria-hidden="true">
             ♩
           </div>

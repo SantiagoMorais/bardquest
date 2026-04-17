@@ -26,7 +26,6 @@ export const useScreenSize = (): ScreenSize => {
   });
 
   useEffect(() => {
-    // evita erro no SSR
     if (typeof window === "undefined") return;
 
     const mediaQueries = {
@@ -49,7 +48,6 @@ export const useScreenSize = (): ScreenSize => {
 
     update();
 
-    // add listeners
     Object.values(mediaQueries).forEach((mq) => mq.addEventListener("change", update));
 
     return () => {

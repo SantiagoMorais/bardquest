@@ -7,13 +7,11 @@
 ## 🎨 Cores
 
 ```scss
-// Browns
-var(--color-brown-900)  // Escuro
-var(--color-brown-700)  // Base
-var(--color-brown-500)  // Claro
-var(--color-brown-300)  // Muito claro
+var(--color-brown-900)
+var(--color-brown-700)
+var(--color-brown-500)
+var(--color-brown-300)
 
-// Beige - Greens - Blues - Golds
 var(--color-beige-100|300|500)
 var(--color-green-900|700|300)
 var(--color-blue-900|700|500|300)
@@ -25,19 +23,16 @@ var(--color-gold-900|700|500|300)
 ## 🔤 Tipografia
 
 ```scss
-// Headers (1-6)
-@include header(1); // 44px, bold
-@include header(2); // 36px, bold
-@include header(3); // 32px, semi-bold
+@include header(1);
+@include header(2);
+@include header(3);
 
-// Labels (1-4)
-@include label(1); // 20px, semi-bold
-@include label(2); // 16px, semi-bold
-@include label(3); // 14px, medium
+@include label(1);
+@include label(2);
+@include label(3);
 
-// Body (1-4)
-@include body(2); // 18px, normal
-@include body(3); // 16px, normal
+@include body(2);
+@include body(3);
 ```
 
 ---
@@ -45,11 +40,11 @@ var(--color-gold-900|700|500|300)
 ## 📏 Espaçamento
 
 ```scss
-var(--spacing-xs)  // 4px
-var(--spacing-sm)  // 8px
-var(--spacing-md)  // 16px
-var(--spacing-lg)  // 24px
-var(--spacing-xl)  // 32px
+var(--spacing-xs)
+var(--spacing-sm)
+var(--spacing-md)
+var(--spacing-lg)
+var(--spacing-xl)
 ```
 
 ---
@@ -57,10 +52,8 @@ var(--spacing-xl)  // 32px
 ## 📱 Responsivo
 
 ```scss
-@include media("phone") // Mobile
-  @include media("tablet-up") // 768px+
-  @include media("notebook-up") // 1024px+
-  @include media("desktop-up"); // 1366px+
+@include media("phone") @include media("tablet-up") @include media("notebook-up") @include
+  media("desktop-up");
 ```
 
 ---
@@ -68,10 +61,10 @@ var(--spacing-xl)  // 32px
 ## 🔘 Extras
 
 ```scss
-var(--radius-sm)       // 4px
-var(--radius-full)     // 9999px (círculo)
+var(--radius-sm)
+var(--radius-full)
 
-// Layouts
+
 @include flex-center;
 @include flex-between;
 @include flex-column;

@@ -155,7 +155,6 @@
     background: var(--color-gold-50);
   }
 
-  /* Quando o radio dentro está checked */
   &:has(input:checked) {
     border-color: var(--color-gold-500);
     background: var(--color-gold-50);

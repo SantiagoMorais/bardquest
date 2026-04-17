@@ -1,7 +1,6 @@
 export interface IRelic {
-  id: string; // UUID
+  id: string;
   name: string;
-  // Ex: 'Instrumento', 'Partitura', 'Amuleto', 'Batuta'
   type: string | null;
   description: string | null;
   musical_signature: string | null;

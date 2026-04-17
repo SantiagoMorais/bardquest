@@ -4,7 +4,6 @@ import path from "path";
 const enableReactCompiler = process.env.NEXT_ENABLE_REACT_COMPILER === "true";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   reactCompiler: enableReactCompiler,
   images: {
     formats: ["image/avif", "image/webp"],

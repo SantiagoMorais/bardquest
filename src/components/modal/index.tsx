@@ -19,7 +19,6 @@ export const Modal = ({ isOpen, onClose, children, persistent = false }: IModalP
     setMounted(true);
   }, []);
 
-  // Fecha com ESC
   useEffect(() => {
     if (!isOpen || persistent) return;
     const handleKey = (e: KeyboardEvent) => {
@@ -29,7 +28,6 @@ export const Modal = ({ isOpen, onClose, children, persistent = false }: IModalP
     return () => document.removeEventListener("keydown", handleKey);
   }, [isOpen, onClose, persistent]);
 
-  // Trava scroll do body
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
     return () => {

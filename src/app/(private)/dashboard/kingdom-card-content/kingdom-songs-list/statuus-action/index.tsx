@@ -11,18 +11,11 @@ interface IStatusActionProps {
 export const StatusAction = ({ status, songId }: IStatusActionProps) => {
   const css = styles as Record<string, string>;
 
-  // ── Handlers (vazios — lógica via API) ──────────────────────────────────
-  const handleMarkPracticing = () => {
-    // TODO: PATCH /songs/:id -> status: "practicing"
-  };
+  const handleMarkPracticing = () => {};
 
-  const handleMarkCompleted = () => {
-    // TODO: PATCH /songs/:id -> status: "completed"
-  };
+  const handleMarkCompleted = () => {};
 
-  const handleUnmark = () => {
-    // TODO: PATCH /songs/:id -> status: "pending"
-  };
+  const handleUnmark = () => {};
 
   if (status === "completed") {
     return (
@@ -49,7 +42,6 @@ export const StatusAction = ({ status, songId }: IStatusActionProps) => {
     );
   }
 
-  // practicing
   return (
     <button
       className={cn(styles.statusBtn, css["statusBtn--complete"])}

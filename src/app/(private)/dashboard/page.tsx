@@ -1,4 +1,3 @@
-// src/app/(protected)/dashboard/page.tsx
 "use client";
 
 import { useAuth } from "@/hooks/useAuth";
@@ -16,9 +15,7 @@ export default function Dashboard() {
   const [kingdomSelected, setKingdomSelected] = useState<string | undefined>("k-002");
   const { isTabletUp } = useScreenSize();
 
-  // TODO: buscar reinos reais do usuário via API
-  // Mostrar apenas os reinos desbloqueados (já vêm filtrados da API)
-  const currentKingdomId = "k-002"; // TODO: vem do perfil do usuário
+  const currentKingdomId = "k-002";
 
   const kingdom = MOCK_KINGDOMS.find((k) => k.id === kingdomSelected);
 

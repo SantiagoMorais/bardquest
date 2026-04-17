@@ -25,7 +25,6 @@
 .card {
   display: flex;
   flex-direction: column;
-  // gap: var(--spacing-md);
   padding: var(--spacing-xl) var(--spacing-lg);
   border-radius: var(--radius-lg);
 
@@ -39,7 +38,6 @@
     0 0.8rem 3.2rem rgba(107, 90, 74, 0.08),
     inset 0 0.1rem 0 rgba(255, 255, 255, 0.7);
 
-  /* linha ornamental no topo */
   position: relative;
 
   &::before {

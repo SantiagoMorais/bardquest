@@ -98,7 +98,6 @@ export const KingdomSongsList = ({
 
   return (
     <div className={styles.wrapper}>
-      {/* ── Base songs ── */}
       <p className={styles.sectionLabel}>Canções da jornada</p>
       <div className={styles.baseSongs}>
         {baseSongs.map((song, i) => (
@@ -122,7 +121,6 @@ export const KingdomSongsList = ({
         ))}
       </div>
 
-      {/* ── Boss song ── */}
       <div className={styles.bossRow}>
         <div className={styles.bossConnector}>
           <span className={styles.bossConnectorLine} />
@@ -158,7 +156,6 @@ export const KingdomSongsList = ({
         </button>
       </div>
 
-      {/* ── Detail panel ── */}
       {selectedSong && (
         <div
           className={cn(
@@ -192,7 +189,6 @@ export const KingdomSongsList = ({
               <div className={styles.detailDivider} />
 
               <div className={styles.detailActions}>
-                {/* Partitura */}
                 <div className={styles.actionBlock}>
                   <span className={styles.actionBlockLabel}>Partitura</span>
                   <SheetMusic

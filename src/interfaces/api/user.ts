@@ -4,15 +4,15 @@ export interface IUserProfile {
   user_id: string;
   instrument: "piano" | "guitar";
   base_difficulty: number;
-  interests: IUserInterests; // JSONB
+  interests: IUserInterests;
   current_kingdom_id: number;
   updated_at: string;
   age: number | null;
 }
 
 export interface IUserInterests {
-  categories: string[]; // ['anime', 'games', 'classical']
-  keywords: string[]; // ['naruto', 'maplestory', 'bach']
+  categories: string[];
+  keywords: string[];
 }
 
 export interface IUserProfileWithUser extends Omit<

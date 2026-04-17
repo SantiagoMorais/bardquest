@@ -23,7 +23,6 @@ export class UserService {
         .single();
 
       if (error) {
-        // Se o erro for "Duplicate Key", significa que o perfil já existe, o que é OK.
         if (error.code === "23505") {
           const { data: existingUser, error: fetchError } = await supabase
             .from("users")
@@ -64,7 +63,6 @@ export class UserService {
 
       if (userError) {
         if (userError.code !== "23505") {
-          // Se o erro não for "Duplicate Key", lança o erro
           throw userError;
         }
       }
@@ -82,7 +80,6 @@ export class UserService {
 
       if (profileError) {
         if (profileError.code !== "23505") {
-          // Se o erro não for "Duplicate Key", lança o erro
           throw profileError;
         }
       }
@@ -98,7 +95,6 @@ export class UserService {
     const user = await supabase.auth.getUser();
     if (!user) return null;
 
-    // Tenta buscar o perfil do usuário
     const { data, error } = await supabase
       .from("users")
       .select("*")
@@ -106,7 +102,7 @@ export class UserService {
       .single();
 
     if (error) {
-      if (error.code === "PGRST116") return null; // Perfil não encontrado, mas usuário existe
+      if (error.code === "PGRST116") return null;
       throw error;
     }
 

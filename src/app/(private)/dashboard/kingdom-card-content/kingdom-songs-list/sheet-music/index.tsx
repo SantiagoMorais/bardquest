@@ -15,12 +15,10 @@ export const SheetMusic = ({ url, songId }: ISheetMusicProps) => {
   const [pendingFile, setPendingFile] = useState<File | null>(null);
   const [isUploading, setIsUploading] = useState(false);
 
-  // ── Handlers (vazios — lógica via API) ──────────────────────────────────
   const handleUpload = async (file: File) => {
     setIsUploading(true);
     setPendingFile(file);
     try {
-      // TODO: upload para storage e PATCH /songs/:id -> sheet_music_url
     } finally {
       setIsUploading(false);
     }
@@ -28,9 +26,7 @@ export const SheetMusic = ({ url, songId }: ISheetMusicProps) => {
 
   const handleRemove = () => {
     setPendingFile(null);
-    // TODO: PATCH /songs/:id -> sheet_music_url: null
   };
-  // ────────────────────────────────────────────────────────────────────────
 
   const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];

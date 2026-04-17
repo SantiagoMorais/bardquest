@@ -1,15 +1,8 @@
-/* ====================================
-   GLOBALS - Estilos globais
-   Baseado na estrutura da empresa
-   ==================================== */
-
 @use "./variables" as *;
 @use "./functions" as *;
 @use "./mixins" as *;
 
-/* ========== CSS CUSTOM PROPERTIES ========== */
 :root {
-  /* SPACING - Escala de espaçamento */
   --spacing-xs: 0.4rem;
   --spacing-sm: 0.8rem;
   --spacing-md: 1.6rem;
@@ -18,7 +11,6 @@
   --spacing-2xl: 4.8rem;
   --spacing-3xl: 6.4rem;
 
-  /* FONT SIZES */
   --fonts-size-3xs: 1rem;
   --fonts-size-2xs: 1.2rem;
   --fonts-size-xs: 1.4rem;
@@ -32,9 +24,6 @@
   --fonts-size-4xl: 4.4rem;
   --fonts-size-5xl: 5.6rem;
 
-  /* BASE COLORS - Medieval/Campos/Aventura Palette */
-
-  /* Browns */
   --color-brown-900: rgba(107, 90, 74, 1);
   --color-brown-700: rgba(139, 115, 85, 1);
   --color-brown-500: rgba(169, 139, 118, 1);
@@ -42,21 +31,18 @@
   --color-brown-100: rgba(223, 206, 190, 1);
   --color-brown-50: rgba(241, 233, 224, 1);
 
-  /* Beige */
   --color-beige-100: rgba(243, 228, 201, 1);
   --color-beige-50: rgba(250, 243, 230, 1);
   --color-beige-300: rgba(232, 212, 176, 1);
   --color-beige-500: rgba(212, 196, 168, 1);
   --color-surface-beige-50: rgba(250, 243, 230, 0.5);
 
-  /* Greens */
   --color-green-900: rgba(107, 142, 63, 1);
   --color-green-700: rgba(168, 173, 127, 1);
   --color-green-300: rgba(186, 191, 148, 1);
   --color-green-100: rgba(220, 228, 196, 1);
   --color-green-50: rgba(241, 246, 232, 1);
 
-  /* Blues */
   --color-blue-900: rgba(17, 64, 187, 1);
   --color-blue-700: rgba(36, 103, 236, 1);
   --color-blue-500: rgba(64, 145, 255, 1);
@@ -64,7 +50,6 @@
   --color-blue-100: rgba(217, 236, 255, 1);
   --color-blue-50: rgba(240, 248, 255, 1);
 
-  /* Golds */
   --color-gold-900: rgba(90, 63, 31, 1);
   --color-gold-700: rgba(168, 105, 31, 1);
   --color-gold-500: rgba(212, 128, 42, 1);
@@ -72,7 +57,6 @@
   --color-gold-100: rgba(245, 219, 186, 1);
   --color-gold-50: rgba(253, 244, 232, 1);
 
-  /* Light Theme Colors */
   --color-light-bg-primary: rgba(252, 250, 247, 1);
   --color-light-bg-secondary: rgba(243, 238, 230, 1);
   --color-light-bg-tertiary: rgba(232, 225, 214, 1);
@@ -84,13 +68,11 @@
   --color-light-border: rgba(212, 196, 168, 1);
   --color-light-border-hover: rgba(191, 162, 140, 1);
 
-  /* Semantic Colors */
   --color-success: rgba(107, 142, 63, 1);
   --color-warning: rgba(232, 155, 60, 1);
   --color-error: rgba(220, 110, 110, 1);
   --color-info: rgba(74, 119, 168, 1);
 
-  /* Toast Colors */
   --color-toast-success-border: rgba(32, 166, 66, 1);
   --color-toast-success-background: rgba(224, 255, 231, 1);
   --color-toast-error-border: rgba(235, 57, 57, 1);
@@ -100,7 +82,6 @@
   --color-toast-info-border: rgba(29, 127, 255, 1);
   --color-toast-info-background: rgba(225, 241, 255, 1);
 
-  /* ALIASES */
   --color-bg-primary: var(--color-light-bg-primary);
   --color-bg-secondary: var(--color-light-bg-secondary);
   --color-bg-tertiary: var(--color-light-bg-tertiary);
@@ -112,7 +93,6 @@
   --color-border: var(--color-light-border);
   --color-border-hover: var(--color-light-border-hover);
 
-  /* Cores ALFA */
   --color-brown-alfa-20: rgba(45, 35, 25, 0.2);
   --color-brown-alfa-50: rgba(45, 35, 25, 0.5);
   --color-brown-alfa-80: rgba(45, 35, 25, 0.8);
@@ -129,21 +109,17 @@
   --color-gold-alfa-50: rgba(212, 128, 42, 0.5);
   --color-gold-alfa-80: rgba(212, 128, 42, 0.8);
 
-  /* Texto utilitário — default (escuro sobre claro) e invert (claro sobre escuro) */
   --text-color-primary: rgba(0, 0, 0, 1);
   --text-color-secondary: rgba(255, 255, 255, 1);
 
-  /* Novas variáveis de texto invert — para elementos com fundo escuro (ex: overlays, badges escuros) */
   --color-text-invert-primary: rgba(248, 243, 236, 1);
   --color-text-invert-secondary: rgba(200, 180, 160, 1);
   --color-text-invert-tertiary: rgba(155, 135, 115, 1);
 
-  /* Scrollbar colors explícitas (antes viviam no dark theme) */
   --color-scrollbar-track: rgba(243, 238, 230, 1);
   --color-scrollbar-thumb: rgba(212, 196, 168, 1);
   --color-scrollbar-thumb-hover: rgba(191, 162, 140, 1);
 
-  /* TYPOGRAPHY */
   --font-family-heading:
     -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
     "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
@@ -151,20 +127,17 @@
     -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
     "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 
-  /* BORDER RADIUS */
   --radius-sm: 0.4rem;
   --radius-md: 0.8rem;
   --radius-lg: 1.2rem;
   --radius-xl: 1.6rem;
   --radius-full: 999.9rem;
 
-  /* TRANSITIONS */
   --transition-fast: 150ms ease-in-out;
   --transition-base: 200ms ease-in-out;
   --transition-slow: 300ms ease-in-out;
 }
 
-/* ========== CSS RESET E CONFIGURAÇÕES GERAIS ========== */
 * {
   margin: 0;
   padding: 0;
@@ -190,7 +163,6 @@ body {
     color var(--transition-base);
 }
 
-/* ========== TIPOGRAFIA PADRÃO ========== */
 h1 {
   @include header(1);
 }
@@ -215,7 +187,6 @@ label {
   @include label(2);
 }
 
-/* ========== LINKS ========== */
 a {
   color: var(--color-info);
   text-decoration: none;
@@ -230,7 +201,6 @@ a {
   }
 }
 
-/* ========== INPUTS ========== */
 input,
 textarea,
 select {
@@ -248,7 +218,6 @@ select {
   }
 }
 
-/* ========== SCROLLBAR ========== */
 ::-webkit-scrollbar {
   width: 0.8rem;
   height: 0.8rem;
@@ -267,7 +236,6 @@ select {
   }
 }
 
-/* ========== SELEÇÃO ========== */
 ::selection {
   background-color: rgba(64, 145, 255, 1);
   color: rgba(45, 35, 25, 1);

@@ -31,7 +31,6 @@ export const PracticeButton = ({ lastPracticeDate, streak }: IPracticeButtonProp
     if (practiced || isLoading) return;
     setIsLoading(true);
     try {
-      // TODO: PATCH /users/me -> last_practice_date: today, increment streak
     } finally {
       setPracticed(true);
       setIsLoading(false);

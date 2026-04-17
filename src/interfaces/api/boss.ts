@@ -30,12 +30,3 @@ export interface IBossWithKingdom extends IBoss {
     level: number;
   };
 }
-
-// const { data: boss } = await supabase
-//   .from('bosses')
-//   .select('*')
-//   .eq('id', someId)
-//   .single();
-
-// // O 'boss' aqui será do tipo IBoss
-// console.log(boss.name); // "O Maestro das Sombras"

@@ -1,6 +1,5 @@
 @use "@/styles/mixins" as m;
 
-/* ── Wrapper ── */
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -16,7 +15,6 @@
   color: var(--color-text-tertiary);
 }
 
-/* ── Base songs row ── */
 .baseSongs {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -27,7 +25,6 @@
   }
 }
 
-/* ── Song Card ── */
 .songCard {
   position: relative;
   display: flex;
@@ -102,7 +99,6 @@
   color: var(--color-text-tertiary);
 }
 
-/* ── Status Badges ── */
 .songStatusBadge {
   margin-top: auto;
   padding: 0.2rem var(--spacing-sm);
@@ -127,7 +123,6 @@
   color: var(--color-green-900);
 }
 
-/* ── Boss connector ── */
 .bossRow {
   display: flex;
   flex-direction: column;
@@ -155,7 +150,6 @@
   white-space: nowrap;
 }
 
-/* ── Boss card ── */
 .bossCard {
   position: relative;
   display: flex;
@@ -243,7 +237,6 @@
   max-width: 16rem;
 }
 
-/* ── Detail panel ── */
 .detailPanel {
   padding: var(--spacing-md) var(--spacing-lg);
   background: var(--color-bg-secondary);
@@ -335,7 +328,6 @@
   background: linear-gradient(to right, transparent, var(--color-border), transparent);
 }
 
-/* ── Detail actions area ── */
 .detailActions {
   display: flex;
   gap: var(--spacing-md);
@@ -362,7 +354,6 @@
   color: var(--color-text-tertiary);
 }
 
-/* ── Boss flavor text ── */
 .bossFlavorText {
   font-size: var(--fonts-size-xs);
   font-style: italic;

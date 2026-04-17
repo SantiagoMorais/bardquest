@@ -8,10 +8,6 @@ import { LuChevronLeft, LuChevronRight, LuLock } from "react-icons/lu";
 import { Button } from "@/components/button";
 import { cn } from "@/utils/functions/cn";
 
-// ---------------------------------------------------------------------------
-// Types
-// ---------------------------------------------------------------------------
-
 interface IKingdomLoreProps {
   kingdom: IKingdomWithFullSongs;
   songStatuses: Partial<Record<string, IKingdomSongStatus>>;
@@ -35,10 +31,6 @@ const LORE_UNLOCK_HINT: Record<LorePart, string> = {
   part_3: "Conclua a 3ª canção para revelar este capítulo.",
   final_part: "Conclua todas as canções para revelar o epílogo.",
 };
-
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
 
 function countCompleted(statuses: Partial<Record<string, IKingdomSongStatus>>): number {
   return Object.values(statuses).filter((s) => s === "completed").length;
@@ -67,7 +59,6 @@ function formatLoreContent(raw: string): string[] {
     .filter(Boolean);
   if (byDouble.length > 1) return byDouble;
 
-  // fallback: tenta quebrar em sentenças agrupadas de ~400 chars
   const sentences = raw.match(/[^.!?]+[.!?]+/g) ?? [raw];
   const paragraphs: string[] = [];
   let current = "";
@@ -85,10 +76,6 @@ function formatLoreContent(raw: string): string[] {
   return paragraphs.length ? paragraphs : [raw];
 }
 
-// ---------------------------------------------------------------------------
-// Component
-// ---------------------------------------------------------------------------
-
 export const KingdomLore = ({ kingdom, songStatuses, onClose }: IKingdomLoreProps) => {
   const css = styles as Record<string, string>;
   const completed = countCompleted(songStatuses);
@@ -105,7 +92,6 @@ export const KingdomLore = ({ kingdom, songStatuses, onClose }: IKingdomLoreProp
 
   return (
     <div className={styles.loreWrapper}>
-      {/* ── Header ── */}
       <div className={styles.loreHeader}>
         <Button
           className={styles.loreHeaderButton}

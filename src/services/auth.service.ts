@@ -17,7 +17,6 @@ export class AuthService {
         email,
         password,
         options: {
-          // Guardamos o username nos metadados para recuperar no primeiro login
           data: {
             display_name: username,
           },

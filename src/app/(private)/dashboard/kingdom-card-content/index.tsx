@@ -18,9 +18,6 @@ interface IKingdomCardContentProps {
   kingdom: (typeof MOCK_KINGDOMS)[0];
 }
 
-// Centraliza os statuses aqui para passar tanto ao KingdomSongsList quanto ao KingdomLore
-// Na prática você virá do seu store/hook de progresso do usuário
-
 export const KingdomCardContent = ({
   setKingdomSelected,
   kingdom,

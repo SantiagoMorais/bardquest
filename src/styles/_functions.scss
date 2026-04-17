@@ -1,7 +1,3 @@
-/* ====================================
-   FUNCTIONS - Funções Sass
-   ==================================== */
-
 @use "sass:map";
 @use "sass:color" as color-utils;
 
@@ -11,12 +7,10 @@
   @return calc($px / 10px) * 1rem;
 }
 
-/* Converter pixel para em */
 @function px-to-em($px) {
   @return calc($px / 10px) * 1em;
 }
 
-/* Obter cor do tema */
 @function color($key, $theme: "light") {
   @if $theme == "light" {
     @return map.get($colors-light, $key);
@@ -26,12 +20,10 @@
   @return null;
 }
 
-/* Obter espaçamento */
 @function spacing($size) {
   @return map.get($spacings, $size);
 }
 
-/* Calcular contraste de cor */
 @function contrast-color($bg-color) {
   $r: color-utils.red($bg-color);
   $g: color-utils.green($bg-color);
@@ -46,22 +38,18 @@
   }
 }
 
-/* Aplicar opacidade */
 @function alpha($color, $alpha) {
   @return rgba($color, $alpha);
 }
 
-/* Escurecer cor */
 @function darken-color($color, $amount: 10%) {
   @return color-utils.adjust($color, $lightness: -$amount);
 }
 
-/* Iluminar cor */
 @function lighten-color($color, $amount: 10%) {
   @return color-utils.adjust($color, $lightness: $amount);
 }
 
-/* Calcular tamanho de fonte responsivo */
 @function fluid-font($min-size, $max-size, $min-vw: 32rem, $max-vw: 128rem) {
   $slope: ($max-size - $min-size) / ($max-vw - $min-vw);
   $intercept: $min-size - $slope * $min-vw;
@@ -69,7 +57,6 @@
   @return calc(#{$intercept} + #{$slope * 100vw});
 }
 
-/* Z-index organizado */
 $z-indexes: (
   "hide": -1,
   "base": 0,
@@ -86,7 +73,6 @@ $z-indexes: (
   @return map.get($z-indexes, $level);
 }
 
-/* Sombras */
 $shadows: (
   "sm": 0 0.1rem 0.2rem 0 rgba(0, 0, 0, 0.05),
   "md": 0 0.4rem 0.6rem -0.1rem rgba(0, 0, 0, 0.1),

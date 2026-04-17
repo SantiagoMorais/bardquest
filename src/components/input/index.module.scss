@@ -1,7 +1,5 @@
 @use "@/styles/mixins" as m;
 
-/* index.module.scss */
-
 .container {
   display: flex;
   flex-direction: column;
@@ -18,7 +16,7 @@
 
   input {
     width: 100%;
-    padding-right: 2.75rem; /* espaço para o ícone não sobrepor o texto */
+    padding-right: 2.75rem;
   }
 
   .eyeButton {
