@@ -4,9 +4,9 @@ import { useState } from "react";
 import Image from "next/image";
 import DefaultProfileImage from "@/assets/default-profile-image.png";
 import { LuPencil, LuCamera, LuSword, LuX } from "react-icons/lu";
-import { SectionDivider } from "./section-divider";
-import { StatChip } from "./stat-chip";
-import { TagList } from "./tag-list";
+import { SectionDivider } from "./components/section-divider";
+import { StatChip } from "./components/stat-chip";
+import { TagList } from "./components/tag-list";
 import styles from "./page.module.scss";
 import {
   EXPERIENCE_LABEL,

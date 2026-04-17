@@ -6,8 +6,8 @@ import { Modal } from "@/components/modal";
 import { useScreenSize } from "@/hooks/useScreenSize";
 import { MOCK_KINGDOMS } from "@/utils/mock";
 import { useState } from "react";
-import { KingdomCardContent } from "./kingdom-card-content";
-import { KingdomTrail } from "./kingdom-trail";
+import { KingdomCardContent } from "./components/kingdom-card-content";
+import { KingdomTrail } from "./components/kingdom-trail";
 import styles from "./page.module.scss";
 
 export default function Dashboard() {
