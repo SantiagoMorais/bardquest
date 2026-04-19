@@ -35,7 +35,7 @@ export const OnboardingModal = ({
 }: IOnboardingModalProps) => {
   const [step, setStep] = useState(0);
 
-  const age = useWatch({ control: form.control, name: "age" });
+  const birthDate = useWatch({ control: form.control, name: "birth_date" });
   const username = useWatch({
     control: form.control,
     name: "username",
@@ -55,15 +55,23 @@ export const OnboardingModal = ({
     defaultValue: [""],
   }) ?? [""];
 
+  const today = new Date();
+  const minBirthDate = new Date(today);
+  minBirthDate.setFullYear(today.getFullYear() - 120);
+  const maxBirthDate = new Date(today);
+  const parsedBirthDate = birthDate ? new Date(birthDate) : null;
+
+  const isBirthDateComplete =
+    parsedBirthDate instanceof Date &&
+    !Number.isNaN(parsedBirthDate.getTime()) &&
+    parsedBirthDate >= minBirthDate &&
+    parsedBirthDate <= maxBirthDate;
+
   const next = () => setStep((s) => Math.min(s + 1, TOTAL_STEPS - 1));
   const prev = () => setStep((s) => Math.max(s - 1, 0));
 
   const isStep1Complete =
-    typeof age === "number" &&
-    age >= 1 &&
-    age <= 120 &&
-    Boolean(experience) &&
-    Boolean(instrument);
+    isBirthDateComplete && Boolean(experience) && Boolean(instrument);
   const isStep2Complete = categories.length >= 1;
   const isStep3Complete = keywords.some((keyword) => keyword.trim() !== "");
 
@@ -86,7 +94,7 @@ export const OnboardingModal = ({
     <Modal isOpen={modalIsOpen} persistent>
       <form className={styles.container} onSubmit={handleFormSubmit}>
         {step === 0 && <OnboardingStep0 user={user} />}
-        {step === 1 && <OnboardingStep1 register={form.register} username={username} />}
+        {step === 1 && <OnboardingStep1 form={form} username={username} />}
         {step === 2 && <OnboardingStep2 form={form} />}
         {step === 3 && <OnboardingStep3 form={form} />}
 

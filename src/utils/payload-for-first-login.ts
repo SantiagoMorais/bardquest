@@ -13,9 +13,11 @@ export const payloadForFirstLogin = ({
   user: User;
 }): IUserProfileWithUser => ({
   instrument: data.instrument,
-  age: data.age,
+  birth_date: data.birth_date,
   experience: data.experience,
   base_difficulty: EXPERIENCE_TO_DIFFICULTY[data.experience],
+  gender: data.gender,
+  username: data.username,
   interests: {
     categories: data.interests.categories,
     keywords: data.interests.keywords.filter((k) => k.trim() !== ""),
@@ -23,7 +25,6 @@ export const payloadForFirstLogin = ({
   user: {
     id: user.id,
     email: user.email!,
-    username: data.username,
     created_at: user.created_at,
     xp: 0,
     level: 1,

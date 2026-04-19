@@ -7,9 +7,7 @@ import { ProfileService } from "@/services/profile.service";
 import { LoadingScreen } from "../loadingScreen";
 import { OnboardingModalWrapper } from "./onBoardingModalWrapper";
 
-type IOnboardingGuardProps = PropsWithChildren;
-
-export const OnboardingGuard = ({ children }: IOnboardingGuardProps) => {
+export const OnboardingGuard = ({ children }: PropsWithChildren) => {
   const { user, isLoading: isAuthLoading } = useAuth();
 
   const { data: profile, isLoading } = useQuery({

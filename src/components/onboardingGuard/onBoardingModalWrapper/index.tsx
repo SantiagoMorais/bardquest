@@ -39,7 +39,7 @@ export const OnboardingModalWrapper = ({ user }: IOnboardingModalWrapperProps) =
   const form = useForm<IOnboardingFormValues>({
     defaultValues: {
       username: "",
-      age: null,
+      birth_date: null,
       experience: "basic",
       instrument: "guitar",
       interests: {

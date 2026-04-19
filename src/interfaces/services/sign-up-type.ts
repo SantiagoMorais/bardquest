@@ -1,24 +1,12 @@
 import { Session, User, WeakPassword } from "@supabase/supabase-js";
 import z from "zod";
+import { passwordSchema } from "../schemas/default-password";
+import { usernameSchema } from "../schemas/default-username";
 
 export const signUpSchema = z
   .object({
-    username: z
-      .string()
-      .min(3, "O nome de usuário deve ter pelo menos 3 caracteres")
-      .max(30, "O nome de usuário deve ter no máximo 30 caracteres"),
     email: z.email("Insira um email válido"),
-    password: z
-      .string()
-      .min(6, "A senha deve ter pelo menos 6 caracteres")
-      .max(20, "A senha deve ter no máximo 20 caracteres")
-      .refine((value) => {
-        const hasUpperCase = /[A-Z]/.test(value);
-        const hasLowerCase = /[a-z]/.test(value);
-        const hasNumber = /[0-9]/.test(value);
-        const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(value);
-        return hasUpperCase && hasLowerCase && hasNumber && hasSpecialChar;
-      }, "A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial"),
+    password: passwordSchema,
     repeatPassword: z.string(),
   })
   .refine((data) => data.password === data.repeatPassword, {

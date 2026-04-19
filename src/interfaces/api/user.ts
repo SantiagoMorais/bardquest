@@ -1,13 +1,23 @@
-import { IUser } from "./users-type";
+import { IAuditInfo } from "../audit-info";
+
+export interface IUser extends IAuditInfo {
+  email: string;
+  xp?: number;
+  level?: number;
+  streak?: number;
+  last_practice_date?: string | null;
+}
 
 export interface IUserProfile {
   user_id: string;
+  username: string;
+  gender: "male" | "female";
   instrument: "piano" | "guitar";
   base_difficulty: number;
   interests: IUserInterests;
   current_kingdom_id: number;
   updated_at: string;
-  age: number | null;
+  birth_date: string | null;
 }
 
 export interface IUserInterests {
