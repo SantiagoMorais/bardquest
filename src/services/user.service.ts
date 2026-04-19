@@ -1,5 +1,4 @@
-import { IUserProfile, IUserProfileWithUser } from "@/interfaces/api/user";
-import { IUser } from "@/interfaces/api/users-type";
+import { IUser, IUserProfile, IUserProfileWithUser } from "@/interfaces/api/user";
 import { supabase } from "@/lib/supabase";
 
 export class UserService {
@@ -52,7 +51,6 @@ export class UserService {
         .insert({
           id: data.user.id,
           email: data.user.email,
-          username: data.user.username,
           xp: data.user.xp,
           level: data.user.level,
           streak: data.user.streak,
@@ -71,9 +69,12 @@ export class UserService {
         .from("user_profiles")
         .insert({
           user_id: data.user.id,
+          gender: data.gender,
+          username: data.username,
           instrument: data.instrument,
           base_difficulty: data.base_difficulty,
           interests: data.interests,
+          birth_date: data.birth_date,
         } as IUserProfile)
         .select()
         .single();

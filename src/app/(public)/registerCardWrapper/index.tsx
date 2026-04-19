@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "@/components/toast";
-import { ISignUpRequest, signUpSchema } from "@/interfaces/sign-up-type";
+import { ISignUpRequest, signUpSchema } from "@/interfaces/services/sign-up-type";
 import { TypeState } from "@/interfaces/typestate";
 import { AuthService } from "@/services/auth.service";
 import { useMutation } from "@tanstack/react-query";
@@ -38,7 +38,6 @@ export const RegisterCardWrapper = ({
     defaultValues: {
       email: "",
       password: "",
-      username: "",
     },
   });
 

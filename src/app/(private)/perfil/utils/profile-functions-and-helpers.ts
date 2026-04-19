@@ -1,10 +1,12 @@
 import { IUserProfileWithUser } from "@/interfaces/api/user";
 
 export const MOCK_USER: IUserProfileWithUser = {
-  age: 26,
+  birth_date: new Date(1996, 10, 9).toISOString(),
   base_difficulty: 4,
   experience: "basic",
   instrument: "piano",
+  username: "Bardolin",
+  gender: "male",
   interests: {
     categories: ["classical", "jazz", "anime"],
     keywords: ["improvisation", "composition", "bach", "chopin"],
@@ -12,7 +14,6 @@ export const MOCK_USER: IUserProfileWithUser = {
   user: {
     email: "bardolin@bardquest.com",
     id: "mock-user-id",
-    username: "Bardolin",
     last_practice_date: new Date().toDateString(),
     level: 7,
     streak: 3,

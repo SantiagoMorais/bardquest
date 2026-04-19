@@ -70,8 +70,12 @@ export const OnboardingModal = ({
   const next = () => setStep((s) => Math.min(s + 1, TOTAL_STEPS - 1));
   const prev = () => setStep((s) => Math.max(s - 1, 0));
 
+  const isUsernameComplete = username.trim().length >= 3;
   const isStep1Complete =
-    isBirthDateComplete && Boolean(experience) && Boolean(instrument);
+    isUsernameComplete &&
+    isBirthDateComplete &&
+    Boolean(experience) &&
+    Boolean(instrument);
   const isStep2Complete = categories.length >= 1;
   const isStep3Complete = keywords.some((keyword) => keyword.trim() !== "");
 

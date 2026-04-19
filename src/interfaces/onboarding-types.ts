@@ -1,6 +1,7 @@
 export interface IOnboardingFormValues {
   username: string;
   birth_date: string | null;
+  gender: "male" | "female" | null;
   experience: "begginer" | "basic" | "intermediate" | "advanced";
   instrument: "piano" | "guitar";
   interests: {

@@ -1,9 +1,9 @@
-import { LuUser } from "react-icons/lu";
-import { Controller, UseFormReturn } from "react-hook-form";
-import { useEffect, useState } from "react";
 import type { IOnboardingFormValues } from "@/interfaces/onboarding-types";
-import styles from "./index.module.scss";
 import classNames from "classnames";
+import { useEffect, useState } from "react";
+import { Controller, UseFormReturn } from "react-hook-form";
+import { LuCheck, LuUser } from "react-icons/lu";
+import styles from "./index.module.scss";
 
 interface IOnboardingStep1Props {
   form: UseFormReturn<IOnboardingFormValues>;
@@ -12,6 +12,7 @@ interface IOnboardingStep1Props {
 
 export const OnboardingStep1 = ({ form, username }: IOnboardingStep1Props) => {
   const { register } = form;
+  const selectedGender = form.watch("gender");
   const [birthDateMasked, setBirthDateMasked] = useState("");
   const today = new Date();
   const minBirthDate = new Date(today);
@@ -118,13 +119,13 @@ export const OnboardingStep1 = ({ form, username }: IOnboardingStep1Props) => {
 
       <div className={styles.fields}>
         <label className={styles.field}>
-          <span className={styles.label}>Como quer ser chamado?</span>
+          <span className={styles.label}>Como quer ser chamado? (mínimo 3 dígitos)</span>
           <input
             className={styles.input}
             type="text"
             placeholder="Ex: João"
             maxLength={30}
-            {...register("username", { maxLength: 30 })}
+            {...register("username", { maxLength: 30, minLength: 3 })}
           />
           <span className={classNames(styles.label, styles.counter)}>
             {username.length}/30
@@ -182,6 +183,59 @@ export const OnboardingStep1 = ({ form, username }: IOnboardingStep1Props) => {
         </label>
 
         <fieldset className={styles.fieldset}>
+          <legend className={styles.label}>Qual o seu gênero?</legend>
+          <div className={styles.instrumentGrid}>
+            <label className={classNames(styles.instrumentCard, styles.genderCard)}>
+              <input
+                type="radio"
+                value="male"
+                {...register("gender")}
+                className={styles.radioHidden}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  form.setValue("gender", value as "male" | "female" | null);
+                }}
+                onClick={() => {
+                  const gender = form.getValues("gender");
+                  if (gender === "male") form.setValue("gender", null);
+                }}
+              />
+              {selectedGender === "male" && (
+                <span className={styles.selectionCheck}>
+                  <LuCheck size={16} />
+                </span>
+              )}
+              <span className={styles.instrumentIcon}>♂️🧔‍♂️</span>
+              <span className={styles.radioOptionTitle}>Masculino</span>
+            </label>
+
+            <label className={classNames(styles.instrumentCard, styles.genderCard)}>
+              <input
+                type="radio"
+                value="female"
+                {...register("gender")}
+                className={styles.radioHidden}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  form.setValue("gender", value as "male" | "female" | null);
+                }}
+                onClick={() => {
+                  const gender = form.getValues("gender");
+                  if (gender === "female") form.setValue("gender", null);
+                }}
+              />
+              {selectedGender === "female" && (
+                <span className={styles.selectionCheck}>
+                  <LuCheck size={16} />
+                </span>
+              )}
+              <span className={styles.instrumentIcon}>♀️👩</span>
+              <span className={styles.radioOptionTitle}>Feminino</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset className={styles.fieldset}>
           <legend className={styles.label}>Qual instrumento você quer tocar?</legend>
           <div className={styles.instrumentGrid}>
             <label className={styles.instrumentCard}>
@@ -192,8 +246,8 @@ export const OnboardingStep1 = ({ form, username }: IOnboardingStep1Props) => {
                 className={styles.radioHidden}
               />
               <span className={styles.instrumentIcon}>🎹</span>
-              <span className={styles.instrumentName}>Piano</span>
-              <span className={styles.instrumentSub}>Clássico & versátil</span>
+              <span className={styles.radioOptionTitle}>Piano</span>
+              <span className={styles.radioOptionSubtitle}>Clássico & versátil</span>
             </label>
 
             <label className={styles.instrumentCard}>
@@ -204,8 +258,8 @@ export const OnboardingStep1 = ({ form, username }: IOnboardingStep1Props) => {
                 className={styles.radioHidden}
               />
               <span className={styles.instrumentIcon}>🎸</span>
-              <span className={styles.instrumentName}>Guitarra / Violão</span>
-              <span className={styles.instrumentSub}>Folk & aventura</span>
+              <span className={styles.radioOptionTitle}>Guitarra / Violão</span>
+              <span className={styles.radioOptionSubtitle}>Folk & aventura</span>
             </label>
           </div>
         </fieldset>

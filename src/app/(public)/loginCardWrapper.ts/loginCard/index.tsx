@@ -2,7 +2,7 @@ import { Button } from "@/components/button";
 import { Input } from "@/components/input";
 import styles from "./index.module.scss";
 import { TypeState } from "@/interfaces/typestate";
-import { ISignInRequest } from "@/interfaces/sign-up-type";
+import { ISignInRequest } from "@/interfaces/services/sign-up-type";
 import { UseFormReturn } from "react-hook-form";
 
 interface ILoginCardProps {

@@ -2,7 +2,7 @@ import { Button } from "@/components/button";
 import { Input } from "@/components/input";
 import styles from "./index.module.scss";
 import { TypeState } from "@/interfaces/typestate";
-import { ISignUpRequest } from "@/interfaces/sign-up-type";
+import { ISignUpRequest } from "@/interfaces/services/sign-up-type";
 import { UseFormReturn } from "react-hook-form";
 
 interface IRegisterCardProps {
@@ -36,17 +36,6 @@ export const RegisterCard = ({
             error={{
               message: errors.email?.message || "",
               isError: !!errors.email,
-            }}
-          />
-          <Input
-            {...form.register("username")}
-            label="Nome de usuário:"
-            type="text"
-            autoComplete="off"
-            placeholder="Digite o seu nome de usuário"
-            error={{
-              message: errors.username?.message || "",
-              isError: !!errors.username,
             }}
           />
           <Input

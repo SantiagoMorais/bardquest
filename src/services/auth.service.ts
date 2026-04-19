@@ -3,24 +3,18 @@ import {
   ISignInResponse,
   ISignUpRequest,
   ISignUpResponse,
-} from "@/interfaces/sign-up-type";
+} from "@/interfaces/services/sign-up-type";
 import { supabase } from "@/lib/supabase";
 
 export class AuthService {
   static signUp = async ({
     email,
     password,
-    username,
   }: ISignUpRequest): Promise<ISignUpResponse | null> => {
     try {
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
-        options: {
-          data: {
-            display_name: username,
-          },
-        },
       });
 
       if (error) throw error;
