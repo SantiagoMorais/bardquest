@@ -3,7 +3,6 @@ import { IUserProfileWithUser } from "@/interfaces/api/user";
 export const MOCK_USER: IUserProfileWithUser = {
   birth_date: new Date(1996, 10, 9).toISOString(),
   base_difficulty: 4,
-  experience: "basic",
   instrument: "piano",
   username: "Bardolin",
   gender: "male",

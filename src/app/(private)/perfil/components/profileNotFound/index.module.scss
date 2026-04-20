@@ -1,0 +1,71 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-3xl) var(--spacing-md);
+  min-height: 40rem;
+}
+
+.errorScroll {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  max-width: 38rem;
+  filter: drop-shadow(0 0.4rem 1.2rem var(--color-brown-alfa-20));
+}
+
+/* caps do pergaminho (cilindros enrolados) */
+.scrollCap {
+  display: block;
+  height: 2rem;
+  background: linear-gradient(to bottom, var(--color-brown-300), var(--color-beige-300));
+  border-radius: var(--radius-full);
+  border: 0.1rem solid var(--color-brown-500);
+}
+
+/* corpo do pergaminho */
+.scrollBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-xl) var(--spacing-lg);
+  background: var(--color-beige-50);
+  border-left: 0.1rem solid var(--color-beige-300);
+  border-right: 0.1rem solid var(--color-beige-300);
+
+  /* textura sutil */
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2.4rem,
+    rgba(191, 162, 140, 0.12) 2.4rem,
+    rgba(191, 162, 140, 0.12) 2.5rem
+  );
+}
+
+.errorIcon {
+  font-size: 4.8rem;
+  color: var(--color-brown-500);
+  line-height: 1;
+  opacity: 0.6;
+}
+
+.errorTitle {
+  font-size: var(--fonts-size-md);
+  font-weight: 700;
+  color: var(--color-gold-900);
+  text-align: center;
+}
+
+.errorSub {
+  font-size: var(--fonts-size-xs);
+  color: var(--color-text-tertiary);
+  text-align: center;
+  max-width: 28rem;
+  line-height: 1.6;
+  font-style: italic;
+}
