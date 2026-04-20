@@ -70,6 +70,7 @@ export class UserService {
         .insert({
           user_id: data.user.id,
           gender: data.gender,
+          experience: data.experience,
           username: data.username,
           instrument: data.instrument,
           base_difficulty: data.base_difficulty,

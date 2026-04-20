@@ -21,7 +21,10 @@ export const OnboardingModalWrapper = ({ user }: IOnboardingModalWrapperProps) =
   const firstTimeLoginMutation = useMutation({
     mutationFn: UserService.firstTimeLogin,
     onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: ["user-profile", user.id] });
+      await Promise.all([
+        queryClient.invalidateQueries({ queryKey: ["onboarding-profile", user.id] }),
+        queryClient.invalidateQueries({ queryKey: ["user-profile", user.id] }),
+      ]);
       toast.success(`Perfil criado com sucesso! Bem-vindo à aventura!`);
       navigate.replace("/dashboard");
       navigate.refresh();

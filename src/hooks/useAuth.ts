@@ -1,8 +1,35 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import type { User } from "@supabase/supabase-js";
 import { supabase } from "@/lib/supabase";
+import { useAuthStore } from "@/stores/auth.store";
+
+let isAuthSyncInitialized = false;
+let authUnsubscribe: (() => void) | null = null;
+
+const initializeAuthSync = () => {
+  if (isAuthSyncInitialized) return;
+
+  isAuthSyncInitialized = true;
+  useAuthStore.getState().setIsLoading(true);
+
+  supabase.auth.getSession().then(({ data: { session } }) => {
+    useAuthStore.getState().setUser(session?.user ?? null);
+    useAuthStore.getState().setInitialized(true);
+    useAuthStore.getState().setIsLoading(false);
+  });
+
+  const {
+    data: { subscription },
+  } = supabase.auth.onAuthStateChange((_event, session) => {
+    useAuthStore.getState().setUser(session?.user ?? null);
+    useAuthStore.getState().setInitialized(true);
+    useAuthStore.getState().setIsLoading(false);
+  });
+
+  authUnsubscribe = () => subscription.unsubscribe();
+};
 
 /**
  * Custom hook to manage and monitor the user's authentication state.
@@ -18,29 +45,19 @@ import { supabase } from "@/lib/supabase";
  * if (user) console.log("Logged in as:", user.email);
  */
 export function useAuth(): { user: User | null; isLoading: boolean } {
-  const [user, setUser] = useState<User | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const user = useAuthStore((state) => state.user);
+  const isLoading = useAuthStore((state) => state.isLoading);
 
   useEffect(() => {
-    let isMounted = true;
-
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      if (!isMounted) return;
-      setUser(session?.user ?? null);
-      setIsLoading(false);
-    });
-
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      if (!isMounted) return;
-      setUser(session?.user ?? null);
-      setIsLoading(false);
-    });
+    initializeAuthSync();
 
     return () => {
-      isMounted = false;
-      subscription.unsubscribe();
+      // Keep auth sync alive for app lifetime. In Fast Refresh, cleanup old subscription.
+      if (process.env.NODE_ENV === "development" && authUnsubscribe) {
+        authUnsubscribe();
+        authUnsubscribe = null;
+        isAuthSyncInitialized = false;
+      }
     };
   }, []);
 

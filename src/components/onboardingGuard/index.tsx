@@ -11,7 +11,7 @@ export const OnboardingGuard = ({ children }: PropsWithChildren) => {
   const { user, isLoading: isAuthLoading } = useAuth();
 
   const { data: profile, isLoading } = useQuery({
-    queryKey: ["user-profile", user?.id],
+    queryKey: ["onboarding-profile", user?.id],
     queryFn: ({ queryKey }) => {
       const [, userId] = queryKey as [string, string];
       return ProfileService.getById(userId);

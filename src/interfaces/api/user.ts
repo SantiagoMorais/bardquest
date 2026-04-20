@@ -12,6 +12,7 @@ export interface IUserProfile {
   user_id: string;
   username: string;
   gender: "male" | "female";
+  experience: "begginer" | "basic" | "intermediate" | "advanced";
   instrument: "piano" | "guitar";
   base_difficulty: number;
   interests: IUserInterests;
@@ -30,5 +31,4 @@ export interface IUserProfileWithUser extends Omit<
   "updated_at" | "current_kingdom_id" | "user_id"
 > {
   user: IUser;
-  experience: "begginer" | "basic" | "intermediate" | "advanced";
 }
