@@ -13,7 +13,13 @@ export default function Home() {
 
   return (
     <main className={styles.container}>
-      <Image src={logo} alt="BardQuest Logo" className={styles.logo} />
+      <Image
+        src={logo}
+        alt="BardQuest Logo"
+        className={styles.logo}
+        loading="eager"
+        priority
+      />
       <div className={styles.card}>
         {sectionSelected === "login" ? (
           <LoginCardWrapper setSectionSelected={setSectionSelected} />

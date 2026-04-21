@@ -6,7 +6,13 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 type IButtonProps = PropsWithChildren &
   ButtonHTMLAttributes<HTMLButtonElement> & {
-    buttonStyle?: "primary" | "secondary" | "tertiary" | "outline" | "link";
+    buttonStyle?:
+      | "primary"
+      | "secondary"
+      | "tertiary"
+      | "outline"
+      | "outlineGold"
+      | "link";
     iconLeft?: IconType;
     iconRight?: IconType;
     className?: string;

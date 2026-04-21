@@ -1,0 +1,53 @@
+@use "@/styles/mixins" as m;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  background: var(--color-light-bg-primary);
+  border: 0.1rem solid var(--color-beige-300);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0 0.2rem 0.8rem var(--color-brown-alfa-20),
+    inset 0 0.1rem 0 rgba(255, 255, 255, 0.7);
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: var(--spacing-xl);
+    right: var(--spacing-xl);
+    height: 0.2rem;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--color-gold-300),
+      var(--color-gold-500),
+      var(--color-gold-300),
+      transparent
+    );
+    border-radius: var(--radius-full);
+  }
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+}
+
+.cardTitle {
+  font-size: var(--fonts-size-sm);
+  font-weight: 700;
+  color: var(--color-gold-900);
+  letter-spacing: 0.04em;
+}
+
+.interestsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+}

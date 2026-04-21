@@ -5,12 +5,16 @@ import { Input } from "@/components/input";
 import { IUserProfileWithUser } from "@/interfaces/api/user";
 import Image from "next/image";
 import { LuCamera, LuPencil, LuSword, LuX } from "react-icons/lu";
+import { MdOutlineStar, MdOutlineStarBorder } from "react-icons/md";
 import { SectionDivider } from "./section-divider";
 import { StatChip } from "./stat-chip";
-import { TagList } from "./tag-list";
+import { TagList } from "./user-preferences/tag-list";
 import styles from "./index.module.scss";
 import { useState } from "react";
 import { formatDate, INSTRUMENT_LABEL } from "../../utils/profile-functions-and-helpers";
+import { calculateAge } from "@/utils/functions/calculateAge";
+import { useMutation } from "@tanstack/react-query";
+import { UserPreferences } from "./user-preferences";
 
 interface IProfileLoadedProps {
   profile: IUserProfileWithUser;
@@ -18,6 +22,10 @@ interface IProfileLoadedProps {
 
 export const ProfileLoaded = ({ profile }: IProfileLoadedProps) => {
   const [isEditing, setIsEditing] = useState(false);
+  const baseDifficulty = Math.max(
+    0,
+    Math.min(10, Math.round(profile.base_difficulty ?? 0))
+  );
 
   return (
     <main className={styles.page}>
@@ -35,6 +43,8 @@ export const ProfileLoaded = ({ profile }: IProfileLoadedProps) => {
                 src={DefaultProfileImage}
                 alt="Foto de perfil"
                 fill
+                sizes="(max-width: 768px) 100vw, 600px"
+                loading="eager"
                 className={styles.avatarImage}
               />
             </div>
@@ -48,8 +58,8 @@ export const ProfileLoaded = ({ profile }: IProfileLoadedProps) => {
           <div className={styles.profileSummaryCard}>
             <div className={styles.profileSummaryHeader}>
               <div className={styles.avatarName}>
-                <span className={styles.avatarRole}>Bardo Aventureiro</span>
-                <span className={styles.avatarUsername}>{profile.username}</span>
+                <p className={styles.avatarRole}>Bardo Aventureiro</p>
+                <p className={styles.avatarUsername}>{profile.username}</p>
               </div>
             </div>
 
@@ -62,35 +72,18 @@ export const ProfileLoaded = ({ profile }: IProfileLoadedProps) => {
           <div className={styles.card}>
             <div className={styles.cardHeader}>
               <h3 className={styles.cardTitle}>Dados do Viajante</h3>
-              <button
-                className={styles.editToggle}
-                onClick={() => setIsEditing((p) => !p)}
-                title={isEditing ? "Cancelar edição" : "Editar perfil"}
-              >
-                {isEditing ? <LuX size={14} /> : <LuPencil size={14} />}
-                {isEditing ? "Cancelar" : "Editar"}
-              </button>
             </div>
 
             <div className={styles.fieldGrid}>
               <div className={styles.field}>
                 <label className={styles.fieldLabel}>E-mail</label>
                 <p className={styles.fieldValue}>{profile.user.email}</p>
-                <Input label="E-mail" readOnly={!isEditing} />
               </div>
               <div className={styles.field}>
-                <span className={styles.fieldLabel}>Idade</span>
-                {isEditing ? (
-                  <input
-                    className={styles.fieldInput}
-                    type="text"
-                    defaultValue={profile.birth_date ?? ""}
-                  />
-                ) : (
-                  <span className={styles.fieldValue}>
-                    {profile.birth_date ? `${profile.birth_date}` : "—"}
-                  </span>
-                )}
+                <p className={styles.fieldLabel}>Idade</p>
+                <p className={styles.fieldValue}>
+                  {calculateAge(profile.birth_date ?? "")} anos
+                </p>
               </div>
               <div className={styles.field}>
                 <label className={styles.fieldLabel}>Instrumento</label>
@@ -100,35 +93,37 @@ export const ProfileLoaded = ({ profile }: IProfileLoadedProps) => {
               </div>
 
               <div className={styles.field}>
-                <span className={styles.fieldLabel}>Dificuldade base</span>
-                <span className={styles.fieldValue}>{profile.base_difficulty} / 10</span>
+                <p className={styles.fieldLabel}>Dificuldade base</p>
+                <div
+                  className={styles.baseDifficultyStars}
+                  aria-label={`${baseDifficulty} de 10 estrelas`}
+                >
+                  {Array.from({ length: 10 }, (_, index) =>
+                    index < baseDifficulty ? (
+                      <MdOutlineStar
+                        key={`difficulty-star-${index}`}
+                        className={styles.starFilled}
+                        focusable="false"
+                        aria-hidden="true"
+                      />
+                    ) : (
+                      <MdOutlineStarBorder
+                        key={`difficulty-star-${index}`}
+                        className={styles.starEmpty}
+                        focusable="false"
+                        aria-hidden="true"
+                      />
+                    )
+                  )}
+                </div>
               </div>
               <div className={styles.field}>
-                <span className={styles.fieldLabel}>Membro desde</span>
-                <span className={styles.fieldValue}>
-                  {formatDate(profile.user.created_at)}
-                </span>
+                <p className={styles.fieldLabel}>Membro desde</p>
+                <p className={styles.fieldValue}>{formatDate(profile.user.created_at)}</p>
               </div>
             </div>
-
-            {isEditing && (
-              <button className={styles.saveBtn}>
-                <LuSword size={14} />
-                Salvar alterações
-              </button>
-            )}
           </div>
-
-          <div className={styles.card}>
-            <div className={styles.cardHeader}>
-              <h3 className={styles.cardTitle}>Preferências Musicais</h3>
-            </div>
-
-            <div className={styles.interestsGrid}>
-              <TagList title="Categorias" items={profile.interests.categories} />
-              <TagList title="Palavras-chave" items={profile.interests.keywords} />
-            </div>
-          </div>
+          <UserPreferences profile={profile} />
         </div>
       </div>
     </main>

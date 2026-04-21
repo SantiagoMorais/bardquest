@@ -252,6 +252,26 @@
   color: var(--color-text-primary);
 }
 
+.baseDifficultyStars {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  line-height: 1;
+}
+
+.starFilled {
+  width: 2rem;
+  height: 2rem;
+  color: var(--color-gold-500);
+}
+
+.starEmpty {
+  width: 2rem;
+  height: 2rem;
+  color: var(--color-gold-500);
+  opacity: 0.3;
+}
+
 .fieldInput {
   font-size: var(--fonts-size-xs);
   font-weight: 600;

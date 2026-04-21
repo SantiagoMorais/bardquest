@@ -4,14 +4,13 @@ import { cookies } from "next/headers";
 import { createServerClient } from "@supabase/ssr";
 import { env } from "@/env";
 import { redirect } from "next/navigation";
-import { IUser } from "@/interfaces/services/create-user";
 import { Header } from "./header";
 import { PracticeButton } from "./practice-button";
 import { ExperienceBar } from "./experience-bar";
+import { IUser } from "@/interfaces/api/user";
 
 const MOCK_USER: IUser = {
   id: "mock-uuid",
-  username: "Bardolin",
   email: "bardolin@bardquest.com",
   xp: 525,
   level: 5,

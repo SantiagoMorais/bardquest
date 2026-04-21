@@ -53,6 +53,16 @@
   }
 }
 
+.buttonBase.outlineGold {
+  background-color: transparent;
+  border: 0.1rem solid var(--color-gold-300);
+  color: var(--color-gold-500);
+
+  &:hover {
+    background-color: var(--color-gold-50);
+  }
+}
+
 .buttonBase.link {
   background-color: transparent;
   color: var(--color-blue-300);
