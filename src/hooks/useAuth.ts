@@ -5,60 +5,51 @@ import type { User } from "@supabase/supabase-js";
 import { supabase } from "@/lib/supabase";
 import { useAuthStore } from "@/stores/auth.store";
 
-let isAuthSyncInitialized = false;
-let authUnsubscribe: (() => void) | null = null;
+let hasBootstrappedAuth = false;
+let isBootstrappingAuth = false;
+let authSubscription: { unsubscribe: () => void } | null = null;
 
-const initializeAuthSync = () => {
-  if (isAuthSyncInitialized) return;
+async function bootstrapAuth() {
+  if (hasBootstrappedAuth || isBootstrappingAuth) return;
 
-  isAuthSyncInitialized = true;
+  isBootstrappingAuth = true;
   useAuthStore.getState().setIsLoading(true);
 
-  supabase.auth.getSession().then(({ data: { session } }) => {
+  try {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
     useAuthStore.getState().setUser(session?.user ?? null);
+
+    if (!authSubscription) {
+      const {
+        data: { subscription },
+      } = supabase.auth.onAuthStateChange((_event, session) => {
+        useAuthStore.getState().setUser(session?.user ?? null);
+        useAuthStore.getState().setInitialized(true);
+        useAuthStore.getState().setIsLoading(false);
+      });
+
+      authSubscription = subscription;
+    }
+
+    hasBootstrappedAuth = true;
+  } catch {
+    useAuthStore.getState().setUser(null);
+  } finally {
     useAuthStore.getState().setInitialized(true);
     useAuthStore.getState().setIsLoading(false);
-  });
+    isBootstrappingAuth = false;
+  }
+}
 
-  const {
-    data: { subscription },
-  } = supabase.auth.onAuthStateChange((_event, session) => {
-    useAuthStore.getState().setUser(session?.user ?? null);
-    useAuthStore.getState().setInitialized(true);
-    useAuthStore.getState().setIsLoading(false);
-  });
-
-  authUnsubscribe = () => subscription.unsubscribe();
-};
-
-/**
- * Custom hook to manage and monitor the user's authentication state.
- * * This hook synchronizes the local state with Supabase Auth by:
- * 1. Fetching the initial session on mount via `getSession()`.
- * 2. Subscribing to authentication state changes (sign-in, sign-out, token refreshes)
- * using `onAuthStateChange`.
- * 3. Cleaning up the subscription when the component unmounts.
- * * @returns {User | null} The current authenticated Supabase user object,
- * or `null` if the user is not authenticated.
- * * @example
- * const user = useAuth();
- * if (user) console.log("Logged in as:", user.email);
- */
 export function useAuth(): { user: User | null; isLoading: boolean } {
   const user = useAuthStore((state) => state.user);
   const isLoading = useAuthStore((state) => state.isLoading);
 
   useEffect(() => {
-    initializeAuthSync();
-
-    return () => {
-      // Keep auth sync alive for app lifetime. In Fast Refresh, cleanup old subscription.
-      if (process.env.NODE_ENV === "development" && authUnsubscribe) {
-        authUnsubscribe();
-        authUnsubscribe = null;
-        isAuthSyncInitialized = false;
-      }
-    };
+    void bootstrapAuth();
   }, []);
 
   return { user, isLoading };

@@ -11,6 +11,8 @@ export const updateUserDataSchema = z
     oldPassword: z.string(),
     newPassword: passwordSchema,
     repeatPassword: passwordSchema,
+    birth_date: z.string().optional(),
+    instrument: z.enum(["piano", "guitar"]).optional(),
   })
   .refine((data) => data.newPassword === data.repeatPassword, {
     message: "As senhas não coincidem",

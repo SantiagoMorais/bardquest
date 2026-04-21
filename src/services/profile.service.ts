@@ -1,5 +1,8 @@
 import { IUser, IUserProfile, IUserProfileWithUser } from "@/interfaces/api/user";
-import { IUpdateUserDataService } from "@/interfaces/services/update-user-data";
+import {
+  IUpdateUserDataService,
+  IUpdateUserPreferences,
+} from "@/interfaces/services/update-user-data";
 import { supabase } from "@/lib/supabase";
 
 export class ProfileService {
@@ -85,6 +88,24 @@ export class ProfileService {
     if (error) {
       throw error;
     }
+
+    return data;
+  };
+
+  static updateUserPreferences = async (payload: IUpdateUserPreferences) => {
+    const { data, error } = await supabase
+      .from("user_profiles")
+      .update({
+        interests: {
+          categories: payload.categories,
+          keywords: payload.keywords,
+        },
+      })
+      .eq("user_id", payload.id)
+      .select()
+      .single();
+
+    if (error) throw error;
 
     return data;
   };
