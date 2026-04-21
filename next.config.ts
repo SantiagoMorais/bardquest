@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 60 * 60 * 24 * 7,
-    qualities: [40, 75],
+    qualities: [40, 50, 60, 75],
   },
   sassOptions: {
     includePaths: [path.join(process.cwd(), "src")],

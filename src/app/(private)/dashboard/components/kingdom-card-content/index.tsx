@@ -49,6 +49,8 @@ export const KingdomCardContent = ({
         <Image
           quality={60}
           fill
+          sizes="(max-width: 768px) 100vw, 50vw"
+          loading="eager"
           className={styles.kingdomImage}
           src={DefaultKingdomImage}
           alt="Imagem padrão do reino"

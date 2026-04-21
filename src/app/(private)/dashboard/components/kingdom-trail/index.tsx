@@ -35,6 +35,7 @@ export const KingdomTrail = ({ kingdoms, setKingdomSelected }: IKingdomTrailProp
                 src={KingdomFrame}
                 alt="Borda"
                 fill
+                sizes="(max-width: 768px) 40vw, (max-width: 1200px) 24vw, 220px"
                 className={styles.kingdomFrame}
               />
               <h3 className={styles.kingdomTitle}>{kingdom.name}</h3>
