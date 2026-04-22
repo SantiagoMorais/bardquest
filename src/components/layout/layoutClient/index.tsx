@@ -1,5 +1,5 @@
 "use client";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import styles from "./index.module.scss";
 import { User } from "@supabase/supabase-js";
 import { ProfileService } from "@/services/profile.service";
@@ -15,29 +15,28 @@ import { toast } from "@/components/toast";
 import { useEffect, useRef } from "react";
 import { daysSince } from "@/utils/functions/daysSince";
 import { LoadingScreen } from "@/components/loadingScreen";
+import { getXpToNextLevel } from "@/config/progression";
 
 type ILayoutClientProps = PropsWithChildren & {
   user: User;
 };
 
-function xpForNextLevel(level: number): number {
-  return level * 300;
-}
-
 export const LayoutClient = ({ user, children }: ILayoutClientProps) => {
+  const queryClient = useQueryClient();
   const resetAttemptedRef = useRef(false);
   const {
     data: currentUser,
     isLoading,
     isError,
   } = useQuery({
-    queryKey: ["user", user?.id],
+    queryKey: ["users", user?.id],
     queryFn: () => ProfileService.getUserData(user.id),
   });
 
   const updateStreakMutation = useMutation({
     mutationFn: ProfileService.updateUserStreak,
     onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["users", user.id] });
       toast.warn(
         "Sua sequência foi interrompida após 2 dias sem prática. Mas toda grande jornada tem pausas — retome hoje e comece uma nova sequência ainda mais forte!"
       );
@@ -54,7 +53,9 @@ export const LayoutClient = ({ user, children }: ILayoutClientProps) => {
     resetAttemptedRef.current = true;
     updateStreakMutation.mutate({
       userId: user.id,
-      newStreak: 0,
+      currentStreak: 0,
+      level: currentUser.level ?? 1,
+      xp: currentUser.xp ?? 0,
     });
   }, [
     currentUser?.last_practice_date,
@@ -76,12 +77,14 @@ export const LayoutClient = ({ user, children }: ILayoutClientProps) => {
         lastPracticeDate={currentUser.last_practice_date!}
         userId={user.id}
         streak={currentUser.streak ?? 0}
+        level={currentUser.level ?? 1}
+        xp={currentUser.xp ?? 0}
       />
 
       <ExperienceBar
-        xp={currentUser.xp!}
-        level={currentUser.level!}
-        xpForNextLevel={xpForNextLevel(currentUser.level!)}
+        xp={currentUser.xp ?? 0}
+        level={currentUser.level ?? 1}
+        xpForNextLevel={getXpToNextLevel({ level: currentUser.level ?? 1 })}
       />
     </div>
   );

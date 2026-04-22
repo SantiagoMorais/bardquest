@@ -22,7 +22,6 @@ export default function Perfil() {
   } = useQuery<IUserProfileWithUser | null>({
     queryKey: ["user-profile", user.id],
     queryFn: () => ProfileService.getUserProfileAndBaseData(user.id),
-    staleTime: Infinity,
   });
 
   if (isLoadingProfile) return <ProfileLoading />;

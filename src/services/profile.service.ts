@@ -1,8 +1,11 @@
+import { applyXp } from "@/config/apply-xp";
+import { getStreakBonus } from "@/config/progression";
 import { IUser, IUserProfile, IUserProfileWithUser } from "@/interfaces/api/user";
 import {
   IUpdateUserDataService,
   IUpdateUserPreferences,
 } from "@/interfaces/services/update-user-data";
+import { IUpdateUserStreak } from "@/interfaces/services/update-user-streak";
 import { supabase } from "@/lib/supabase";
 
 export class ProfileService {
@@ -124,10 +127,29 @@ export class ProfileService {
     return data;
   };
 
-  static updateUserStreak = async (data: { userId: string; newStreak: number }) => {
+  static updateUserStreak = async (data: IUpdateUserStreak) => {
+    const newStreak = data.currentStreak + 1;
+
+    const gainedXp = getStreakBonus({
+      streakDays: newStreak,
+    });
+
+    const updatedProgress = applyXp({
+      gainedXp,
+      progress: {
+        level: data.level,
+        currentXp: data.xp,
+      },
+    });
+
     const { data: result, error } = await supabase
       .from("users")
-      .update({ streak: data.newStreak, last_practice_date: new Date().toISOString() })
+      .update({
+        streak: newStreak,
+        last_practice_date: new Date().toISOString(),
+        xp: updatedProgress.currentXp,
+        level: updatedProgress.level,
+      })
       .eq("id", data.userId)
       .select()
       .single();

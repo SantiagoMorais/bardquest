@@ -1,31 +1,42 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./index.module.scss";
 import cn from "classnames";
 import { Modal } from "@/components/modal";
 import { Button } from "@/components/button";
 import { isTodayConfirmation } from "@/utils/functions/isTodayConfirmation";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { ProfileService } from "@/services/profile.service";
 
 interface IPracticeButtonProps {
   lastPracticeDate: string | null;
   streak: number;
   userId: string;
+  level: number;
+  xp: number;
 }
 
 export const PracticeButton = ({
   lastPracticeDate,
   streak,
   userId,
+  level,
+  xp,
 }: IPracticeButtonProps) => {
+  const queryClient = useQueryClient();
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
   const [practiced, setPracticed] = useState(isTodayConfirmation(lastPracticeDate));
+
+  useEffect(() => {
+    setPracticed(isTodayConfirmation(lastPracticeDate));
+  }, [lastPracticeDate]);
 
   const updateStreakMutation = useMutation({
     mutationFn: ProfileService.updateUserStreak,
     onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["user-profile", userId] });
+      queryClient.invalidateQueries({ queryKey: ["users", userId] });
       setPracticed(true);
       setModalIsOpen(false);
     },
@@ -35,8 +46,7 @@ export const PracticeButton = ({
 
   const handlePractice = async () => {
     if (practiced || isPending) return;
-    const newStreak: number = streak + 1;
-    updateStreakMutation.mutate({ userId, newStreak });
+    updateStreakMutation.mutate({ userId, currentStreak: streak, level, xp });
   };
 
   return (

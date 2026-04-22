@@ -48,6 +48,10 @@ export const GAME_BALANCE = {
 export type IMissionDifficulty = keyof typeof GAME_BALANCE.missionXp;
 export type ISongDifficulty = keyof typeof GAME_BALANCE.songXp;
 
+/**
+ * Returns the XP required to reach the next level.
+ * Use when checking if the player can level up.
+ */
 export const getXpToNextLevel = ({ level }: { level: number }): number => {
   return Math.round(
     GAME_BALANCE.xpToNextLevel.base *
@@ -55,6 +59,10 @@ export const getXpToNextLevel = ({ level }: { level: number }): number => {
   );
 };
 
+/**
+ * Returns the XP multiplier based on the realm difficulty.
+ * Use when scaling song rewards for harder realms.
+ */
 export const getRealmMultiplier = ({
   realmDifficulty,
 }: {
@@ -63,6 +71,10 @@ export const getRealmMultiplier = ({
   return 1 + realmDifficulty * GAME_BALANCE.realmDifficulty.multiplierPerPoint;
 };
 
+/**
+ * Returns the base XP for a mission difficulty.
+ * Use when rewarding the player after completing a mission.
+ */
 export const getMissionXp = ({
   difficulty,
 }: {
@@ -71,6 +83,10 @@ export const getMissionXp = ({
   return GAME_BALANCE.missionXp[difficulty];
 };
 
+/**
+ * Returns the final XP for a song based on its difficulty and realm difficulty.
+ * Use when rewarding the player after completing a song.
+ */
 export const getSongXp = ({
   difficulty,
   realmDifficulty,
@@ -82,6 +98,10 @@ export const getSongXp = ({
   return Math.round(baseXp * getRealmMultiplier({ realmDifficulty }));
 };
 
+/**
+ * Returns the bonus XP for defeating a boss.
+ * Use right after the player clears a boss song.
+ */
 export const getBossClearBonus = ({
   realmDifficulty,
 }: {
@@ -93,6 +113,10 @@ export const getBossClearBonus = ({
   );
 };
 
+/**
+ * Returns the bonus XP for completing an entire realm.
+ * Use after the player finishes the boss and clears the realm.
+ */
 export const getRealmCompletionBonus = ({
   realmDifficulty,
 }: {
@@ -104,6 +128,10 @@ export const getRealmCompletionBonus = ({
   );
 };
 
+/**
+ * Returns the streak bonus XP for the current streak day.
+ * Use when rewarding the player for daily practice.
+ */
 export const getStreakBonus = ({ streakDays }: { streakDays: number }): number => {
   let bonus = 0;
 

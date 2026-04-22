@@ -5,6 +5,10 @@ type LevelProgress = {
   currentXp: number;
 };
 
+/**
+ * Applies gained XP, handles level ups, and keeps leftover XP.
+ * Use whenever the player earns XP from any source.
+ */
 export const applyXp = ({
   gainedXp,
   progress,
