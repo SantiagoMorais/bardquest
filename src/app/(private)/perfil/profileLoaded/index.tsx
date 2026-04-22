@@ -1,5 +1,6 @@
 "use client";
 
+import { FaQuestionCircle } from "react-icons/fa";
 import DefaultProfileImage from "@/assets/default-profile-image.png";
 import { IUserProfileWithUser } from "@/interfaces/api/user";
 import { calculateAge } from "@/utils/functions/calculateAge";
@@ -90,7 +91,24 @@ export const ProfileLoaded = ({ profile }: IProfileLoadedProps) => {
               </div>
 
               <div className={styles.field}>
-                <p className={styles.fieldLabel}>Dificuldade base</p>
+                <div className={styles.tooltipWrapper}>
+                  <div className={styles.tooltipTrigger}>
+                    <p className={styles.fieldLabel}>Dificuldade base</p>
+                    <FaQuestionCircle size={16} className={styles.doubtIcon} />
+                  </div>
+
+                  <div className={styles.tooltip}>
+                    <strong>Dificuldade atual: {baseDifficulty}/10 estrelas.</strong>
+                    <br />
+                    <br />
+                    Essa é a dificuldade dos desafios que você enfrentará. Conforme você
+                    avança, completa missões e explora novos reinos, essa dificuldade pode
+                    aumentar ou diminuir para se adequar melhor ao seu progresso e estilo
+                    de jogo. A dificuldade evolui junto com a sua jornada. Ao concluir
+                    cada reino, você poderá compartilhar seu feedback para ajustarmos os
+                    próximos desafios e tornar sua experiência cada vez melhor.
+                  </div>
+                </div>
                 <div
                   className={styles.baseDifficultyStars}
                   aria-label={`${baseDifficulty} de 10 estrelas`}

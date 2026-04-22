@@ -14,6 +14,7 @@ import { ProfileError } from "@/components/profileError";
 import { toast } from "@/components/toast";
 import { useEffect, useRef } from "react";
 import { daysSince } from "@/utils/functions/daysSince";
+import { LoadingScreen } from "@/components/loadingScreen";
 
 type ILayoutClientProps = PropsWithChildren & {
   user: User;
@@ -62,7 +63,7 @@ export const LayoutClient = ({ user, children }: ILayoutClientProps) => {
     user.id,
   ]);
 
-  if (isLoading) return <ProfileLoading />;
+  if (isLoading) return <LoadingScreen />;
   if (isError) return <ProfileError />;
   if (!currentUser) return <ProfileNotFound />;
 
