@@ -1,28 +1,9 @@
-import styles from "./index.module.scss";
-import { PropsWithChildren } from "react";
-import { cookies } from "next/headers";
-import { createServerClient } from "@supabase/ssr";
 import { env } from "@/env";
+import { createServerClient } from "@supabase/ssr";
+import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { Header } from "./header";
-import { PracticeButton } from "./practice-button";
-import { ExperienceBar } from "./experience-bar";
-import { IUser } from "@/interfaces/api/user";
-
-const MOCK_USER: IUser = {
-  id: "mock-uuid",
-  email: "bardolin@bardquest.com",
-  xp: 525,
-  level: 5,
-  streak: 3,
-  last_practice_date: null,
-  created_at: "2024-01-01T00:00:00Z",
-  updated_at: "2024-01-01T00:00:00Z",
-};
-
-function xpForNextLevel(level: number): number {
-  return level * 300;
-}
+import { PropsWithChildren } from "react";
+import { LayoutClient } from "./layoutClient";
 
 export const Layout = async ({ children }: PropsWithChildren) => {
   const cookieStore = await cookies();
@@ -46,23 +27,5 @@ export const Layout = async ({ children }: PropsWithChildren) => {
 
   if (!user) redirect("/");
 
-  const currentUser = MOCK_USER;
-
-  return (
-    <div className={styles.layout}>
-      <Header />
-      <main className={styles.main}>{children}</main>
-
-      <PracticeButton
-        lastPracticeDate={currentUser.last_practice_date!}
-        streak={currentUser.streak!}
-      />
-
-      <ExperienceBar
-        xp={currentUser.xp!}
-        level={currentUser.level!}
-        xpForNextLevel={xpForNextLevel(currentUser.level!)}
-      />
-    </div>
-  );
+  return <LayoutClient user={user}>{children}</LayoutClient>;
 };

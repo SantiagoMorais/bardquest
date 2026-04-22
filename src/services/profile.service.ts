@@ -47,6 +47,20 @@ export class ProfileService {
     return data;
   };
 
+  static getUserData = async (userId: string): Promise<IUser | null> => {
+    const { data, error } = await supabase
+      .from("users")
+      .select("*")
+      .eq("id", userId)
+      .single();
+
+    if (error) {
+      if (error.code === "PGRST116") return null;
+      throw error;
+    }
+    return data;
+  };
+
   static getUserProfileAndBaseData = async (
     userId: string
   ): Promise<IUserProfileWithUser | null> => {
@@ -108,5 +122,18 @@ export class ProfileService {
     if (error) throw error;
 
     return data;
+  };
+
+  static updateUserStreak = async (data: { userId: string; newStreak: number }) => {
+    const { data: result, error } = await supabase
+      .from("users")
+      .update({ streak: data.newStreak, last_practice_date: new Date().toISOString() })
+      .eq("id", data.userId)
+      .select()
+      .single();
+
+    if (error) throw error;
+
+    return result;
   };
 }

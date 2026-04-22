@@ -4,10 +4,10 @@ import { IUserProfileWithUser } from "@/interfaces/api/user";
 import { ProfileService } from "@/services/profile.service";
 import { useAuthStore } from "@/stores/auth.store";
 import { useQuery } from "@tanstack/react-query";
-import { ProfileLoaded } from "./components/profileLoaded";
-import { ProfileLoading } from "./components/profileLoading";
-import { ProfileNotFound } from "./components/profileNotFound";
-import { ProfileError } from "./components/profileError";
+import { ProfileLoaded } from "./profileLoaded";
+import { ProfileNotFound } from "@/components/profileNotFound";
+import { ProfileLoading } from "@/components/profileLoading";
+import { ProfileError } from "@/components/profileError";
 
 export default function Perfil() {
   const { isLoading, user } = useAuthStore();

@@ -1,19 +1,16 @@
 "use client";
 
 import DefaultProfileImage from "@/assets/default-profile-image.png";
-import { Input } from "@/components/input";
 import { IUserProfileWithUser } from "@/interfaces/api/user";
+import { calculateAge } from "@/utils/functions/calculateAge";
 import Image from "next/image";
-import { LuCamera, LuPencil, LuSword, LuX } from "react-icons/lu";
+import { useState } from "react";
+import { LuCamera } from "react-icons/lu";
 import { MdOutlineStar, MdOutlineStarBorder } from "react-icons/md";
+import { formatDate, INSTRUMENT_LABEL } from "../utils/profile-functions-and-helpers";
+import styles from "./index.module.scss";
 import { SectionDivider } from "./section-divider";
 import { StatChip } from "./stat-chip";
-import { TagList } from "./user-preferences/tag-list";
-import styles from "./index.module.scss";
-import { useState } from "react";
-import { formatDate, INSTRUMENT_LABEL } from "../../utils/profile-functions-and-helpers";
-import { calculateAge } from "@/utils/functions/calculateAge";
-import { useMutation } from "@tanstack/react-query";
 import { UserPreferences } from "./user-preferences";
 
 interface IProfileLoadedProps {

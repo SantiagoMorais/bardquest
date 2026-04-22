@@ -43,21 +43,21 @@
     transform: translateX(-50%) translateY(0);
   }
 
-  &--done {
-    background: var(--color-green-50);
-    border-color: var(--color-green-300);
-    color: var(--color-green-900);
-    cursor: default;
-    box-shadow: none;
-
-    .diamond {
-      background: var(--color-green-300);
-      border-color: var(--color-green-900);
-    }
-  }
-
   &:disabled {
     opacity: 1;
+  }
+}
+
+.buttonDone {
+  background: var(--color-green-50);
+  border-color: var(--color-green-300);
+  color: var(--color-green-900);
+  cursor: default;
+  box-shadow: none;
+
+  .diamond {
+    background: var(--color-green-300);
+    border-color: var(--color-green-900);
   }
 }
 

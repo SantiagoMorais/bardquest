@@ -11,9 +11,7 @@ import styles from "./index.module.scss";
 import { LogoutButton } from "./logoutButton";
 import { StreakBadge } from "./streakBadge";
 
-const STREAK = 7;
-
-export const Header = () => {
+export const Header = ({ streak }: { streak: number }) => {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -23,7 +21,7 @@ export const Header = () => {
           <Image src={logo} alt="Logo" className={styles.mobileLogo} />
 
           <div className={styles.mobileRight}>
-            <StreakBadge streak={STREAK} />
+            <StreakBadge streak={streak} />
 
             <button
               className={styles.mobileMenuBtn}
@@ -84,7 +82,7 @@ export const Header = () => {
 
         <header className={styles.desktopHeader}>
           <div className={styles.desktopHeaderInner}>
-            <StreakBadge streak={STREAK} />
+            <StreakBadge streak={streak} />
 
             <Link href="/perfil" className={styles.desktopProfileLink}>
               <LuUserRound size={18} />
