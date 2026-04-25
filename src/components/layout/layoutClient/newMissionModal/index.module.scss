@@ -1,0 +1,385 @@
+@use "@/styles/mixins" as m;
+
+/* ════════════════════════════════════════
+   WRAPPER
+   ════════════════════════════════════════ */
+
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--radius-xl); // acompanha o modal
+  animation: missionReveal 480ms cubic-bezier(0.34, 1.3, 0.64, 1) both;
+}
+
+@keyframes missionReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.88) translateY(1.6rem);
+    filter: blur(0.4rem);
+  }
+  60% {
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* ── Glow pulse (difuso no fundo) ── */
+.glow {
+  position: absolute;
+  inset: -4rem;
+  border-radius: 50%;
+  opacity: 0.12;
+  pointer-events: none;
+  animation: glowPulse 2.4s ease-in-out infinite alternate;
+  z-index: 0;
+  filter: blur(4rem);
+}
+
+@keyframes glowPulse {
+  from {
+    opacity: 0.08;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 0.18;
+    transform: scale(1.05);
+  }
+}
+
+.glowEasy {
+  background: radial-gradient(circle, var(--color-green-900), transparent 70%);
+}
+.glowMedium {
+  background: radial-gradient(circle, var(--color-gold-500), transparent 70%);
+}
+.glowHard {
+  background: radial-gradient(circle, var(--color-error), transparent 70%);
+}
+.glowEpic {
+  background: radial-gradient(circle, rgba(139, 92, 246, 1), transparent 70%);
+}
+
+/* ════════════════════════════════════════
+   HEADER BAND
+   ════════════════════════════════════════ */
+
+.header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-bottom: 0.1rem solid rgba(255, 255, 255, 0.12);
+}
+
+/* difficulty color variants */
+.headerEasy {
+  background: linear-gradient(
+    135deg,
+    rgba(107, 142, 63, 0.18) 0%,
+    rgba(107, 142, 63, 0.06) 100%
+  );
+}
+.headerMedium {
+  background: linear-gradient(
+    135deg,
+    rgba(212, 128, 42, 0.18) 0%,
+    rgba(232, 155, 60, 0.06) 100%
+  );
+}
+.headerHard {
+  background: linear-gradient(
+    135deg,
+    rgba(220, 110, 110, 0.2) 0%,
+    rgba(220, 110, 110, 0.06) 100%
+  );
+}
+.headerEpic {
+  background: linear-gradient(
+    135deg,
+    rgba(139, 92, 246, 0.22) 0%,
+    rgba(109, 40, 217, 0.06) 100%
+  );
+}
+
+.headerOrnamentLeft,
+.headerOrnamentRight {
+  font-size: var(--fonts-size-xs);
+  opacity: 0.4;
+  color: var(--color-text-tertiary);
+}
+
+.headerCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.headerIcon {
+  color: var(--color-gold-700);
+  animation: iconBob 2s ease-in-out infinite;
+}
+
+@keyframes iconBob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.3rem);
+  }
+}
+
+.headerEyebrow {
+  font-size: var(--fonts-size-2xs);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+/* ════════════════════════════════════════
+   BODY
+   ════════════════════════════════════════ */
+
+.body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-xl) var(--spacing-xl) var(--spacing-lg);
+  background: var(--color-light-bg-primary);
+
+  /* linha ornamental no topo */
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: var(--spacing-2xl);
+    right: var(--spacing-2xl);
+    height: 0.2rem;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--color-gold-300),
+      var(--color-gold-500),
+      var(--color-gold-300),
+      transparent
+    );
+    border-radius: var(--radius-full);
+  }
+}
+
+/* ── Ornament row ── */
+.ornamentRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  width: 100%;
+}
+
+.ornamentLine {
+  flex: 1;
+  height: 0.1rem;
+  background: linear-gradient(to right, transparent, var(--color-beige-300), transparent);
+}
+
+.ornamentGlyph {
+  font-size: var(--fonts-size-xs);
+  color: var(--color-gold-300);
+  letter-spacing: 0.3em;
+  white-space: nowrap;
+}
+
+/* ── Call to arms ── */
+.callToArms {
+  font-size: var(--fonts-size-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  text-align: center;
+}
+
+/* ── Mission title ── */
+.missionTitle {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: var(--fonts-size-2xl);
+  font-weight: 700;
+  color: var(--color-gold-900);
+  text-align: center;
+  line-height: 1.2;
+  animation: titleGlow 2.8s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+  from {
+    text-shadow: 0 0 0rem transparent;
+  }
+  to {
+    text-shadow: 0 0 2rem rgba(212, 128, 42, 0.3);
+  }
+}
+
+/* ── Meta row (badge + XP) ── */
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.difficultyBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-full);
+  font-size: var(--fonts-size-xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  border: 0.15rem solid transparent;
+}
+
+.badgeEasy {
+  background: var(--color-green-50);
+  color: var(--color-green-900);
+  border-color: rgba(107, 142, 63, 0.3);
+}
+.badgeMedium {
+  background: var(--color-gold-50);
+  color: var(--color-gold-900);
+  border-color: rgba(212, 128, 42, 0.3);
+}
+.badgeHard {
+  background: rgba(220, 110, 110, 0.08);
+  color: var(--color-error);
+  border-color: rgba(220, 110, 110, 0.3);
+}
+.badgeEpic {
+  background: rgba(139, 92, 246, 0.08);
+  color: rgba(109, 40, 217, 1);
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+.xpReward {
+  font-size: var(--fonts-size-sm);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.xpEasy {
+  color: var(--color-green-900);
+}
+.xpMedium {
+  color: var(--color-gold-700);
+}
+.xpHard {
+  color: var(--color-error);
+}
+.xpEpic {
+  color: rgba(109, 40, 217, 1);
+}
+
+/* ── Divider ── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  width: 100%;
+}
+
+.dividerLine {
+  flex: 1;
+  height: 0.1rem;
+  background: var(--color-beige-300);
+}
+
+.dividerDot {
+  width: 0.6rem;
+  height: 0.6rem;
+  background: var(--color-gold-300);
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+/* ── Description ── */
+.description {
+  font-size: var(--fonts-size-sm);
+  color: var(--color-text-primary);
+  text-align: center;
+  line-height: 1.7;
+  max-width: 40rem;
+}
+
+/* ── Flavor text ── */
+.flavorText {
+  font-size: var(--fonts-size-xs);
+  font-style: italic;
+  color: var(--color-text-tertiary);
+  text-align: center;
+  max-width: 36rem;
+  line-height: 1.6;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-left: 0.2rem solid var(--color-gold-300);
+  border-right: 0.2rem solid var(--color-gold-300);
+  background: var(--color-gold-50);
+  border-radius: var(--radius-sm);
+}
+
+/* ── Accept button ── */
+.acceptBtn {
+  margin-top: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-2xl);
+  border-radius: var(--radius-full);
+  border: 0.15rem solid transparent;
+  font-size: var(--fonts-size-sm);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    filter var(--transition-fast);
+
+  /* reusa os header variants como base de cor */
+  &.headerEasy {
+    background: var(--color-green-900);
+    border-color: var(--color-green-900);
+    color: var(--color-green-50);
+  }
+  &.headerMedium {
+    background: var(--color-gold-500);
+    border-color: var(--color-gold-700);
+    color: var(--color-gold-900);
+  }
+  &.headerHard {
+    background: var(--color-error);
+    border-color: var(--color-error);
+    color: #fff;
+  }
+  &.headerEpic {
+    background: rgba(109, 40, 217, 1);
+    border-color: rgba(88, 28, 195, 1);
+    color: #fff;
+  }
+
+  &:hover {
+    transform: translateY(-0.2rem);
+    box-shadow: 0 0.6rem 2rem rgba(0, 0, 0, 0.18);
+    filter: brightness(1.08);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}

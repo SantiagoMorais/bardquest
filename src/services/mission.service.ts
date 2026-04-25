@@ -39,7 +39,7 @@ export class MissionService {
       .eq("id", userId);
   };
 
-  public completeMission = async ({
+  static completeMission = async ({
     userId,
     mission,
     currentXp,

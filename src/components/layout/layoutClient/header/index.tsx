@@ -1,7 +1,6 @@
 "use client";
 
 import logo from "@/assets/logo-bardquest-minor.png";
-import { mobileNavItems, sidebarNavItems } from "@/utils/navbarOptions";
 import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,8 +9,18 @@ import { LuChevronRight, LuUserRound } from "react-icons/lu";
 import styles from "./index.module.scss";
 import { LogoutButton } from "./logoutButton";
 import { StreakBadge } from "./streakBadge";
+import { IMission } from "@/interfaces/api/mission";
+import { MissionPanel } from "./missionPanel";
+import { mobileNavItems, sidebarNavItems } from "@/utils/navbar-options";
+import { IUser } from "@/interfaces/api/user";
 
-export const Header = ({ streak }: { streak: number }) => {
+interface IHeaderProps {
+  streak: number;
+  user: IUser;
+  missions: IMission[];
+}
+
+export const Header = ({ streak, user, missions }: IHeaderProps) => {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -21,8 +30,8 @@ export const Header = ({ streak }: { streak: number }) => {
           <Image src={logo} alt="Logo" className={styles.mobileLogo} />
 
           <div className={styles.mobileRight}>
+            <MissionPanel missions={missions} user={user} />
             <StreakBadge streak={streak} />
-
             <button
               className={styles.mobileMenuBtn}
               onClick={() => setExpanded((p) => !p)}
@@ -50,6 +59,7 @@ export const Header = ({ streak }: { streak: number }) => {
         </nav>
       </header>
 
+      {/* ════════ DESKTOP ════════ */}
       <>
         <aside
           className={classNames(styles.sidebar, expanded && styles.sidebarExpanded)}
@@ -82,13 +92,12 @@ export const Header = ({ streak }: { streak: number }) => {
 
         <header className={styles.desktopHeader}>
           <div className={styles.desktopHeaderInner}>
+            <MissionPanel missions={missions} user={user} />
             <StreakBadge streak={streak} />
-
             <Link href="/perfil" className={styles.desktopProfileLink}>
               <LuUserRound size={18} />
               <span>Perfil</span>
             </Link>
-
             <LogoutButton variant="desktop" isExpanded />
           </div>
         </header>
