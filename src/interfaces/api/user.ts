@@ -1,4 +1,5 @@
 import { IAuditInfo } from "../audit-info";
+import { IMission } from "./mission";
 
 export interface IUser extends IAuditInfo {
   email: string;
@@ -6,6 +7,8 @@ export interface IUser extends IAuditInfo {
   level?: number;
   streak?: number;
   last_practice_date?: string | null;
+  daily_missions: IMission[]; // Máximo 3
+  last_mission_at: string | null; // Data da última missão recebida
 }
 
 export interface IUserProfile {

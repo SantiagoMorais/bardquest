@@ -16,7 +16,8 @@ export const applyXp = ({
   progress: LevelProgress;
   gainedXp: number;
 }): LevelProgress => {
-  let { level, currentXp } = progress;
+  const { currentXp } = progress;
+  let { level } = progress;
   let totalXp = currentXp + gainedXp;
 
   let xpNeeded = getXpToNextLevel({ level });

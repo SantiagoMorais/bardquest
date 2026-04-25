@@ -31,7 +31,9 @@ export const GAME_BALANCE = {
       { minDay: 2, maxDay: 6, xp: 10 },
       { minDay: 7, maxDay: 13, xp: 15 },
       { minDay: 14, maxDay: 29, xp: 20 },
-      { minDay: 30, maxDay: Infinity, xp: 25 },
+      { minDay: 30, maxDay: 45, xp: 25 },
+      { minDay: 46, maxDay: 60, xp: 30 },
+      { minDay: 61, maxDay: Infinity, xp: 40 },
     ],
     milestones: {
       7: 40,
