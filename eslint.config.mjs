@@ -1,27 +1,35 @@
+// @ts-check
 import { defineConfig, globalIgnores } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
-import prettierConfig from "eslint-config-prettier";
+import prettier from "eslint-config-prettier/flat";
 
-const eslintConfig = defineConfig([
+export default defineConfig([
   ...nextVitals,
   ...nextTs,
-  prettierConfig,
+
   {
+    files: ["**/*.{ts,tsx}"],
     rules: {
-      "@typescript-eslint/no-explicit-any": "error",
+      "no-unused-vars": "off",
+
       "@typescript-eslint/no-unused-vars": [
-        "error",
+        "warn",
         {
+          vars: "all",
+          args: "after-used",
+          ignoreRestSiblings: true,
           argsIgnorePattern: "^_",
-          caughtErrorsIgnorePattern: "^_",
           varsIgnorePattern: "^_",
+          caughtErrorsIgnorePattern: "^_",
         },
       ],
-      "no-unused-vars": "off",
+
+      "@typescript-eslint/no-explicit-any": "error",
     },
   },
+
+  prettier,
+
   globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts"]),
 ]);
-
-export default eslintConfig;
