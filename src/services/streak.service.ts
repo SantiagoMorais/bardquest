@@ -1,3 +1,4 @@
+import { toast } from "@/components/toast";
 import { applyXp } from "@/config/apply-xp";
 import { getStreakBonus } from "@/config/progression";
 import {
@@ -50,6 +51,7 @@ export class StreakService {
 
     if (error) throw error;
 
+    toast.success(`Streak aumentada para ${streak} dias! +${gainedXp} XP!`);
     return result;
   };
 }
