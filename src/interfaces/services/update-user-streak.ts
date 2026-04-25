@@ -1,6 +1,11 @@
-export type IUpdateUserStreak = {
+export interface IResetUserStreak {
+  userId: string;
+}
+
+export interface IIncreaseUserStreak {
   userId: string;
   currentStreak: number;
-  level: number;
+  lastPracticeDate: string;
   xp: number;
-};
+  level: number;
+}

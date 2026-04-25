@@ -1,7 +1,5 @@
 "use client";
 
-import { useAuth } from "@/hooks/useAuth";
-
 import { Modal } from "@/components/modal";
 import { useScreenSize } from "@/hooks/useScreenSize";
 import { MOCK_KINGDOMS } from "@/utils/mock";
@@ -11,11 +9,8 @@ import { KingdomTrail } from "./components/kingdom-trail";
 import styles from "./page.module.scss";
 
 export default function Dashboard() {
-  const { user } = useAuth();
   const [kingdomSelected, setKingdomSelected] = useState<string | undefined>("k-002");
   const { isTabletUp } = useScreenSize();
-
-  const currentKingdomId = "k-002";
 
   const kingdom = MOCK_KINGDOMS.find((k) => k.id === kingdomSelected);
 

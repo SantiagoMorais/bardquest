@@ -11,7 +11,7 @@ export interface IUser extends IAuditInfo {
 export interface IUserProfile {
   user_id: string;
   username: string;
-  gender: "male" | "female";
+  gender: "male" | "female" | null;
   experience: "begginer" | "basic" | "intermediate" | "advanced";
   instrument: "piano" | "guitar";
   base_difficulty: number;

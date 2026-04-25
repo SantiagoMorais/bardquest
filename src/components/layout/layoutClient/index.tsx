@@ -5,7 +5,6 @@ import { User } from "@supabase/supabase-js";
 import { ProfileService } from "@/services/profile.service";
 
 import { ProfileNotFound } from "@/components/profileNotFound";
-import { ProfileLoading } from "@/components/profileLoading";
 import { Header } from "./header";
 import { PropsWithChildren } from "react";
 import { PracticeButton } from "./practice-button";
@@ -33,8 +32,8 @@ export const LayoutClient = ({ user, children }: ILayoutClientProps) => {
     queryFn: () => ProfileService.getUserData(user.id),
   });
 
-  const updateStreakMutation = useMutation({
-    mutationFn: ProfileService.updateUserStreak,
+  const resetStreakMutation = useMutation({
+    mutationFn: ProfileService.resetUserStreak,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["users", user.id] });
       toast.warn(
@@ -51,16 +50,13 @@ export const LayoutClient = ({ user, children }: ILayoutClientProps) => {
     if (resetAttemptedRef.current || (currentUser.streak ?? 0) === 0) return;
 
     resetAttemptedRef.current = true;
-    updateStreakMutation.mutate({
+    resetStreakMutation.mutate({
       userId: user.id,
-      currentStreak: 0,
-      level: currentUser.level ?? 1,
-      xp: currentUser.xp ?? 0,
     });
   }, [
     currentUser?.last_practice_date,
     currentUser?.streak,
-    updateStreakMutation,
+    resetStreakMutation,
     user.id,
   ]);
 

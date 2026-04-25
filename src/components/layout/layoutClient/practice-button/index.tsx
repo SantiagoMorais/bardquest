@@ -33,7 +33,7 @@ export const PracticeButton = ({
   }, [lastPracticeDate]);
 
   const updateStreakMutation = useMutation({
-    mutationFn: ProfileService.updateUserStreak,
+    mutationFn: ProfileService.increaseUserStreak,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["user-profile", userId] });
       queryClient.invalidateQueries({ queryKey: ["users", userId] });
@@ -46,7 +46,13 @@ export const PracticeButton = ({
 
   const handlePractice = async () => {
     if (practiced || isPending) return;
-    updateStreakMutation.mutate({ userId, currentStreak: streak, level, xp });
+    updateStreakMutation.mutate({
+      userId,
+      level,
+      xp,
+      lastPracticeDate: new Date().toISOString(),
+      currentStreak: streak,
+    });
   };
 
   return (
