@@ -1,0 +1,716 @@
+[
+  {
+    "id": "aquecimento_aprendiz",
+    "title": "Aquecimento do Aprendiz",
+    "description": "Pratique seu instrumento por pelo menos 5 minutos.",
+    "difficulty": "easy",
+    "xp_reward": 12
+  },
+  {
+    "id": "constancia_inicial",
+    "title": "Constância Inicial",
+    "description": "Pratique por 10 minutos sem interrupções.",
+    "difficulty": "easy",
+    "xp_reward": 18
+  },
+  {
+    "id": "toque_dia",
+    "title": "Toque do Dia",
+    "description": "Toque pelo menos uma música hoje.",
+    "difficulty": "easy",
+    "xp_reward": 15
+  },
+  {
+    "id": "primeiro_contato",
+    "title": "Primeiro Contato",
+    "description": "Comece a estudar uma música nova.",
+    "difficulty": "easy",
+    "xp_reward": 20
+  },
+  {
+    "id": "passo_tranquilo",
+    "title": "Passo Tranquilo",
+    "description": "Toque uma música do início ao fim em velocidade reduzida.",
+    "difficulty": "easy",
+    "xp_reward": 20
+  },
+  {
+    "id": "revisao_curta",
+    "title": "Revisão Curta",
+    "description": "Revise uma música que já estava em progresso por 5 minutos.",
+    "difficulty": "easy",
+    "xp_reward": 14
+  },
+  {
+    "id": "treino_trecho",
+    "title": "Treino de Trecho",
+    "description": "Escolha um pequeno trecho e repita 5 vezes com atenção.",
+    "difficulty": "easy",
+    "xp_reward": 18
+  },
+  {
+    "id": "maos_separadas",
+    "title": "Mãos Separadas",
+    "description": "Pratique um trecho com cada mão separadamente por 3 minutos.",
+    "difficulty": "easy",
+    "xp_reward": 16
+  },
+  {
+    "id": "leitura_atenta",
+    "title": "Leitura Atenta",
+    "description": "Toque uma música olhando a partitura, cifra ou tablatura do começo ao fim.",
+    "difficulty": "easy",
+    "xp_reward": 22
+  },
+  {
+    "id": "ritmo_estavel",
+    "title": "Ritmo Estável",
+    "description": "Toque uma música mantendo o ritmo estável até o final.",
+    "difficulty": "easy",
+    "xp_reward": 22
+  },
+  {
+    "id": "retorno_caminho",
+    "title": "Retorno ao Caminho",
+    "description": "Retome uma música antiga e toque pelo menos metade dela.",
+    "difficulty": "easy",
+    "xp_reward": 20
+  },
+  {
+    "id": "dedilhado_consciente",
+    "title": "Dedilhado Consciente",
+    "description": "Pratique um trecho prestando atenção total no dedilhado.",
+    "difficulty": "easy",
+    "xp_reward": 18
+  },
+  {
+    "id": "cinco_minutos_foco",
+    "title": "Cinco Minutos de Foco",
+    "description": "Estude apenas um trecho difícil por 5 minutos.",
+    "difficulty": "easy",
+    "xp_reward": 17
+  },
+  {
+    "id": "treino_sem_pressa",
+    "title": "Treino Sem Pressa",
+    "description": "Toque uma música com calma, priorizando precisão em vez de velocidade.",
+    "difficulty": "easy",
+    "xp_reward": 20
+  },
+  {
+    "id": "recomeco_seguro",
+    "title": "Recomeço Seguro",
+    "description": "Toque os primeiros compassos de uma música nova três vezes.",
+    "difficulty": "easy",
+    "xp_reward": 16
+  },
+  {
+    "id": "pulso_firme",
+    "title": "Pulso Firme",
+    "description": "Pratique batendo o ritmo antes de tocar a música.",
+    "difficulty": "easy",
+    "xp_reward": 18
+  },
+  {
+    "id": "observador_musical",
+    "title": "Observador Musical",
+    "description": "Leia uma partitura, cifra ou tablatura nova e toque ao menos os primeiros compassos.",
+    "difficulty": "easy",
+    "xp_reward": 20
+  },
+  {
+    "id": "nota_por_nota",
+    "title": "Nota por Nota",
+    "description": "Estude um trecho curto corrigindo cada erro antes de seguir.",
+    "difficulty": "easy",
+    "xp_reward": 18
+  },
+  {
+    "id": "pequena_vitoria",
+    "title": "Pequena Vitória",
+    "description": "Conclua um trecho que estava te travando.",
+    "difficulty": "easy",
+    "xp_reward": 24
+  },
+  {
+    "id": "persistencia_leve",
+    "title": "Persistência Leve",
+    "description": "Volte para uma música em progresso e pratique por mais 8 minutos.",
+    "difficulty": "easy",
+    "xp_reward": 18
+  },
+  {
+    "id": "explorador_reino",
+    "title": "Explorador do Reino",
+    "description": "Inicie uma nova música do reino atual.",
+    "difficulty": "easy",
+    "xp_reward": 22
+  },
+  {
+    "id": "metade_caminho",
+    "title": "Metade do Caminho",
+    "description": "Toque metade de uma música sem parar.",
+    "difficulty": "easy",
+    "xp_reward": 24
+  },
+  {
+    "id": "treino_entrada",
+    "title": "Treino de Entrada",
+    "description": "Pratique apenas o começo de uma música até ele ficar firme.",
+    "difficulty": "easy",
+    "xp_reward": 18
+  },
+  {
+    "id": "treino_finalizacao",
+    "title": "Treino de Finalização",
+    "description": "Pratique apenas o final de uma música até ele soar seguro.",
+    "difficulty": "easy",
+    "xp_reward": 18
+  },
+  {
+    "id": "leitura_movimento",
+    "title": "Leitura em Movimento",
+    "description": "Toque uma melodia simples prestando atenção nas subidas e descidas das notas.",
+    "difficulty": "easy",
+    "xp_reward": 20
+  },
+  {
+    "id": "base_consistente",
+    "title": "Base Consistente",
+    "description": "Pratique 15 minutos no total hoje.",
+    "difficulty": "medium",
+    "xp_reward": 28
+  },
+  {
+    "id": "fluxo_continuo",
+    "title": "Fluxo Contínuo",
+    "description": "Toque uma música completa sem parar, mesmo que cometa pequenos erros.",
+    "difficulty": "medium",
+    "xp_reward": 32
+  },
+  {
+    "id": "trecho_teimoso",
+    "title": "Trecho Teimoso",
+    "description": "Repita um trecho difícil 10 vezes com atenção total.",
+    "difficulty": "medium",
+    "xp_reward": 30
+  },
+  {
+    "id": "dominio_parcial",
+    "title": "Domínio Parcial",
+    "description": "Toque pelo menos 70% de uma música sem interrupções.",
+    "difficulty": "medium",
+    "xp_reward": 36
+  },
+  {
+    "id": "primeira_execucao_limpa",
+    "title": "Primeira Execução Limpa",
+    "description": "Toque uma música inteira com poucos erros e boa fluidez.",
+    "difficulty": "medium",
+    "xp_reward": 40
+  },
+  {
+    "id": "maos_harmonia",
+    "title": "Mãos em Harmonia",
+    "description": "Pratique um trecho com as duas mãos juntas até ganhar fluidez.",
+    "difficulty": "medium",
+    "xp_reward": 34
+  },
+  {
+    "id": "ritmo_ordem",
+    "title": "Ritmo em Ordem",
+    "description": "Toque uma música completa sem perder o pulso.",
+    "difficulty": "medium",
+    "xp_reward": 35
+  },
+  {
+    "id": "nova_etapa",
+    "title": "Nova Etapa",
+    "description": "Avance para uma nova seção de uma música em progresso.",
+    "difficulty": "medium",
+    "xp_reward": 30
+  },
+  {
+    "id": "treino_resistencia",
+    "title": "Treino de Resistência",
+    "description": "Pratique por 20 minutos no total hoje.",
+    "difficulty": "medium",
+    "xp_reward": 34
+  },
+  {
+    "id": "controle_erros",
+    "title": "Controle de Erros",
+    "description": "Toque uma música e pare apenas para corrigir erros realmente importantes.",
+    "difficulty": "medium",
+    "xp_reward": 32
+  },
+  {
+    "id": "primeira_musica_reino",
+    "title": "Primeira Música do Reino",
+    "description": "Conclua uma música simples do reino atual.",
+    "difficulty": "medium",
+    "xp_reward": 45
+  },
+  {
+    "id": "revisao_progresso",
+    "title": "Revisão de Progresso",
+    "description": "Toque duas músicas diferentes que já estejam em andamento.",
+    "difficulty": "medium",
+    "xp_reward": 36
+  },
+  {
+    "id": "olhos_partitura_cifra_tablatura",
+    "title": "Olhos na Partitura",
+    "description": "Toque uma música inteira priorizando a leitura da partitura, cifra ou tablatura.",
+    "difficulty": "medium",
+    "xp_reward": 34
+  },
+  {
+    "id": "memoria_construcao",
+    "title": "Memória em Construção",
+    "description": "Toque um trecho curto sem olhar para a partitura, cifra ou tablatura.",
+    "difficulty": "medium",
+    "xp_reward": 38
+  },
+  {
+    "id": "sem_olhar_instrumento",
+    "title": "Sem Olhar para o Instrumento",
+    "description": "Toque parte de uma música sem olhar para o teclado ou braço do instrumento.",
+    "difficulty": "medium",
+    "xp_reward": 42
+  },
+  {
+    "id": "passagem_delicada",
+    "title": "Passagem Delicada",
+    "description": "Corrija uma passagem específica que vinha saindo errada.",
+    "difficulty": "medium",
+    "xp_reward": 30
+  },
+  {
+    "id": "leitura_nova",
+    "title": "Leitura Nova",
+    "description": "Experimente tocar uma música nova à primeira vista por alguns compassos.",
+    "difficulty": "medium",
+    "xp_reward": 32
+  },
+  {
+    "id": "dois_trechos_missao",
+    "title": "Dois Trechos, Uma Missão",
+    "description": "Pratique dois trechos diferentes da mesma música hoje.",
+    "difficulty": "medium",
+    "xp_reward": 30
+  },
+  {
+    "id": "conquista_meio_reino",
+    "title": "Conquista de Meio Reino",
+    "description": "Finalize duas músicas do reino atual.",
+    "difficulty": "medium",
+    "xp_reward": 55
+  },
+  {
+    "id": "execucao_controlada",
+    "title": "Execução Controlada",
+    "description": "Toque uma música inteira lentamente e sem pressa, mas com poucas falhas.",
+    "difficulty": "medium",
+    "xp_reward": 34
+  },
+  {
+    "id": "foco_coordenacao",
+    "title": "Foco em Coordenação",
+    "description": "Treine por 10 minutos um trecho em que suas mãos ainda travam.",
+    "difficulty": "medium",
+    "xp_reward": 32
+  },
+  {
+    "id": "pratica_reforco",
+    "title": "Prática de Reforço",
+    "description": "Toque novamente uma música concluída para reforçar sua memória.",
+    "difficulty": "medium",
+    "xp_reward": 28
+  },
+  {
+    "id": "caminho_seguro",
+    "title": "Caminho Seguro",
+    "description": "Toque duas vezes a mesma música, melhorando da primeira para a segunda.",
+    "difficulty": "medium",
+    "xp_reward": 38
+  },
+  {
+    "id": "andamento_consciente",
+    "title": "Andamento Consciente",
+    "description": "Mantenha um andamento constante do começo ao fim em uma música do reino.",
+    "difficulty": "medium",
+    "xp_reward": 36
+  },
+  {
+    "id": "virada_pagina",
+    "title": "Virada de Página",
+    "description": "Conclua uma música que estava marcada como em progresso.",
+    "difficulty": "medium",
+    "xp_reward": 48
+  },
+  {
+    "id": "treino_fraseado",
+    "title": "Treino de Fraseado",
+    "description": "Toque uma música tentando deixar a melodia mais expressiva e natural.",
+    "difficulty": "medium",
+    "xp_reward": 34
+  },
+  {
+    "id": "passo_firme",
+    "title": "Passo Firme",
+    "description": "Pratique 25 minutos no total hoje.",
+    "difficulty": "medium",
+    "xp_reward": 38
+  },
+  {
+    "id": "treino_blocos",
+    "title": "Treino em Blocos",
+    "description": "Divida uma música em três partes e pratique cada uma separadamente.",
+    "difficulty": "medium",
+    "xp_reward": 35
+  },
+  {
+    "id": "retorno_vitorioso",
+    "title": "Retorno Vitorioso",
+    "description": "Retome uma música antiga e toque-a melhor do que na última vez.",
+    "difficulty": "medium",
+    "xp_reward": 40
+  },
+  {
+    "id": "folego_musical",
+    "title": "Fôlego Musical",
+    "description": "Toque duas músicas completas no mesmo dia.",
+    "difficulty": "medium",
+    "xp_reward": 42
+  },
+  {
+    "id": "reta_final",
+    "title": "Reta Final",
+    "description": "Avance até o último trecho de uma música em progresso.",
+    "difficulty": "medium",
+    "xp_reward": 36
+  },
+  {
+    "id": "consolidacao_reino",
+    "title": "Consolidação do Reino",
+    "description": "Finalize três músicas normais do reino atual.",
+    "difficulty": "hard",
+    "xp_reward": 70
+  },
+  {
+    "id": "execucao_sem_parar",
+    "title": "Execução Sem Parar",
+    "description": "Toque uma música inteira duas vezes seguidas sem interrupções.",
+    "difficulty": "hard",
+    "xp_reward": 62
+  },
+  {
+    "id": "limpeza_musical",
+    "title": "Limpeza Musical",
+    "description": "Toque uma música inteira sem erros graves.",
+    "difficulty": "hard",
+    "xp_reward": 65
+  },
+  {
+    "id": "treino_profundo",
+    "title": "Treino Profundo",
+    "description": "Pratique por 30 minutos no total hoje.",
+    "difficulty": "hard",
+    "xp_reward": 55
+  },
+  {
+    "id": "sem_olhar_sem_medo",
+    "title": "Sem Olhar, Sem Medo",
+    "description": "Toque um trecho importante sem olhar para o instrumento.",
+    "difficulty": "hard",
+    "xp_reward": 58
+  },
+  {
+    "id": "dominio_andamento",
+    "title": "Domínio do Andamento",
+    "description": "Toque uma música no andamento planejado com estabilidade até o final.",
+    "difficulty": "hard",
+    "xp_reward": 60
+  },
+  {
+    "id": "trecho_impecavel",
+    "title": "Trecho Impecável",
+    "description": "Execute um trecho difícil corretamente 5 vezes seguidas.",
+    "difficulty": "hard",
+    "xp_reward": 58
+  },
+  {
+    "id": "confianca_crescente",
+    "title": "Confiança Crescente",
+    "description": "Toque uma música completa sem voltar nenhum trecho.",
+    "difficulty": "hard",
+    "xp_reward": 60
+  },
+  {
+    "id": "leitura_coragem",
+    "title": "Leitura com Coragem",
+    "description": "Toque uma nova música à primeira vista por uma página inteira.",
+    "difficulty": "hard",
+    "xp_reward": 56
+  },
+  {
+    "id": "dois_mundos",
+    "title": "Dois Mundos",
+    "description": "Toque uma música do reino atual e uma música já concluída.",
+    "difficulty": "hard",
+    "xp_reward": 52
+  },
+  {
+    "id": "preparacao_boss",
+    "title": "Preparação para o Boss",
+    "description": "Pratique a música do boss por pelo menos 15 minutos.",
+    "difficulty": "hard",
+    "xp_reward": 68
+  },
+  {
+    "id": "desafio_fluidez",
+    "title": "Desafio de Fluidez",
+    "description": "Toque uma música em progresso com fluidez do início ao fim.",
+    "difficulty": "hard",
+    "xp_reward": 58
+  },
+  {
+    "id": "resistencia_bardo",
+    "title": "Resistência do Bardo",
+    "description": "Pratique 35 minutos no total hoje.",
+    "difficulty": "hard",
+    "xp_reward": 60
+  },
+  {
+    "id": "vitoria_parcial",
+    "title": "Vitória Parcial",
+    "description": "Finalize mais uma música do reino atual.",
+    "difficulty": "hard",
+    "xp_reward": 72
+  },
+  {
+    "id": "musica_sem_refugio",
+    "title": "Música sem Refúgio",
+    "description": "Toque uma música inteira sem pausar para corrigir erros.",
+    "difficulty": "hard",
+    "xp_reward": 62
+  },
+  {
+    "id": "foco_precisao",
+    "title": "Foco em Precisão",
+    "description": "Pratique um trecho rápido ou técnico até ele sair limpo 3 vezes seguidas.",
+    "difficulty": "hard",
+    "xp_reward": 60
+  },
+  {
+    "id": "pulso_controle",
+    "title": "Pulso e Controle",
+    "description": "Toque uma música mantendo consistência de ritmo e dinâmica.",
+    "difficulty": "hard",
+    "xp_reward": 60
+  },
+  {
+    "id": "etapa_superada",
+    "title": "Etapa Superada",
+    "description": "Conclua uma música de dificuldade média ou alta.",
+    "difficulty": "hard",
+    "xp_reward": 76
+  },
+  {
+    "id": "treino_memoria",
+    "title": "Treino de Memória",
+    "description": "Toque uma seção completa sem olhar para a partitura, cifra ou tablatura.",
+    "difficulty": "hard",
+    "xp_reward": 58
+  },
+  {
+    "id": "duas_vezes_melhor",
+    "title": "Duas Vezes Melhor",
+    "description": "Toque duas vezes seguidas a mesma música, melhorando a segunda execução.",
+    "difficulty": "hard",
+    "xp_reward": 54
+  },
+  {
+    "id": "metade_boss",
+    "title": "Metade do Boss",
+    "description": "Domine pelo menos metade da música do boss.",
+    "difficulty": "hard",
+    "xp_reward": 78
+  },
+  {
+    "id": "ritual_reino",
+    "title": "Ritual do Reino",
+    "description": "Toque todas as músicas normais já liberadas do reino atual no mesmo dia.",
+    "difficulty": "hard",
+    "xp_reward": 85
+  },
+  {
+    "id": "prova_concentracao",
+    "title": "Prova de Concentração",
+    "description": "Pratique 40 minutos no total hoje.",
+    "difficulty": "hard",
+    "xp_reward": 68
+  },
+  {
+    "id": "ajuste_fino",
+    "title": "Ajuste Fino",
+    "description": "Corrija três trechos diferentes de uma música em progresso.",
+    "difficulty": "hard",
+    "xp_reward": 58
+  },
+  {
+    "id": "execucao_segura",
+    "title": "Execução Segura",
+    "description": "Toque uma música inteira com confiança e quase sem hesitar.",
+    "difficulty": "hard",
+    "xp_reward": 64
+  },
+  {
+    "id": "ultimo_portao",
+    "title": "Último Portão",
+    "description": "Finalize a última música normal antes do boss.",
+    "difficulty": "hard",
+    "xp_reward": 80
+  },
+  {
+    "id": "desafiante_reino",
+    "title": "Desafiante do Reino",
+    "description": "Derrote o boss do reino atual.",
+    "difficulty": "epic",
+    "xp_reward": 140
+  },
+  {
+    "id": "conquistador_planicies",
+    "title": "Conquistador das Planícies",
+    "description": "Complete um reino inteiro, incluindo o boss.",
+    "difficulty": "epic",
+    "xp_reward": 170
+  },
+  {
+    "id": "triade_perfeita",
+    "title": "Tríade Perfeita",
+    "description": "Toque três músicas diferentes no mesmo dia com boa consistência.",
+    "difficulty": "epic",
+    "xp_reward": 95
+  },
+  {
+    "id": "sem_erro_sem_medo",
+    "title": "Sem Erro, Sem Medo",
+    "description": "Toque uma música inteira sem erros perceptíveis.",
+    "difficulty": "epic",
+    "xp_reward": 90
+  },
+  {
+    "id": "mestre_trecho",
+    "title": "Mestre do Trecho",
+    "description": "Execute um trecho difícil 10 vezes seguidas sem errar.",
+    "difficulty": "epic",
+    "xp_reward": 92
+  },
+  {
+    "id": "coroacao_parcial",
+    "title": "Coroação Parcial",
+    "description": "Conclua duas músicas do reino no mesmo dia.",
+    "difficulty": "epic",
+    "xp_reward": 100
+  },
+  {
+    "id": "guardiao_ritmo",
+    "title": "Guardião do Ritmo",
+    "description": "Toque uma música completa sem perder o pulso em nenhum momento.",
+    "difficulty": "epic",
+    "xp_reward": 88
+  },
+  {
+    "id": "sem_olhar_para_tras",
+    "title": "Sem Olhar para Trás",
+    "description": "Toque uma música inteira sem olhar para o instrumento.",
+    "difficulty": "epic",
+    "xp_reward": 96
+  },
+  {
+    "id": "ascensao_musical",
+    "title": "Ascensão Musical",
+    "description": "Finalize uma música desafiadora que estava travada há dias.",
+    "difficulty": "epic",
+    "xp_reward": 105
+  },
+  {
+    "id": "passagem_heroi",
+    "title": "Passagem do Herói",
+    "description": "Pratique por 45 minutos no total hoje.",
+    "difficulty": "epic",
+    "xp_reward": 78
+  },
+  {
+    "id": "boss_construcao",
+    "title": "Boss em Construção",
+    "description": "Toque a música do boss do início ao fim, mesmo com pequenos erros.",
+    "difficulty": "epic",
+    "xp_reward": 98
+  },
+  {
+    "id": "vitoria_repetida",
+    "title": "Vitória Repetida",
+    "description": "Toque uma música concluída duas vezes seguidas sem erros graves.",
+    "difficulty": "epic",
+    "xp_reward": 86
+  },
+  {
+    "id": "bardo_incansavel",
+    "title": "Bardo Incansável",
+    "description": "Pratique 50 minutos no total hoje.",
+    "difficulty": "epic",
+    "xp_reward": 85
+  },
+  {
+    "id": "chamado_partitura",
+    "title": "Chamado da Partitura",
+    "description": "Toque uma música nova apenas pela leitura da partitura, cifra ou tablatura até o final da primeira seção.",
+    "difficulty": "epic",
+    "xp_reward": 82
+  },
+  {
+    "id": "firmeza_melodia",
+    "title": "Firmeza da Melodia",
+    "description": "Toque uma música com dinâmica mais controlada e melodia bem destacada.",
+    "difficulty": "epic",
+    "xp_reward": 84
+  },
+  {
+    "id": "grande_retorno",
+    "title": "Grande Retorno",
+    "description": "Retome uma música antiga difícil e toque-a com melhora clara.",
+    "difficulty": "epic",
+    "xp_reward": 88
+  },
+  {
+    "id": "quase_mestre",
+    "title": "Quase Mestre",
+    "description": "Conclua quatro músicas normais do reino atual.",
+    "difficulty": "epic",
+    "xp_reward": 110
+  },
+  {
+    "id": "ponte_proximo_reino",
+    "title": "Ponte para o Próximo Reino",
+    "description": "Finalize o boss e toque novamente uma música do mesmo reino.",
+    "difficulty": "epic",
+    "xp_reward": 115
+  },
+  {
+    "id": "muralha_quebrada",
+    "title": "Muralha Quebrada",
+    "description": "Supere hoje o trecho que mais estava te impedindo de avançar.",
+    "difficulty": "epic",
+    "xp_reward": 90
+  },
+  {
+    "id": "ressonancia_reino",
+    "title": "Ressonância do Reino",
+    "description": "Toque todas as músicas concluídas do reino atual em sequência.",
+    "difficulty": "epic",
+    "xp_reward": 120
+  }
+]
