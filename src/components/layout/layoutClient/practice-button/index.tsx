@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import styles from "./index.module.scss";
-import cn from "classnames";
-import { Modal } from "@/components/modal";
 import { Button } from "@/components/button";
+import { Modal } from "@/components/modal";
+import { StreakService } from "@/services/streak.service";
 import { isTodayConfirmation } from "@/utils/functions/isTodayConfirmation";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { ProfileService } from "@/services/profile.service";
+import cn from "classnames";
+import { useEffect, useState } from "react";
+import styles from "./index.module.scss";
 
 interface IPracticeButtonProps {
   lastPracticeDate: string | null;
@@ -33,7 +33,7 @@ export const PracticeButton = ({
   }, [lastPracticeDate]);
 
   const updateStreakMutation = useMutation({
-    mutationFn: ProfileService.increaseUserStreak,
+    mutationFn: StreakService.increaseUserStreak,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["user-profile", userId] });
       queryClient.invalidateQueries({ queryKey: ["users", userId] });

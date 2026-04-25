@@ -9,7 +9,7 @@ import { KingdomTrail } from "./components/kingdom-trail";
 import styles from "./page.module.scss";
 
 export default function Dashboard() {
-  const [kingdomSelected, setKingdomSelected] = useState<string | undefined>("k-002");
+  const [kingdomSelected, setKingdomSelected] = useState<string | undefined>(undefined);
   const { isTabletUp } = useScreenSize();
 
   const kingdom = MOCK_KINGDOMS.find((k) => k.id === kingdomSelected);

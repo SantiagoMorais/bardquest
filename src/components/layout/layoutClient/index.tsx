@@ -1,20 +1,20 @@
 "use client";
+import { ProfileService } from "@/services/profile.service";
+import { User } from "@supabase/supabase-js";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import styles from "./index.module.scss";
-import { User } from "@supabase/supabase-js";
-import { ProfileService } from "@/services/profile.service";
 
-import { ProfileNotFound } from "@/components/profileNotFound";
-import { Header } from "./header";
-import { PropsWithChildren } from "react";
-import { PracticeButton } from "./practice-button";
-import { ExperienceBar } from "./experience-bar";
-import { ProfileError } from "@/components/profileError";
-import { toast } from "@/components/toast";
-import { useEffect, useRef } from "react";
-import { daysSince } from "@/utils/functions/daysSince";
 import { LoadingScreen } from "@/components/loadingScreen";
+import { ProfileError } from "@/components/profileError";
+import { ProfileNotFound } from "@/components/profileNotFound";
+import { toast } from "@/components/toast";
 import { getXpToNextLevel } from "@/config/progression";
+import { StreakService } from "@/services/streak.service";
+import { daysSince } from "@/utils/functions/daysSince";
+import { PropsWithChildren, useEffect, useRef } from "react";
+import { ExperienceBar } from "./experience-bar";
+import { Header } from "./header";
+import { PracticeButton } from "./practice-button";
 
 type ILayoutClientProps = PropsWithChildren & {
   user: User;
@@ -33,7 +33,7 @@ export const LayoutClient = ({ user, children }: ILayoutClientProps) => {
   });
 
   const resetStreakMutation = useMutation({
-    mutationFn: ProfileService.resetUserStreak,
+    mutationFn: StreakService.resetUserStreak,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["users", user.id] });
       toast.warn(
