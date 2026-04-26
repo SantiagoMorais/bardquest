@@ -6,7 +6,7 @@ import styles from "./index.module.scss";
 import DefaultKingdomImage from "@/assets/default-kingdom-image.png";
 import { Button } from "@/components/button";
 import { MOCK_KINGDOMS } from "@/utils/mock";
-import { TypeState } from "@/interfaces/typestate";
+import { TypeState } from "@/interfaces/typeState";
 import { KingdomSongsList } from "./kingdom-songs-list";
 import { KingdomLore } from "./kingdom-lore";
 import { useScreenSize } from "@/hooks/useScreenSize";

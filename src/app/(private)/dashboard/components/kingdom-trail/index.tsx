@@ -3,7 +3,7 @@ import { IKingdom } from "@/interfaces/api/kingdom";
 import styles from "./index.module.scss";
 import Image from "next/image";
 import KingdomFrame from "@/assets/kingdom-frame.png";
-import { TypeState } from "@/interfaces/typestate";
+import { TypeState } from "@/interfaces/typeState";
 
 interface IKingdomTrailProps {
   kingdoms: IKingdom[];

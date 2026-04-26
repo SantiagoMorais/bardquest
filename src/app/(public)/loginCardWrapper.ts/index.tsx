@@ -5,7 +5,7 @@ import { toast } from "@/components/toast";
 import { ISignInRequest, signInSchema } from "@/interfaces/services/sign-up-type";
 import { useForm } from "react-hook-form";
 import { LoginCard } from "./loginCard";
-import { TypeState } from "@/interfaces/typestate";
+import { TypeState } from "@/interfaces/typeState";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { redirect, useRouter } from "next/navigation";
 import { AuthApiError } from "@supabase/supabase-js";

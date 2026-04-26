@@ -3,7 +3,7 @@ import { Modal } from "@/components/modal";
 import { IUserProfile, IUserProfileWithUser } from "@/interfaces/api/user";
 import { CATEGORIES } from "@/interfaces/onboarding-types";
 import { IUpdateUserPreferences } from "@/interfaces/services/update-user-data";
-import { TypeState } from "@/interfaces/typestate";
+import { TypeState } from "@/interfaces/typeState";
 import { cn } from "@/utils/functions/cn";
 import { User } from "@supabase/supabase-js";
 import { useEffect, useRef } from "react";

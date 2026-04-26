@@ -2,9 +2,7 @@
 
 import { toast } from "@/components/toast";
 import { IUserProfileWithUser } from "@/interfaces/api/user";
-import {
-  IOnboardingFormValues
-} from "@/interfaces/onboarding-types";
+import { IOnboardingFormValues } from "@/interfaces/onboarding-types";
 import { UserService } from "@/services/user.service";
 import { User } from "@supabase/supabase-js";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -28,7 +26,6 @@ export const OnboardingModalWrapper = ({ user }: IOnboardingModalWrapperProps) =
         queryClient.invalidateQueries({ queryKey: ["user-profile", user.id] }),
       ]);
       toast.success(`Perfil criado com sucesso! Bem-vindo à aventura!`);
-      navigate.replace("/dashboard");
       navigate.refresh();
     },
     onError: (error) => {

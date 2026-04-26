@@ -2,7 +2,7 @@
 
 import { toast } from "@/components/toast";
 import { IUserProfileWithUser } from "@/interfaces/api/user";
-import { TypeState } from "@/interfaces/typestate";
+import { TypeState } from "@/interfaces/typeState";
 import { MissionService } from "@/services/mission.service";
 import { StreakService } from "@/services/streak.service";
 
@@ -43,10 +43,15 @@ export const useSessionEffects = ({
   const missionModalShownRef = useRef(false);
   const [missionModalOpen, setMissionModalOpen] = useState(false);
 
+  const today = new Date().toISOString().split("T")[0];
+  const MODAL_KEY = `mission_modal_${userProfile.user.id}_${today}`;
+
   const resetStreakMutation = useMutation({
     mutationFn: StreakService.resetUserStreak,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["users", userProfile.user.id] });
+      queryClient.invalidateQueries({
+        queryKey: ["sessionProfile", userProfile.user.id],
+      });
       toast.warn(
         "Sua sequência foi interrompida após 2 dias sem prática. Mas toda grande jornada tem pausas — retome hoje e comece uma nova sequência ainda mais forte!"
       );
@@ -56,34 +61,34 @@ export const useSessionEffects = ({
   const addMissionPayload = useMutation({
     mutationFn: MissionService.addDailyMission,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["users", userProfile.user.id] });
+      queryClient.invalidateQueries({
+        queryKey: ["sessionProfile", userProfile.user.id],
+      });
       missionModalShownRef.current = true;
-      sessionStorage.setItem(MISSION_MODAL_SESSION_KEY, "true");
+      localStorage.setItem(MODAL_KEY, today);
       setMissionModalOpen(true);
     },
   });
-
-  const MISSION_MODAL_SESSION_KEY = `mission_modal_shown_${userProfile.user.id}`;
 
   // Handles daily mission modal logic and assignment
   useEffect(() => {
     if (!userProfile) return;
     if (missionModalShownRef.current) return;
+
+    if (localStorage.getItem(MODAL_KEY)) return;
+
     const { user } = userProfile;
-
-    if (sessionStorage.getItem(MISSION_MODAL_SESSION_KEY)) return;
-
-    const today = new Date().toISOString().split("T")[0];
     const lastMissionDay = user.last_mission_at?.split("T")[0];
 
     if (lastMissionDay === today) {
       missionModalShownRef.current = true;
-      sessionStorage.setItem(MISSION_MODAL_SESSION_KEY, "true");
+      localStorage.setItem(MODAL_KEY, "shown");
       const timer = setTimeout(() => setMissionModalOpen(true), 600);
       return () => clearTimeout(timer);
     }
 
     if (user.daily_missions && user.daily_missions.length >= 3) return;
+
     const newMission = selectRandomMission({
       activeMissionIds: user.daily_missions?.map((m) => m.id) ?? [],
     });
@@ -91,7 +96,7 @@ export const useSessionEffects = ({
 
     missionModalShownRef.current = true;
     addMissionPayload.mutate({ newMission, userId: user.id });
-  }, [MISSION_MODAL_SESSION_KEY, userProfile, addMissionPayload]);
+  }, [userProfile]);
 
   // Handles streak reset if user hasn't practiced for 2+ days
   useEffect(() => {
@@ -104,7 +109,7 @@ export const useSessionEffects = ({
 
     resetAttemptedRef.current = true;
     resetStreakMutation.mutate({ userId: userProfile.user.id });
-  }, [userProfile, resetStreakMutation]);
+  }, [userProfile]);
 
   return {
     missionModalOpen,
