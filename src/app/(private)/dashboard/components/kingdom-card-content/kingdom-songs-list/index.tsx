@@ -9,7 +9,7 @@ import { LuCheck, LuRotateCcw } from "react-icons/lu";
 import styles from "./index.module.scss";
 import { SheetMusic } from "./sheet-music";
 import { STATUS_ICON, STATUS_LABEL } from "@/utils/status-label-and-icon";
-import { StatusAction } from "./statuus-action";
+import { StatusAction } from "./status-action";
 
 interface SongWithMeta extends IKingdomSong {
   part: "part_1" | "part_2" | "part_3" | "final_part";

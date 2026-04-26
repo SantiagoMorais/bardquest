@@ -41,7 +41,7 @@ export const MissionCard = ({
         level: user.level,
       }),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["users", user.id] });
+      queryClient.invalidateQueries({ queryKey: ["sessionProfile", user.id] });
     },
     onError: () => {
       toast.error("Não foi possível concluir a missão.");

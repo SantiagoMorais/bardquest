@@ -46,7 +46,8 @@ export class MissionService {
     level,
   }: ICompleteMissionRequest) => {
     const gainedXp = getMissionXp({
-      difficulty: mission.difficulty,
+      level,
+      xp_reward: mission.xp_reward,
     });
 
     const updatedProgress = applyXp({
@@ -71,8 +72,8 @@ export class MissionService {
       .from("users")
       .update({
         daily_missions: updatedMissions,
-        ...(currentXp ? { xp: updatedProgress.currentXp } : {}),
-        ...(level ? { level: updatedProgress.level } : {}),
+        xp: updatedProgress.currentXp,
+        level: updatedProgress.level,
       })
       .eq("id", userId);
 

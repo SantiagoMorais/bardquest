@@ -34,7 +34,7 @@ export const UserPreferences = ({ profile }: IUserPreferencesProps) => {
   const changeUserPreferencesMutation = useMutation({
     mutationFn: ProfileService.updateUserPreferences,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["user-profile", user!.id] });
+      queryClient.invalidateQueries({ queryKey: ["sessionProfile", user!.id] });
       setModalIsOpen(false);
       toast.success("Preferências atualizadas com sucesso!");
     },

@@ -35,8 +35,7 @@ export const PracticeButton = ({
   const updateStreakMutation = useMutation({
     mutationFn: StreakService.increaseUserStreak,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["user-profile", userId] });
-      queryClient.invalidateQueries({ queryKey: ["users", userId] });
+      queryClient.invalidateQueries({ queryKey: ["sessionProfile", userId] });
       setPracticed(true);
       setModalIsOpen(false);
     },

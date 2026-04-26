@@ -1,15 +1,18 @@
 /**
- * Returns how many full days have passed since the given date.
+ * Returns how many calendar days have passed since the given local date.
  */
 export const daysSince = (dateStr: string | null | undefined): number | null => {
   if (!dateStr) return null;
 
-  const date = new Date(dateStr);
-  if (Number.isNaN(date.getTime())) return null;
+  const [year, month, day] = dateStr.split("-").map(Number);
 
+  if (!year || !month || !day) return null;
+
+  const date = new Date(year, month - 1, day);
   const today = new Date();
-  const utcDate = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
-  const utcToday = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
 
-  return Math.floor((utcToday - utcDate) / (1000 * 60 * 60 * 24));
+  const dateStart = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+  return Math.floor((todayStart.getTime() - dateStart.getTime()) / (1000 * 60 * 60 * 24));
 };

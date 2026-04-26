@@ -3,12 +3,6 @@ export const GAME_BALANCE = {
     base: 100,
     growthRate: 1.22,
   },
-  missionXp: {
-    easy: 20,
-    medium: 40,
-    hard: 70,
-    epic: 110,
-  },
   songXp: {
     easy: 50,
     medium: 90,
@@ -25,6 +19,10 @@ export const GAME_BALANCE = {
   realmCompletionBonus: {
     base: 120,
     perDifficulty: 20,
+  },
+  playerLevelBonus: {
+    bonusPerLevel: 0.01,
+    maxBonus: 0.25,
   },
   streak: {
     dailyBonus: [
@@ -47,15 +45,15 @@ export const GAME_BALANCE = {
   },
 } as const;
 
-export type IMissionDifficulty = keyof typeof GAME_BALANCE.missionXp;
 export type ISongDifficulty = keyof typeof GAME_BALANCE.songXp;
+export type IMissionDifficulty = "easy" | "medium" | "hard" | "epic";
 
 /**
  * Returns the XP required to reach the next level.
  * Use when checking if the player can level up.
  */
 export const getXpToNextLevel = ({ level }: { level: number }): number => {
-  return Math.round(
+  return Math.ceil(
     GAME_BALANCE.xpToNextLevel.base *
       Math.pow(GAME_BALANCE.xpToNextLevel.growthRate, level - 1)
   );
@@ -63,7 +61,7 @@ export const getXpToNextLevel = ({ level }: { level: number }): number => {
 
 /**
  * Returns the XP multiplier based on the realm difficulty.
- * Use when scaling song rewards for harder realms.
+ * Use when scaling song and realm rewards.
  */
 export const getRealmMultiplier = ({
   realmDifficulty,
@@ -74,30 +72,54 @@ export const getRealmMultiplier = ({
 };
 
 /**
- * Returns the base XP for a mission difficulty.
- * Use when rewarding the player after completing a mission.
+ * Returns the XP multiplier based on the player's level.
+ * Use when rewarding the player to give a small boost as they level up.
  */
-export const getMissionXp = ({
-  difficulty,
-}: {
-  difficulty: IMissionDifficulty;
-}): number => {
-  return GAME_BALANCE.missionXp[difficulty];
+export const getPlayerLevelMultiplier = ({ level }: { level: number }): number => {
+  const safeLevel = Math.max(level, 1);
+
+  const bonus = Math.min(
+    (safeLevel - 1) * GAME_BALANCE.playerLevelBonus.bonusPerLevel,
+    GAME_BALANCE.playerLevelBonus.maxBonus
+  );
+
+  return 1 + bonus;
 };
 
 /**
- * Returns the final XP for a song based on its difficulty and realm difficulty.
+ * Returns the final XP for a mission based on its own reward and player level.
+ * Use when rewarding the player after completing a mission.
+ */
+export const getMissionXp = ({
+  xp_reward,
+  level,
+}: {
+  xp_reward: number;
+  level?: number;
+}): number => {
+  return Math.ceil(xp_reward * getPlayerLevelMultiplier({ level: level ?? 1 }));
+};
+
+/**
+ * Returns the final XP for a song based on song difficulty, realm difficulty and player level.
  * Use when rewarding the player after completing a song.
  */
 export const getSongXp = ({
   difficulty,
   realmDifficulty,
+  level,
 }: {
   difficulty: ISongDifficulty;
   realmDifficulty: number;
+  level?: number;
 }): number => {
   const baseXp = GAME_BALANCE.songXp[difficulty];
-  return Math.round(baseXp * getRealmMultiplier({ realmDifficulty }));
+
+  return Math.ceil(
+    baseXp *
+      getRealmMultiplier({ realmDifficulty }) *
+      getPlayerLevelMultiplier({ level: level ?? 1 })
+  );
 };
 
 /**
@@ -106,13 +128,16 @@ export const getSongXp = ({
  */
 export const getBossClearBonus = ({
   realmDifficulty,
+  level,
 }: {
   realmDifficulty: number;
+  level?: number;
 }): number => {
-  return (
+  const baseBonus =
     GAME_BALANCE.bossClearBonus.base +
-    realmDifficulty * GAME_BALANCE.bossClearBonus.perDifficulty
-  );
+    realmDifficulty * GAME_BALANCE.bossClearBonus.perDifficulty;
+
+  return Math.ceil(baseBonus * getPlayerLevelMultiplier({ level: level ?? 1 }));
 };
 
 /**
@@ -121,20 +146,29 @@ export const getBossClearBonus = ({
  */
 export const getRealmCompletionBonus = ({
   realmDifficulty,
+  level,
 }: {
   realmDifficulty: number;
+  level?: number;
 }): number => {
-  return (
+  const baseBonus =
     GAME_BALANCE.realmCompletionBonus.base +
-    realmDifficulty * GAME_BALANCE.realmCompletionBonus.perDifficulty
-  );
+    realmDifficulty * GAME_BALANCE.realmCompletionBonus.perDifficulty;
+
+  return Math.ceil(baseBonus * getPlayerLevelMultiplier({ level: level ?? 1 }));
 };
 
 /**
  * Returns the streak bonus XP for the current streak day.
  * Use when rewarding the player for daily practice.
  */
-export const getStreakBonus = ({ streakDays }: { streakDays: number }): number => {
+export const getStreakBonus = ({
+  streakDays,
+  level,
+}: {
+  streakDays: number;
+  level?: number;
+}): number => {
   let bonus = 0;
 
   const range = GAME_BALANCE.streak.dailyBonus.find(
@@ -147,5 +181,5 @@ export const getStreakBonus = ({ streakDays }: { streakDays: number }): number =
 
   bonus += GAME_BALANCE.streak.milestones[streakDays] ?? 0;
 
-  return bonus;
+  return Math.ceil(bonus * getPlayerLevelMultiplier({ level: level ?? 1 }));
 };

@@ -23,7 +23,7 @@ export const OnboardingModalWrapper = ({ user }: IOnboardingModalWrapperProps) =
     onSuccess: async () => {
       await Promise.all([
         queryClient.invalidateQueries({ queryKey: ["onboarding-profile", user.id] }),
-        queryClient.invalidateQueries({ queryKey: ["user-profile", user.id] }),
+        queryClient.invalidateQueries({ queryKey: ["sessionProfile", user.id] }),
       ]);
       toast.success(`Perfil criado com sucesso! Bem-vindo à aventura!`);
       navigate.refresh();
