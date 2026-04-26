@@ -2,7 +2,7 @@ export interface IOnboardingFormValues {
   username: string;
   birth_date: string | null;
   gender: "male" | "female" | null;
-  experience: "begginer" | "basic" | "intermediate" | "advanced";
+  experience: "beginner" | "basic" | "intermediate" | "advanced";
   instrument: "piano" | "guitar";
   interests: {
     categories: string[];
@@ -14,7 +14,7 @@ export const EXPERIENCE_TO_DIFFICULTY: Record<
   IOnboardingFormValues["experience"],
   number
 > = {
-  begginer: 1,
+  beginner: 1,
   basic: 3,
   intermediate: 6,
   advanced: 9,

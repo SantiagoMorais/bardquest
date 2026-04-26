@@ -1,6 +1,6 @@
 import { Button } from "@/components/button";
 import { Modal } from "@/components/modal";
-import { IUserProfileWithUser } from "@/interfaces/api/user";
+import { IUserProfile, IUserProfileWithUser } from "@/interfaces/api/user";
 import { CATEGORIES } from "@/interfaces/onboarding-types";
 import { IUpdateUserPreferences } from "@/interfaces/services/update-user-data";
 import { TypeState } from "@/interfaces/typestate";
@@ -16,7 +16,7 @@ interface IEditUserPreferencesModalProps {
   modalIsOpen: boolean;
   setModalIsOpen: TypeState<boolean>;
   user: User | null;
-  profile: IUserProfileWithUser;
+  profile: IUserProfile;
   onSubmit: (data: IUpdateUserPreferences) => void;
   isPending: boolean;
 }

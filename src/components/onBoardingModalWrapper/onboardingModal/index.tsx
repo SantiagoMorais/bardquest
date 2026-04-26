@@ -1,20 +1,19 @@
 "use client";
 
-import { useState, type SyntheticEvent } from "react";
-import { User } from "@supabase/supabase-js";
-import { LuChevronRight, LuChevronLeft, LuSparkles } from "react-icons/lu";
 import { Modal } from "@/components/modal";
+import type { IUserProfileWithUser } from "@/interfaces/api/user";
+import type { IOnboardingFormValues } from "@/interfaces/onboarding-types";
+import { payloadForFirstLogin } from "@/utils/payload-for-first-login";
+import { User } from "@supabase/supabase-js";
+import classNames from "classnames";
+import { useState, type SyntheticEvent } from "react";
 import { useWatch, type UseFormReturn } from "react-hook-form";
+import { LuChevronLeft, LuChevronRight, LuSparkles } from "react-icons/lu";
 import styles from "./index.module.scss";
 import { OnboardingStep0 } from "./onboardingStep0";
 import { OnboardingStep1 } from "./onboardingStep1";
 import { OnboardingStep2 } from "./onboardingStep2";
 import { OnboardingStep3 } from "./onboardingStep3";
-import type { IOnboardingFormValues } from "@/interfaces/onboarding-types";
-import { EXPERIENCE_TO_DIFFICULTY } from "@/interfaces/onboarding-types";
-import type { IUserProfileWithUser } from "@/interfaces/api/user";
-import classNames from "classnames";
-import { payloadForFirstLogin } from "@/utils/payload-for-first-login";
 
 interface IOnboardingModalProps {
   user: User;
@@ -97,7 +96,7 @@ export const OnboardingModal = ({
   return (
     <Modal isOpen={modalIsOpen} persistent>
       <form className={styles.container} onSubmit={handleFormSubmit}>
-        {step === 0 && <OnboardingStep0 user={user} />}
+        {step === 0 && <OnboardingStep0 />}
         {step === 1 && <OnboardingStep1 form={form} username={username} />}
         {step === 2 && <OnboardingStep2 form={form} />}
         {step === 3 && <OnboardingStep3 form={form} />}

@@ -1,26 +1,21 @@
 "use client";
 
-import { IUserProfileWithUser } from "@/interfaces/api/user";
-import styles from "./index.module.scss";
-import { TagList } from "./tag-list";
-import { useState } from "react";
-import { LuPencil, LuSword } from "react-icons/lu";
 import { Button } from "@/components/button";
-import { Modal } from "@/components/modal";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { toast } from "@/components/toast";
+import { useAuth } from "@/hooks/useAuth";
+import { IUserProfile } from "@/interfaces/api/user";
 import { IUpdateUserPreferences } from "@/interfaces/services/update-user-data";
 import { ProfileService } from "@/services/profile.service";
-import { toast } from "@/components/toast";
-import { useForm, useWatch } from "react-hook-form";
-import { useAuth } from "@/hooks/useAuth";
-import { CATEGORIES } from "@/interfaces/onboarding-types";
-import { LuCheck, LuPlus, LuX } from "react-icons/lu";
-import classNames from "classnames";
-import { useRef, useEffect } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { LuPencil } from "react-icons/lu";
 import { EditUserPreferencesModal } from "./edit-user-preferences-modal";
+import styles from "./index.module.scss";
+import { TagList } from "./tag-list";
 
 interface IUserPreferencesProps {
-  profile: IUserProfileWithUser;
+  profile: IUserProfile;
 }
 
 export const UserPreferences = ({ profile }: IUserPreferencesProps) => {

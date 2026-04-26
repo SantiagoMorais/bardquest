@@ -15,11 +15,10 @@ export interface IUserProfile {
   user_id: string;
   username: string;
   gender: "male" | "female" | null;
-  experience: "begginer" | "basic" | "intermediate" | "advanced";
   instrument: "piano" | "guitar";
   base_difficulty: number;
   interests: IUserInterests;
-  current_kingdom_id: number;
+  current_kingdom_id: number | null;
   updated_at: string;
   birth_date: string | null;
 }
@@ -29,9 +28,7 @@ export interface IUserInterests {
   keywords: string[];
 }
 
-export interface IUserProfileWithUser extends Omit<
-  IUserProfile,
-  "updated_at" | "current_kingdom_id" | "user_id"
-> {
+export interface IUserProfileWithUser {
+  profile: IUserProfile;
   user: IUser;
 }

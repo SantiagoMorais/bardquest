@@ -1,11 +1,10 @@
 "use client";
 
-import { FaQuestionCircle } from "react-icons/fa";
 import DefaultProfileImage from "@/assets/default-profile-image.png";
 import { IUserProfileWithUser } from "@/interfaces/api/user";
 import { calculateAge } from "@/utils/functions/calculateAge";
 import Image from "next/image";
-import { useState } from "react";
+import { FaQuestionCircle } from "react-icons/fa";
 import { LuCamera } from "react-icons/lu";
 import { MdOutlineStar, MdOutlineStarBorder } from "react-icons/md";
 import { formatDate, INSTRUMENT_LABEL } from "../utils/profile-functions-and-helpers";
@@ -15,11 +14,12 @@ import { StatChip } from "./stat-chip";
 import { UserPreferences } from "./user-preferences";
 
 interface IProfileLoadedProps {
-  profile: IUserProfileWithUser;
+  userProfile: IUserProfileWithUser;
 }
 
-export const ProfileLoaded = ({ profile }: IProfileLoadedProps) => {
-  const [isEditing, setIsEditing] = useState(false);
+export const ProfileLoaded = ({ userProfile }: IProfileLoadedProps) => {
+  const { profile, user } = userProfile;
+
   const baseDifficulty = Math.max(
     0,
     Math.min(10, Math.round(profile.base_difficulty ?? 0))
@@ -62,8 +62,8 @@ export const ProfileLoaded = ({ profile }: IProfileLoadedProps) => {
             </div>
 
             <div className={styles.avatarStats}>
-              <StatChip label="Nível" value={profile.user.level ?? 0} />
-              <StatChip label="Streak" value={`🔥 ${profile.user.streak ?? 0}d`} />
+              <StatChip label="Nível" value={user.level ?? 0} />
+              <StatChip label="Streak" value={`🔥 ${user.streak ?? 0}d`} />
             </div>
           </div>
 
@@ -75,7 +75,7 @@ export const ProfileLoaded = ({ profile }: IProfileLoadedProps) => {
             <div className={styles.fieldGrid}>
               <div className={styles.field}>
                 <label className={styles.fieldLabel}>E-mail</label>
-                <p className={styles.fieldValue}>{profile.user.email}</p>
+                <p className={styles.fieldValue}>{user.email}</p>
               </div>
               <div className={styles.field}>
                 <p className={styles.fieldLabel}>Idade</p>
@@ -134,7 +134,7 @@ export const ProfileLoaded = ({ profile }: IProfileLoadedProps) => {
               </div>
               <div className={styles.field}>
                 <p className={styles.fieldLabel}>Membro desde</p>
-                <p className={styles.fieldValue}>{formatDate(profile.user.created_at)}</p>
+                <p className={styles.fieldValue}>{formatDate(user.created_at)}</p>
               </div>
             </div>
           </div>

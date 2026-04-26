@@ -1,6 +1,6 @@
 import type { IOnboardingFormValues } from "@/interfaces/onboarding-types";
 import classNames from "classnames";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Controller, UseFormReturn } from "react-hook-form";
 import { LuCheck, LuUser } from "react-icons/lu";
 import styles from "./index.module.scss";
@@ -13,7 +13,22 @@ interface IOnboardingStep1Props {
 export const OnboardingStep1 = ({ form, username }: IOnboardingStep1Props) => {
   const { register } = form;
   const selectedGender = form.watch("gender");
-  const [birthDateMasked, setBirthDateMasked] = useState("");
+  const formatIsoToMaskedDate = (value: string | null | undefined) => {
+    if (!value) return "";
+
+    const parsedDate = new Date(value);
+    if (Number.isNaN(parsedDate.getTime())) return "";
+
+    const day = String(parsedDate.getDate()).padStart(2, "0");
+    const month = String(parsedDate.getMonth() + 1).padStart(2, "0");
+    const year = parsedDate.getFullYear();
+
+    return `${day}/${month}/${year}`;
+  };
+
+  const [birthDateMasked, setBirthDateMasked] = useState(() =>
+    formatIsoToMaskedDate(form.getValues("birth_date"))
+  );
   const today = new Date();
   const minBirthDate = new Date(today);
   minBirthDate.setFullYear(today.getFullYear() - 120);
@@ -87,25 +102,6 @@ export const OnboardingStep1 = ({ form, username }: IOnboardingStep1Props) => {
       iso: date.toISOString(),
     };
   };
-
-  useEffect(() => {
-    const currentBirthDate = form.getValues("birth_date");
-    if (!currentBirthDate) {
-      setBirthDateMasked("");
-      return;
-    }
-
-    const parsedDate = new Date(currentBirthDate);
-    if (Number.isNaN(parsedDate.getTime())) {
-      setBirthDateMasked("");
-      return;
-    }
-
-    const day = String(parsedDate.getDate()).padStart(2, "0");
-    const month = String(parsedDate.getMonth() + 1).padStart(2, "0");
-    const year = parsedDate.getFullYear();
-    setBirthDateMasked(`${day}/${month}/${year}`);
-  }, [form]);
 
   return (
     <section className={styles.step} aria-labelledby="step-1-title">

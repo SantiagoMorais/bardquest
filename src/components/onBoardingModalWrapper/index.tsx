@@ -2,7 +2,9 @@
 
 import { toast } from "@/components/toast";
 import { IUserProfileWithUser } from "@/interfaces/api/user";
-import { IOnboardingFormValues } from "@/interfaces/onboarding-types";
+import {
+  IOnboardingFormValues
+} from "@/interfaces/onboarding-types";
 import { UserService } from "@/services/user.service";
 import { User } from "@supabase/supabase-js";
 import { useMutation, useQueryClient } from "@tanstack/react-query";

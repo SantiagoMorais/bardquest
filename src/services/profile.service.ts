@@ -1,4 +1,5 @@
-import { IUser, IUserProfile, IUserProfileWithUser } from "@/interfaces/api/user";
+import { IUser, IUserProfile } from "@/interfaces/api/user";
+import { IGetUserProfileAndBaseDataResponse } from "@/interfaces/services/getUserProfileAndBaseData";
 import {
   IUpdateUserDataService,
   IUpdateUserPreferences,
@@ -63,32 +64,49 @@ export class ProfileService {
 
   static getUserProfileAndBaseData = async (
     userId: string
-  ): Promise<IUserProfileWithUser | null> => {
+  ): Promise<IGetUserProfileAndBaseDataResponse | null> => {
     const { data, error } = await supabase
-      .from("user_profiles")
+      .from("users")
       .select(
         `
-      *,
-      user:users!user_id (
-        id,
-        email,
-        xp,
-        level,
-        streak,
-        created_at
+      id,
+      email,
+      xp,
+      level,
+      streak,
+      created_at,
+      daily_missions,
+      last_mission_at,
+      last_practice_date,
+      profile:user_profiles!user_profiles_user_id_fkey (
+        username,
+        gender,
+        instrument,
+        base_difficulty,
+        interests,
+        current_kingdom_id,
+        birth_date
       )
     `
       )
-      .eq("user_id", userId)
-      .single();
+      .eq("id", userId)
+      .maybeSingle();
 
     if (error) {
-      if (error.code === "PGRST116") return null;
       console.error("Erro no Supabase:", error.message);
       throw error;
     }
 
-    return data as unknown as IUserProfileWithUser;
+    if (!data) {
+      return { user: null, profile: null };
+    }
+
+    const { profile, ...user } = data;
+
+    return {
+      user: user as IUser,
+      profile: (profile ?? null) as unknown as IUserProfile | null,
+    };
   };
 
   static updateUserData = async (payload: IUpdateUserDataService) => {

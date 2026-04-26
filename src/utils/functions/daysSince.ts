@@ -1,7 +1,7 @@
 /**
  * Returns how many full days have passed since the given date.
  */
-export const daysSince = (dateStr: string | null): number | null => {
+export const daysSince = (dateStr: string | null | undefined): number | null => {
   if (!dateStr) return null;
 
   const date = new Date(dateStr);

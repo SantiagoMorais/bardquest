@@ -1,12 +1,7 @@
 import { LuScroll } from "react-icons/lu";
 import styles from "./index.module.scss";
-import { User } from "@supabase/supabase-js";
 
-interface IOnboardingStep0Props {
-  user: User;
-}
-
-export const OnboardingStep0 = ({ user }: IOnboardingStep0Props) => {
+export const OnboardingStep0 = () => {
   return (
     <div className={styles.step}>
       <div className={styles.welcomeIcon}>

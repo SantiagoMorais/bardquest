@@ -1,16 +1,10 @@
 "use client";
 
-import { LuTag, LuCheck } from "react-icons/lu";
-import {
-  UseFormReturn,
-  useWatch,
-  type Control,
-  type UseFormGetValues,
-  type UseFormSetValue,
-} from "react-hook-form";
-import classNames from "classnames";
 import type { IOnboardingFormValues } from "@/interfaces/onboarding-types";
 import { CATEGORIES } from "@/interfaces/onboarding-types";
+import classNames from "classnames";
+import { UseFormReturn, useWatch } from "react-hook-form";
+import { LuCheck, LuTag } from "react-icons/lu";
 import styles from "./index.module.scss";
 
 interface IOnboardingStep2Props {

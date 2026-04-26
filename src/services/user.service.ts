@@ -1,4 +1,5 @@
 import { IUser, IUserProfile, IUserProfileWithUser } from "@/interfaces/api/user";
+import { IFirstTimeLoginPayload } from "@/interfaces/services/firstTimeLogin";
 import { supabase } from "@/lib/supabase";
 
 export class UserService {
@@ -42,18 +43,19 @@ export class UserService {
     }
   };
 
-  static firstTimeLogin = async (
-    data: IUserProfileWithUser
-  ): Promise<{ user: unknown; profile: unknown }> => {
+  static firstTimeLogin = async ({
+    user,
+    profile,
+  }: IUserProfileWithUser): Promise<{ user: IUser; profile: IUserProfile }> => {
     try {
       const { data: userData, error: userError } = await supabase
         .from("users")
         .insert({
-          id: data.user.id,
-          email: data.user.email,
-          xp: data.user.xp,
-          level: data.user.level,
-          streak: data.user.streak,
+          id: user.id,
+          email: user.email,
+          xp: 0,
+          level: 1,
+          streak: 0,
           created_at: new Date().toISOString(),
         } as IUser)
         .select()
@@ -68,14 +70,13 @@ export class UserService {
       const { data: profileData, error: profileError } = await supabase
         .from("user_profiles")
         .insert({
-          user_id: data.user.id,
-          gender: data.gender,
-          experience: data.experience,
-          username: data.username,
-          instrument: data.instrument,
-          base_difficulty: data.base_difficulty,
-          interests: data.interests,
-          birth_date: data.birth_date,
+          user_id: user.id,
+          gender: profile.gender,
+          username: profile.username,
+          instrument: profile.instrument,
+          base_difficulty: profile.base_difficulty,
+          interests: profile.interests,
+          birth_date: profile.birth_date,
         } as IUserProfile)
         .select()
         .single();

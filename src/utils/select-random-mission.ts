@@ -26,9 +26,9 @@ export const selectRandomMission = ({
 
   const weights: Record<IMissionDifficulty, number> = {
     easy: 10,
-    medium: 5,
-    hard: 2,
-    epic: 1000,
+    medium: 6,
+    hard: 3,
+    epic: 1,
   };
 
   const totalWeight = availableMissions.reduce(

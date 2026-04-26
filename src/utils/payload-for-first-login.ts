@@ -12,15 +12,19 @@ export const payloadForFirstLogin = ({
   data: IOnboardingFormValues;
   user: User;
 }): IUserProfileWithUser => ({
-  instrument: data.instrument,
-  birth_date: data.birth_date,
-  experience: data.experience,
-  base_difficulty: EXPERIENCE_TO_DIFFICULTY[data.experience],
-  gender: data.gender,
-  username: data.username,
-  interests: {
-    categories: data.interests.categories,
-    keywords: data.interests.keywords.filter((k) => k.trim() !== ""),
+  profile: {
+    instrument: data.instrument,
+    birth_date: data.birth_date,
+    base_difficulty: EXPERIENCE_TO_DIFFICULTY[data.experience],
+    gender: data.gender,
+    username: data.username,
+    interests: {
+      categories: data.interests.categories,
+      keywords: data.interests.keywords.filter((k) => k.trim() !== ""),
+    },
+    current_kingdom_id: null,
+    updated_at: new Date().toISOString(),
+    user_id: user.id,
   },
   user: {
     id: user.id,
@@ -31,5 +35,7 @@ export const payloadForFirstLogin = ({
     streak: 0,
     last_practice_date: null,
     updated_at: user.created_at,
+    daily_missions: [],
+    last_mission_at: null,
   },
 });
