@@ -17,7 +17,6 @@
   filter: drop-shadow(0 0.4rem 1.2rem var(--color-brown-alfa-20));
 }
 
-/* caps do pergaminho (cilindros enrolados) */
 .scrollCap {
   display: block;
   height: 2rem;
@@ -26,7 +25,6 @@
   border: 0.1rem solid var(--color-brown-500);
 }
 
-/* corpo do pergaminho */
 .scrollBody {
   display: flex;
   flex-direction: column;
@@ -37,7 +35,6 @@
   border-left: 0.1rem solid var(--color-beige-300);
   border-right: 0.1rem solid var(--color-beige-300);
 
-  /* textura sutil */
   background-image: repeating-linear-gradient(
     0deg,
     transparent,
@@ -70,7 +67,6 @@
   font-style: italic;
 }
 
-/* ── Retry button ── */
 .retryBtn {
   padding: var(--spacing-xs) var(--spacing-xl);
   background: var(--color-beige-50);

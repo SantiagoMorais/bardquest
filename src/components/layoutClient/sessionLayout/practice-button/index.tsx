@@ -15,6 +15,7 @@ interface IPracticeButtonProps {
   userId: string;
   level: number;
   xp: number;
+  handleLevelUp: (newLevel: number) => void;
 }
 
 export const PracticeButton = ({
@@ -23,6 +24,7 @@ export const PracticeButton = ({
   userId,
   level,
   xp,
+  handleLevelUp,
 }: IPracticeButtonProps) => {
   const queryClient = useQueryClient();
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
@@ -34,10 +36,11 @@ export const PracticeButton = ({
 
   const updateStreakMutation = useMutation({
     mutationFn: StreakService.increaseUserStreak,
-    onSuccess: () => {
+    onSuccess: (result) => {
       queryClient.invalidateQueries({ queryKey: ["sessionProfile", userId] });
       setPracticed(true);
       setModalIsOpen(false);
+      if (result.leveledUp) handleLevelUp(result.newLevel);
     },
   });
 

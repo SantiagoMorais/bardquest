@@ -18,9 +18,10 @@ interface IHeaderProps {
   streak: number;
   user: IUser;
   missions: IMission[];
+  handleLevelUp: (newLevel: number) => void;
 }
 
-export const Header = ({ streak, user, missions }: IHeaderProps) => {
+export const Header = ({ streak, user, missions, handleLevelUp }: IHeaderProps) => {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -30,7 +31,7 @@ export const Header = ({ streak, user, missions }: IHeaderProps) => {
           <Image src={logo} alt="Logo" className={styles.mobileLogo} />
 
           <div className={styles.mobileRight}>
-            <MissionPanel missions={missions} user={user} />
+            <MissionPanel missions={missions} user={user} handleLevelUp={handleLevelUp} />
             <StreakBadge streak={streak} />
             <button
               className={styles.mobileMenuBtn}
@@ -92,7 +93,7 @@ export const Header = ({ streak, user, missions }: IHeaderProps) => {
 
         <header className={styles.desktopHeader}>
           <div className={styles.desktopHeaderInner}>
-            <MissionPanel missions={missions} user={user} />
+            <MissionPanel missions={missions} user={user} handleLevelUp={handleLevelUp} />
             <StreakBadge streak={streak} />
             <Link href="/perfil" className={styles.desktopProfileLink}>
               <LuUserRound size={18} />

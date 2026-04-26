@@ -23,7 +23,9 @@ export class StreakService {
     return result;
   };
 
-  static increaseUserStreak = async (data: IIncreaseUserStreak) => {
+  static increaseUserStreak = async (
+    data: IIncreaseUserStreak
+  ): Promise<{ newLevel: number; leveledUp?: boolean; result: unknown }> => {
     const streak = data.currentStreak + 1;
     const gainedXp = getStreakBonus({
       streakDays: streak,
@@ -52,6 +54,11 @@ export class StreakService {
     if (error) throw error;
 
     toast.success(`Streak aumentada para ${streak} dias! +${gainedXp} XP!`);
-    return result;
+
+    return {
+      newLevel: updatedProgress.level,
+      leveledUp: updatedProgress.leveledUp,
+      result,
+    };
   };
 }

@@ -22,6 +22,7 @@ interface IMissionCardProps {
   user: IUser;
   isExpanded: boolean;
   onToggle: () => void;
+  handleLevelUp: (newLevel: number) => void;
 }
 
 export const MissionCard = ({
@@ -29,6 +30,7 @@ export const MissionCard = ({
   user,
   isExpanded,
   onToggle,
+  handleLevelUp,
 }: IMissionCardProps) => {
   const queryClient = useQueryClient();
 
@@ -40,8 +42,9 @@ export const MissionCard = ({
         currentXp: user.xp,
         level: user.level,
       }),
-    onSuccess: () => {
+    onSuccess: (result) => {
       queryClient.invalidateQueries({ queryKey: ["sessionProfile", user.id] });
+      if (result.leveledUp) handleLevelUp(result.newLevel);
     },
     onError: () => {
       toast.error("Não foi possível concluir a missão.");

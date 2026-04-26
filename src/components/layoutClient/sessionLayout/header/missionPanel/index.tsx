@@ -11,9 +11,10 @@ import { MissionCard } from "./missionCard";
 interface IMissionPanelProps {
   missions: IMission[];
   user: IUser;
+  handleLevelUp: (newLevel: number) => void;
 }
 
-export const MissionPanel = ({ missions, user }: IMissionPanelProps) => {
+export const MissionPanel = ({ missions, user, handleLevelUp }: IMissionPanelProps) => {
   const [open, setOpen] = useState(false);
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const panelRef = useRef<HTMLDivElement>(null);
@@ -78,6 +79,7 @@ export const MissionPanel = ({ missions, user }: IMissionPanelProps) => {
                     user={user}
                     isExpanded={expandedId === mission.id}
                     onToggle={() => toggleExpanded(mission.id)}
+                    handleLevelUp={handleLevelUp}
                   />
                 </li>
               ))}

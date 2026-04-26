@@ -8,16 +8,19 @@ import { ProfileNotFound } from "@/components/profileNotFound";
 import { IGetUserProfileAndBaseDataResponse } from "@/interfaces/services/getUserProfileAndBaseData";
 import { ProfileService } from "@/services/profile.service";
 import { useQuery } from "@tanstack/react-query";
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, useState } from "react";
 import { OnboardingModalWrapper } from "../onBoardingModalWrapper";
 import { SessionLayout } from "./sessionLayout";
 import { IUserProfileWithUser } from "@/interfaces/api/user";
+import { LevelUpModal } from "./levelUpModal";
 
 type ILayoutClientProps = PropsWithChildren & {
   user: User;
 };
 
 export const LayoutClient = ({ user, children }: ILayoutClientProps) => {
+  const [levelUpModal, setLevelUpModal] = useState<number | null>(null);
+
   const {
     data: userProfile,
     isLoading,
@@ -40,5 +43,17 @@ export const LayoutClient = ({ user, children }: ILayoutClientProps) => {
     user: userProfile.user,
   };
 
-  return <SessionLayout userProfile={profileWithUserMapper}>{children}</SessionLayout>;
+  const handleLevelUp = (newLevel: number) => setLevelUpModal(newLevel);
+
+  return (
+    <SessionLayout userProfile={profileWithUserMapper} handleLevelUp={handleLevelUp}>
+      {children}
+
+      <LevelUpModal
+        isOpen={levelUpModal !== null}
+        newLevel={levelUpModal}
+        onClose={() => setLevelUpModal(null)}
+      />
+    </SessionLayout>
+  );
 };

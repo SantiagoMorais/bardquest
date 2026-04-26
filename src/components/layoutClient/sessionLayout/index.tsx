@@ -10,9 +10,14 @@ import { PracticeButton } from "./practice-button";
 
 type ISessionLayoutProps = PropsWithChildren & {
   userProfile: IUserProfileWithUser;
+  handleLevelUp: (newLevel: number) => void;
 };
 
-export const SessionLayout = ({ userProfile, children }: ISessionLayoutProps) => {
+export const SessionLayout = ({
+  userProfile,
+  children,
+  handleLevelUp,
+}: ISessionLayoutProps) => {
   const { missionModalOpen, setMissionModalOpen } = useSessionEffects({
     userProfile,
   });
@@ -27,6 +32,7 @@ export const SessionLayout = ({ userProfile, children }: ISessionLayoutProps) =>
         streak={user.streak ?? 0}
         user={user}
         missions={user.daily_missions ?? []}
+        handleLevelUp={handleLevelUp}
       />
       <main className={styles.main}>{children}</main>
 
@@ -36,6 +42,7 @@ export const SessionLayout = ({ userProfile, children }: ISessionLayoutProps) =>
         streak={user.streak ?? 0}
         level={user.level ?? 1}
         xp={user.xp ?? 0}
+        handleLevelUp={handleLevelUp}
       />
 
       <ExperienceBar

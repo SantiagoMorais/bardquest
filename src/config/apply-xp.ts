@@ -3,6 +3,7 @@ import { getXpToNextLevel } from "./progression";
 type LevelProgress = {
   level: number;
   currentXp: number;
+  leveledUp?: boolean;
 };
 
 /**
@@ -31,5 +32,6 @@ export const applyXp = ({
   return {
     level,
     currentXp: totalXp,
+    leveledUp: level > progress.level,
   };
 };

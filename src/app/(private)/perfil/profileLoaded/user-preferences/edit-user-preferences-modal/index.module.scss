@@ -6,7 +6,6 @@
   gap: var(--spacing-lg);
 }
 
-/* ── Header ── */
 .modalHeader {
   display: flex;
   flex-direction: column;
@@ -26,7 +25,6 @@
   color: var(--color-text-secondary);
 }
 
-/* ── Section ── */
 .section {
   display: flex;
   flex-direction: column;
@@ -59,7 +57,6 @@
   background: linear-gradient(to right, transparent, var(--color-beige-300), transparent);
 }
 
-/* ── Categories ── */
 .categoryGrid {
   display: flex;
   flex-wrap: wrap;
@@ -108,7 +105,6 @@
   color: var(--color-gold-700);
 }
 
-/* ── Keywords ── */
 .keywordsExamples {
   display: flex;
   align-items: center;
@@ -233,7 +229,6 @@
   }
 }
 
-/* ── Footer ── */
 .modalFooter {
   padding: var(--spacing-md) var(--spacing-lg);
   display: flex;

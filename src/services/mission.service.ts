@@ -44,7 +44,7 @@ export class MissionService {
     mission,
     currentXp,
     level,
-  }: ICompleteMissionRequest) => {
+  }: ICompleteMissionRequest): Promise<{ newLevel: number; leveledUp?: boolean }> => {
     const gainedXp = getMissionXp({
       level,
       xp_reward: mission.xp_reward,
@@ -78,5 +78,10 @@ export class MissionService {
       .eq("id", userId);
 
     toast.success(`Missão concluída! +${gainedXp}XP (Bônus de nível aplicado)`);
+
+    return {
+      newLevel: updatedProgress.level,
+      leveledUp: updatedProgress.leveledUp,
+    };
   };
 }
