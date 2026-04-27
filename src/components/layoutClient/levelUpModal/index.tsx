@@ -9,42 +9,107 @@ import styles from "./index.module.scss";
 // Helpers
 // ---------------------------------------------------------------------------
 
-const LEVEL_TITLE: Record<number, string> = {
-  2: "Aprendiz das Notas",
-  3: "Trovador Iniciante",
-  4: "Músico Errante",
-  5: "Bardo das Estradas",
-  6: "Cantor dos Reinos",
-  7: "Mestre da Melodia",
-  8: "Guardião do Acorde",
-  9: "Sábio da Harmonia",
-  10: "Lenda Viva",
+type LevelTier = "bronze" | "silver" | "gold" | "epic";
+
+type LevelRange = {
+  min: number;
+  max: number;
+  title: string;
+  flavor: string;
 };
 
-const LEVEL_FLAVOR: Record<number, string> = {
-  2: "Seus primeiros acordes ecoam pelos vilarejos. A jornada começa.",
-  3: "As tavernas já guardam seu lugar reservado ao canto da lareira.",
-  4: "Estradas desconhecidas chamam por suas canções.",
-  5: "Cada reino ouve seu nome com crescente admiração.",
-  6: "Rainhas e reis pedem sua música em seus banquetes.",
-  7: "Discípulos buscam seus ensinamentos ao luar.",
-  8: "Sua melodia ressoa até nas muralhas mais distantes.",
-  9: "Os anciãos curvam a cabeça ao ouvir seu nome.",
-  10: "Bardos de todo o mundo cantam suas façanhas.",
-};
+const LEVEL_RANGES: LevelRange[] = [
+  {
+    min: 2,
+    max: 5,
+    title: "Aprendiz das Notas",
+    flavor:
+      "Seus primeiros acordes ecoam pelos vilarejos. A estrada musical finalmente começou.",
+  },
+  {
+    min: 6,
+    max: 10,
+    title: "Trovador Errante",
+    flavor:
+      "Seu nome já percorre tavernas e feiras. Onde há fogueira, há espaço para sua música.",
+  },
+  {
+    min: 11,
+    max: 15,
+    title: "Bardo das Estradas",
+    flavor: "Você atravessa reinos levando esperança em forma de melodia.",
+  },
+  {
+    min: 16,
+    max: 20,
+    title: "Guardião da Harmonia",
+    flavor: "Canções antigas despertam quando seus dedos tocam as cordas e teclas.",
+  },
+  {
+    min: 21,
+    max: 25,
+    title: "Mestre da Melodia",
+    flavor: "Discípulos observam seus movimentos tentando entender sua arte.",
+  },
+  {
+    min: 26,
+    max: 30,
+    title: "Virtuoso dos Reinos",
+    flavor: "Sua música já influencia povos inteiros e une cidades rivais.",
+  },
+  {
+    min: 31,
+    max: 35,
+    title: "Arauto Celestial",
+    flavor: "Notas brilhantes cruzam os céus e anunciam sua chegada.",
+  },
+  {
+    min: 36,
+    max: 40,
+    title: "Lenda da Harmonia",
+    flavor: "Histórias sobre sua jornada são contadas por bardos em terras distantes.",
+  },
+  {
+    min: 41,
+    max: 45,
+    title: "Sábio das Mil Canções",
+    flavor: "Os antigos se curvam ao ouvir a profundidade de sua arte.",
+  },
+  {
+    min: 46,
+    max: 50,
+    title: "Avatar Musical",
+    flavor:
+      "Você transcendeu técnica e emoção. Sua presença já inspira sem tocar uma nota.",
+  },
+];
 
-function getLevelTitle(level: number): string {
-  return LEVEL_TITLE[level] ?? `Bardo Nível ${level}`;
+function getLevelRange(level: number): LevelRange | undefined {
+  return LEVEL_RANGES.find((range) => level >= range.min && level <= range.max);
 }
 
-function getLevelFlavor(level: number): string {
-  return LEVEL_FLAVOR[level] ?? "Sua música transcende os limites do conhecido.";
+export function getLevelTitle(level: number): string {
+  if (level <= 1) return "Iniciante";
+  const range = getLevelRange(level);
+  if (range) return range.title;
+  if (level <= 75) return "Lenda Viva";
+  if (level <= 100) return "Arquimestre do Som";
+  return `Entidade Musical Nível ${level}`;
 }
 
-function getLevelTier(level: number): "bronze" | "silver" | "gold" | "epic" {
-  if (level <= 3) return "bronze";
-  if (level <= 6) return "silver";
-  if (level <= 9) return "gold";
+export function getLevelFlavor(level: number): string {
+  if (level <= 1) return "Toda grande jornada começa com uma única nota.";
+  const range = getLevelRange(level);
+  if (range) return range.flavor;
+  if (level <= 75) return "Bardos de todo o mundo cantam suas façanhas.";
+  if (level <= 100) return "Sua música já não pertence apenas aos mortais.";
+  return "Sua melodia transcende os limites do conhecido.";
+}
+
+export function getLevelTier(level: number): LevelTier {
+  if (level <= 10) return "bronze";
+  if (level <= 25) return "silver";
+  if (level <= 40) return "gold";
   return "epic";
 }
 
@@ -98,10 +163,8 @@ export const LevelUpModal = ({ isOpen, newLevel, onClose }: ILevelUpModalProps) 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <div className={styles.wrapper}>
-        {/* ── Glow ── */}
         <div className={classNames(styles.glow, TIER_GLOW_CLASS[tier])} />
 
-        {/* ── Stars burst (decoração) ── */}
         <div className={styles.starsBurst} aria-hidden="true">
           {Array.from({ length: 8 }).map((_, i) => (
             <span
@@ -114,7 +177,6 @@ export const LevelUpModal = ({ isOpen, newLevel, onClose }: ILevelUpModalProps) 
           ))}
         </div>
 
-        {/* ── Header ── */}
         <div className={classNames(styles.header, TIER_HEADER_CLASS[tier])}>
           <span className={styles.headerEyebrow}>Nível alcançado</span>
           <div className={styles.headerIconRow}>
@@ -126,9 +188,7 @@ export const LevelUpModal = ({ isOpen, newLevel, onClose }: ILevelUpModalProps) 
           </div>
         </div>
 
-        {/* ── Body ── */}
         <div className={styles.body}>
-          {/* ornament top */}
           <div className={styles.ornamentRow}>
             <span className={styles.ornamentLine} />
             <span className={styles.ornamentGlyph}>⚜ ✦ ⚜</span>
@@ -139,7 +199,6 @@ export const LevelUpModal = ({ isOpen, newLevel, onClose }: ILevelUpModalProps) 
 
           <h2 className={styles.title}>{getLevelTitle(newLevel)}</h2>
 
-          {/* divider */}
           <div className={styles.divider}>
             <span className={styles.dividerLine} />
             <span className={styles.dividerDot} />
@@ -148,7 +207,6 @@ export const LevelUpModal = ({ isOpen, newLevel, onClose }: ILevelUpModalProps) 
 
           <p className={styles.flavor}>{getLevelFlavor(newLevel)}</p>
 
-          {/* ornament bottom */}
           <div className={styles.ornamentRow}>
             <span className={styles.ornamentLine} />
             <span className={styles.ornamentGlyph}>✦</span>
