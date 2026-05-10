@@ -1,0 +1,481 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+  gap: var(--spacing-md);
+}
+
+.relicCard {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  border: 0.15rem solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-bg-secondary);
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  overflow: hidden;
+  transition:
+    transform var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+  animation: cardIn 400ms ease both;
+
+  &:hover {
+    transform: translateY(-0.3rem);
+    border-color: var(--color-gold-300);
+    box-shadow: 0 0.8rem 2.4rem rgba(168, 105, 31, 0.12);
+  }
+
+  &:hover .relicGlow {
+    opacity: 0.07;
+  }
+
+  &:hover .relicOrbGlyph {
+    animation: orbGlyphSpin 2s linear infinite;
+  }
+}
+
+.relicOrb {
+  position: relative;
+  width: 6.4rem;
+  height: 6.4rem;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 0.4rem 1.2rem rgba(0, 0, 0, 0.2),
+    inset 0 0.2rem 0.4rem rgba(255, 255, 255, 0.3);
+  transition:
+    box-shadow var(--transition-base),
+    transform var(--transition-base);
+
+  .relicCard:hover & {
+    transform: scale(1.08);
+    box-shadow:
+      0 0.8rem 2.4rem rgba(0, 0, 0, 0.25),
+      inset 0 0.2rem 0.6rem rgba(255, 255, 255, 0.4);
+  }
+}
+
+.relicOrbGlyph {
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-shadow: 0 0.1rem 0.4rem rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.relicOrbShine {
+  position: absolute;
+  top: 15%;
+  left: 20%;
+  width: 30%;
+  height: 25%;
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: var(--radius-full);
+  filter: blur(0.3rem);
+}
+
+.relicInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.relicType {
+  font-size: var(--fonts-size-3xs);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+.relicName {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: var(--fonts-size-sm);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.relicPower {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.2rem;
+}
+
+.relicPowerPip {
+  width: 1.4rem;
+  height: 0.4rem;
+  border-radius: var(--radius-full);
+  background: var(--color-border);
+  transition: background var(--transition-fast);
+}
+
+.relicPowerPipFilled {
+  background: var(--color-gold-500);
+}
+
+.relicTraits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.2rem;
+}
+
+.relicTrait {
+  font-size: var(--fonts-size-3xs);
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-primary);
+  border: 0.1rem solid var(--color-border);
+  color: var(--color-text-tertiary);
+}
+
+.relicGlow {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-3xl) var(--spacing-md);
+  text-align: center;
+  opacity: 0.4;
+}
+
+.emptyIcon {
+  color: var(--color-text-tertiary);
+}
+
+.emptyTitle {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: var(--fonts-size-lg);
+  font-weight: 700;
+  color: var(--color-text-secondary);
+}
+
+.emptyHint {
+  font-size: var(--fonts-size-xs);
+  color: var(--color-text-tertiary);
+  max-width: 28rem;
+  line-height: 1.6;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(20, 16, 12, 0.8);
+  backdrop-filter: blur(0.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md);
+  animation: fadeIn 200ms ease;
+}
+
+.detailCard {
+  position: relative;
+  width: 100%;
+  max-width: 48rem;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--color-bg-primary);
+  border: 0.15rem solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 4rem 10rem rgba(0, 0, 0, 0.5);
+  animation: slideUp 320ms cubic-bezier(0.34, 1.2, 0.64, 1);
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+.detailClose {
+  position: absolute;
+  top: var(--spacing-sm);
+  right: var(--spacing-sm);
+  z-index: 2;
+  width: 3.2rem;
+  height: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.1rem solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-secondary);
+  color: var(--color-text-tertiary);
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
+
+  &:hover {
+    background: var(--color-bg-tertiary);
+    color: var(--color-text-primary);
+  }
+}
+
+.detailOrb {
+  position: relative;
+  width: 12rem;
+  height: 12rem;
+  border-radius: var(--radius-full);
+  margin: var(--spacing-xl) auto var(--spacing-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 0.8rem 3.2rem rgba(0, 0, 0, 0.3),
+    inset 0 0.4rem 0.8rem rgba(255, 255, 255, 0.3);
+  animation: orbFloat 4s ease-in-out infinite;
+}
+
+.detailOrbGlyph {
+  font-size: 4rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
+  animation: orbGlyphSpin 8s linear infinite;
+}
+
+.detailOrbShine {
+  position: absolute;
+  top: 15%;
+  left: 22%;
+  width: 28%;
+  height: 22%;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-full);
+  filter: blur(0.4rem);
+}
+
+.detailBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding: 0 var(--spacing-lg) var(--spacing-xl);
+}
+
+.detailHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  text-align: center;
+}
+
+.detailType {
+  font-size: var(--fonts-size-2xs);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+.detailName {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.2;
+}
+
+.detailPower {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.detailPowerPip {
+  width: 1.6rem;
+  height: 0.5rem;
+  border-radius: var(--radius-full);
+  background: var(--color-border);
+}
+
+.detailPowerPipFilled {
+  background: var(--color-gold-500);
+}
+
+.detailPowerLabel {
+  font-size: var(--fonts-size-2xs);
+  font-weight: 600;
+  color: var(--color-text-tertiary);
+  margin-left: var(--spacing-xs);
+}
+
+.detailDescription {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: var(--fonts-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.75;
+  font-style: italic;
+  text-align: center;
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 0.1rem solid var(--color-border);
+}
+
+.detailIdentity {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  border-left: 0.25rem solid var(--color-gold-400);
+
+  p {
+    font-size: var(--fonts-size-xs);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    font-style: italic;
+  }
+}
+
+.detailIdentityGlyph {
+  color: var(--color-gold-500);
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.detailEffects {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.detailEffect {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-bg-secondary);
+  border: 0.1rem solid var(--color-border);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.detailEffectMagical {
+  background: linear-gradient(135deg, rgba(168, 105, 31, 0.06), rgba(212, 128, 42, 0.04));
+  border-color: rgba(168, 105, 31, 0.2);
+}
+
+.detailEffectHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.detailEffectGlyph {
+  font-size: 1.4rem;
+  color: var(--color-gold-500);
+  line-height: 1;
+}
+
+.detailEffectZap {
+  color: var(--color-gold-700);
+}
+
+.detailEffectLabel {
+  font-size: var(--fonts-size-2xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+.detailEffectText {
+  font-size: var(--fonts-size-xs);
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+}
+
+.detailTraits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  justify-content: center;
+}
+
+.detailTrait {
+  font-size: var(--fonts-size-2xs);
+  font-weight: 600;
+  padding: 0.3rem var(--spacing-sm);
+  border-radius: var(--radius-full);
+  background: var(--color-bg-secondary);
+  border: 0.15rem solid var(--color-border);
+  color: var(--color-text-secondary);
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(1.2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(2.4rem) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes orbFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.8rem);
+  }
+}
+
+@keyframes orbGlyphSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

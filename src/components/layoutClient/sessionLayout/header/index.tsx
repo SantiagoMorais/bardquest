@@ -60,7 +60,6 @@ export const Header = ({ streak, user, missions, handleLevelUp }: IHeaderProps) 
         </nav>
       </header>
 
-      {/* ════════ DESKTOP ════════ */}
       <>
         <aside
           className={classNames(styles.sidebar, expanded && styles.sidebarExpanded)}

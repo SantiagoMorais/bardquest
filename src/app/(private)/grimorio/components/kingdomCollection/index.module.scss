@@ -1,0 +1,547 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.kingdomCard {
+  border: 0.15rem solid var(--color-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: var(--color-bg-secondary);
+  animation: cardIn 400ms ease both;
+  transition:
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+
+  &:hover {
+    border-color: var(--color-gold-300);
+    box-shadow: 0 0.4rem 1.6rem rgba(168, 105, 31, 0.1);
+  }
+}
+
+.kingdomHero {
+  position: relative;
+  height: 18rem;
+  background: var(--color-dark-bg-secondary);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kingdomHeroImg {
+  object-fit: cover;
+}
+
+.kingdomHeroPlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(139, 115, 85, 0.25) 0%,
+    rgba(30, 24, 19, 0.95) 100%
+  );
+}
+
+.kingdomHeroCrown {
+  color: rgba(212, 128, 42, 0.2);
+}
+
+.kingdomHeroGradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 25%, rgba(20, 16, 12, 0.95) 100%);
+}
+
+.kingdomHeroOverlay {
+  position: absolute;
+  bottom: var(--spacing-md);
+  left: var(--spacing-md);
+  right: 11rem;
+}
+
+.kingdomLevel {
+  display: block;
+  font-size: var(--fonts-size-2xs);
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-gold-300);
+  margin-bottom: 0.3rem;
+}
+
+.kingdomName {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 700;
+  color: #f8f3ec;
+  line-height: 1.2;
+  text-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.7);
+}
+
+.conqueredBadge {
+  position: absolute;
+  top: var(--spacing-sm);
+  right: var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem var(--spacing-xs);
+  background: rgba(168, 105, 31, 0.85);
+  backdrop-filter: blur(0.3rem);
+  border: 0.1rem solid rgba(232, 155, 60, 0.5);
+  border-radius: var(--radius-full);
+  font-size: var(--fonts-size-3xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-gold-50);
+}
+
+.kingdomBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+}
+
+.kingdomDescription {
+  font-size: var(--fonts-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  font-style: italic;
+}
+
+.kingdomMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+.kingdomMetaItem {
+  font-size: var(--fonts-size-2xs);
+  color: var(--color-text-tertiary);
+  font-weight: 500;
+}
+
+.kingdomSongs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: var(--spacing-sm) 0;
+  border-top: 0.1rem solid var(--color-border);
+  border-bottom: 0.1rem solid var(--color-border);
+}
+
+.songRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: 0.4rem var(--spacing-xs);
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+
+  &:hover {
+    background: var(--color-bg-primary);
+  }
+}
+
+.songRowBoss {
+  .songRowGlyph {
+    color: var(--color-error);
+  }
+  .songRowTitle {
+    color: var(--color-text-primary);
+    font-weight: 600;
+  }
+}
+
+.songRowGlyph {
+  font-size: 1.4rem;
+  color: var(--color-gold-500);
+  width: 1.6rem;
+  flex-shrink: 0;
+  text-align: center;
+  line-height: 1;
+}
+
+.songRowInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.songRowTitle {
+  font-size: var(--fonts-size-xs);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+.songRowArtist {
+  font-size: var(--fonts-size-3xs);
+  color: var(--color-text-tertiary);
+}
+
+.loreBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 0.15rem solid var(--color-gold-300);
+  border-radius: var(--radius-md);
+  background: var(--color-gold-50);
+  color: var(--color-gold-700);
+  font: inherit;
+  font-size: var(--fonts-size-xs);
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+
+  &:hover {
+    background: var(--color-gold-100);
+    border-color: var(--color-gold-500);
+    transform: translateY(-0.1rem);
+  }
+}
+
+.loreOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(20, 16, 12, 0.8);
+  backdrop-filter: blur(0.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md);
+  animation: fadeIn 220ms ease;
+}
+
+.loreModal {
+  position: relative;
+  width: 100%;
+  max-width: 58rem;
+  max-height: 92vh;
+  overflow-y: auto;
+  background: var(--color-beige-50);
+  border: 0.15rem solid var(--color-beige-300);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 4rem 10rem rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding: var(--spacing-xl);
+  animation: slideUp 320ms cubic-bezier(0.34, 1.2, 0.64, 1);
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-beige-300) transparent;
+}
+
+.loreClose {
+  position: absolute;
+  top: var(--spacing-sm);
+  right: var(--spacing-sm);
+  width: 3.2rem;
+  height: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.1rem solid var(--color-beige-300);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-text-tertiary);
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
+
+  &:hover {
+    background: var(--color-beige-100);
+    color: var(--color-text-primary);
+  }
+}
+
+.loreHead {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  text-align: center;
+}
+
+.loreHeadOrn {
+  font-size: var(--fonts-size-xs);
+  letter-spacing: 0.4em;
+  color: var(--color-gold-300);
+  user-select: none;
+}
+
+.loreHeadTitle {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  color: var(--color-gold-900);
+  line-height: 1.2;
+}
+
+.loreHeadSub {
+  font-size: var(--fonts-size-2xs);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+.loreTabs {
+  display: flex;
+  gap: var(--spacing-xs);
+  overflow-x: auto;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 0.1rem solid var(--color-beige-300);
+}
+
+.loreTab {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font: inherit;
+  font-size: var(--fonts-size-2xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  border: 0.15rem solid var(--color-beige-300);
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--color-text-tertiary);
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    border-color var(--transition-fast),
+    background var(--transition-fast),
+    color var(--transition-fast);
+
+  &:hover {
+    border-color: var(--color-gold-300);
+    color: var(--color-gold-700);
+  }
+}
+
+.loreTabActive {
+  background: var(--color-gold-50);
+  border-color: var(--color-gold-400);
+  color: var(--color-gold-900);
+}
+
+.bookPage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-xl) var(--spacing-lg);
+  background: var(--color-beige-50);
+  border: 0.15rem solid var(--color-beige-300);
+  border-radius: var(--radius-lg);
+  box-shadow: inset 0 0 4rem rgba(212, 196, 168, 0.12);
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: var(--spacing-2xl);
+    top: var(--spacing-lg);
+    bottom: var(--spacing-lg);
+    width: 0.1rem;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      var(--color-beige-300),
+      transparent
+    );
+  }
+}
+
+.bookPageEpilogue {
+  background: linear-gradient(
+    160deg,
+    var(--color-gold-50) 0%,
+    var(--color-beige-50) 50%,
+    var(--color-gold-50) 100%
+  );
+  border-color: var(--color-gold-300);
+}
+
+.bookOrn {
+  font-size: var(--fonts-size-2xs);
+  letter-spacing: 0.4em;
+  color: var(--color-gold-300);
+  user-select: none;
+}
+
+.bookChapterLabel {
+  font-size: var(--fonts-size-2xs);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+.bookChapterTitle {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: var(--fonts-size-lg);
+  font-weight: 700;
+  color: var(--color-gold-900);
+  text-align: center;
+  line-height: 1.2;
+}
+
+.bookDivider {
+  width: 6rem;
+  height: 0.15rem;
+  background: linear-gradient(to right, transparent, var(--color-gold-300), transparent);
+}
+
+.bookText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  width: 100%;
+  max-width: 52rem;
+}
+
+.bookParagraph {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: var(--fonts-size-sm);
+  line-height: 1.85;
+  color: var(--color-text-primary);
+  text-align: justify;
+  text-indent: 2.4rem;
+
+  &:first-child {
+    text-indent: 0;
+  }
+}
+
+.bookDropCap {
+  float: left;
+  font-size: 4.8rem;
+  line-height: 0.75;
+  margin-right: 0.6rem;
+  margin-top: 0.4rem;
+  color: var(--color-gold-700);
+  font-weight: 700;
+}
+
+.loreNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.loreNavBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font: inherit;
+  font-size: var(--fonts-size-2xs);
+  font-weight: 600;
+  color: var(--color-text-tertiary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-md);
+  transition:
+    color var(--transition-fast),
+    background var(--transition-fast);
+  min-width: 8rem;
+
+  &:first-child {
+    justify-content: flex-start;
+  }
+  &:last-child {
+    justify-content: flex-end;
+  }
+
+  &:hover:not(:disabled) {
+    color: var(--color-gold-700);
+    background: var(--color-gold-50);
+  }
+
+  &:disabled {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.loreNavIndicator {
+  font-size: var(--fonts-size-2xs);
+  color: var(--color-text-tertiary);
+  letter-spacing: 0.08em;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-3xl) var(--spacing-md);
+  text-align: center;
+  opacity: 0.4;
+}
+
+.emptyIcon {
+  color: var(--color-text-tertiary);
+}
+
+.emptyTitle {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: var(--fonts-size-lg);
+  font-weight: 700;
+  color: var(--color-text-secondary);
+}
+
+.emptyHint {
+  font-size: var(--fonts-size-xs);
+  color: var(--color-text-tertiary);
+  max-width: 28rem;
+  line-height: 1.6;
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(1.2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(2.4rem) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
