@@ -4,10 +4,10 @@ export const GAME_BALANCE = {
     growthRate: 1.22,
   },
   songXp: {
-    easy: 50,
-    medium: 90,
-    hard: 140,
-    boss: 220,
+    base: 45,
+    perDifficultyPoint: 12,
+    perRealmOrder: 4,
+    bossMultiplier: 1.6,
   },
   realmDifficulty: {
     multiplierPerPoint: 0.06,
@@ -45,7 +45,6 @@ export const GAME_BALANCE = {
   },
 } as const;
 
-export type ISongDifficulty = keyof typeof GAME_BALANCE.songXp;
 export type IMissionDifficulty = "easy" | "medium" | "hard" | "epic";
 
 /**
@@ -101,24 +100,33 @@ export const getMissionXp = ({
 };
 
 /**
- * Returns the final XP for a song based on song difficulty, realm difficulty and player level.
+ * Returns the final XP for a song based on the user's base difficulty,
+ * whether the song is a boss, and the player's level.
  * Use when rewarding the player after completing a song.
  */
 export const getSongXp = ({
-  difficulty,
-  realmDifficulty,
+  realmBaseDifficulty,
+  realmOrder,
+  isBoss = false,
   level,
 }: {
-  difficulty: ISongDifficulty;
-  realmDifficulty: number;
+  realmBaseDifficulty: number;
+  realmOrder: number;
+  isBoss?: boolean;
   level?: number;
 }): number => {
-  const baseXp = GAME_BALANCE.songXp[difficulty];
+  const safeDifficulty = Math.min(Math.max(realmBaseDifficulty, 1), 10);
+  const safeRealmOrder = Math.max(realmOrder, 1);
+
+  const baseXp =
+    GAME_BALANCE.songXp.base +
+    safeDifficulty * GAME_BALANCE.songXp.perDifficultyPoint +
+    safeRealmOrder * GAME_BALANCE.songXp.perRealmOrder;
+
+  const bossMultiplier = isBoss ? GAME_BALANCE.songXp.bossMultiplier : 1;
 
   return Math.ceil(
-    baseXp *
-      getRealmMultiplier({ realmDifficulty }) *
-      getPlayerLevelMultiplier({ level: level ?? 1 })
+    baseXp * bossMultiplier * getPlayerLevelMultiplier({ level: level ?? 1 })
   );
 };
 

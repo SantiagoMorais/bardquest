@@ -22,7 +22,7 @@ export interface IBoss {
   created_at: string;
 }
 
-export interface IBossUpdate extends Partial<Omit<IBoss, "id" | "created_at">> {}
+export type IBossUpdate = Partial<Omit<IBoss, "id" | "created_at">>;
 
 export interface IBossWithKingdom extends IBoss {
   kingdoms?: {

@@ -1,30 +1,32 @@
 "use client";
 
-import { IKingdomSong, IKingdomWithFullSongs } from "@/interfaces/api/kingdom";
+import { IKingdom, IKingdomSong } from "@/interfaces/api/kingdom";
 import { ISong } from "@/interfaces/api/song";
 import { IKingdomSongStatus } from "@/interfaces/kingdom-card";
+import { STATUS_ICON, STATUS_LABEL } from "@/utils/status-label-and-icon";
 import cn from "classnames";
 import { useState } from "react";
-import { LuCheck, LuRotateCcw } from "react-icons/lu";
 import styles from "./index.module.scss";
 import { SheetMusic } from "./sheet-music";
-import { STATUS_ICON, STATUS_LABEL } from "@/utils/status-label-and-icon";
 import { StatusAction } from "./status-action";
+import { getSongXp } from "@/config/progression";
 
 interface SongWithMeta extends IKingdomSong {
   part: "part_1" | "part_2" | "part_3" | "final_part";
-  meta?: ISong;
+  meta?: Omit<ISong, "created_at" | "kingdom_id">;
   status: IKingdomSongStatus;
 }
 
 interface IKingdomSongsListProps {
-  kingdom: IKingdomWithFullSongs;
+  kingdom: IKingdom;
   songStatuses?: Partial<Record<string, IKingdomSongStatus>>;
+  kingdomOrder: number;
 }
 
 export const KingdomSongsList = ({
   kingdom,
   songStatuses = {},
+  kingdomOrder,
 }: IKingdomSongsListProps) => {
   const css = styles as Record<string, string>;
   const [selectedPart, setSelectedPart] = useState<string | null>(null);
@@ -34,7 +36,7 @@ export const KingdomSongsList = ({
   const buildSong = (
     part: "part_1" | "part_2" | "part_3" | "final_part"
   ): SongWithMeta => {
-    const meta = kingdom.songs_parts[part];
+    const meta = kingdom.songs[part];
     const songId = meta.id;
     const title = meta?.title ?? "Canção desconhecida";
     const artist = meta?.artist ?? "Artista desconhecido";
@@ -45,6 +47,8 @@ export const KingdomSongsList = ({
       part,
       meta,
       status: songStatuses[songId] ?? songStatuses[title] ?? "pending",
+      sheet_music_url: meta?.sheet_music_url ?? null,
+      id: songId,
     };
   };
 
@@ -95,6 +99,14 @@ export const KingdomSongsList = ({
     if (part === "final_part" && bossLocked) return;
     setSelectedPart((prev) => (prev === part ? null : part));
   };
+
+  const songXpReward = (isBoss: boolean) =>
+    getSongXp({
+      realmBaseDifficulty: kingdom.difficulty,
+      isBoss,
+      realmOrder: kingdomOrder,
+      level: kingdom.level,
+    });
 
   return (
     <div className={styles.wrapper}>
@@ -181,7 +193,7 @@ export const KingdomSongsList = ({
                 <div className={styles.metaItem}>
                   <span className={styles.metaLabel}>Recompensa</span>
                   <span className={styles.metaValue}>
-                    ✦ {selectedSong.meta.xp_reward} XP
+                    ✦ {songXpReward(selectedSong.meta.is_boss)} XP
                   </span>
                 </div>
               </div>

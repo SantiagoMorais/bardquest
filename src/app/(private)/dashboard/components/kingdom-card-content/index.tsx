@@ -16,19 +16,21 @@ import { IKingdomSongStatus } from "@/interfaces/kingdom-card";
 interface IKingdomCardContentProps {
   setKingdomSelected: TypeState<string | undefined>;
   kingdom: (typeof MOCK_KINGDOMS)[0];
+  kingdomOrder: number;
 }
 
 export const KingdomCardContent = ({
   setKingdomSelected,
   kingdom,
+  kingdomOrder,
 }: IKingdomCardContentProps) => {
   const { isTabletUp } = useScreenSize();
   const [showLore, setShowLore] = useState(false);
 
   const SONG_STATUSES: Partial<Record<string, IKingdomSongStatus>> = {
-    [kingdom.songs.part_1]: "completed",
-    [kingdom.songs.part_2]: "completed",
-    [kingdom.songs.part_3]: "completed",
+    [kingdom.songs.part_1.id]: "completed",
+    [kingdom.songs.part_2.id]: "completed",
+    [kingdom.songs.part_3.id]: "completed",
   };
 
   if (showLore) {
@@ -59,7 +61,11 @@ export const KingdomCardContent = ({
       <div className={styles.cardContent}>
         <h2 className={styles.cardTitle}>{kingdom.name}</h2>
         <div className={styles.kingdomDescription}>{kingdom.description}</div>
-        <KingdomSongsList kingdom={kingdom} songStatuses={SONG_STATUSES} />
+        <KingdomSongsList
+          kingdom={kingdom}
+          songStatuses={SONG_STATUSES}
+          kingdomOrder={kingdomOrder}
+        />
         <Button
           iconLeft={LuBookOpen}
           buttonStyle="secondary"

@@ -1,11 +1,9 @@
-import { IBoss } from "./boss";
 import { ISong } from "./song";
 
-export interface IKingdomSong {
-  title: string;
-  artist: string;
-  is_boss: boolean;
-}
+export type IKingdomSong = Pick<
+  ISong,
+  "id" | "is_boss" | "sheet_music_url" | "title" | "artist"
+>;
 
 export type IKingdomPartType<T> = {
   part_1: T;
@@ -21,26 +19,24 @@ export interface IKingdomLorePart {
 
 export interface IKingdom {
   id: string;
+  level: number;
   name: string;
   description: string;
-  ambience: string;
-  visual_elements: string[];
+  ambience: string; // descrição física base do reino
+  visual_elements: string[]; // elementos físicos visuais do reino
   keywords: string[];
   identity: string;
   image_url: string | null;
-  level: number;
   difficulty: number;
 
   lore: IKingdomPartType<IKingdomLorePart>;
-  songs: IKingdomPartType<string>;
+  songs: IKingdomPartType<IKingdomSong>;
 
   categories: string[];
   created_at: string;
 
   boss_id: string | null;
   relic_id: string | null;
-
-  bosses?: IBoss;
 }
 
 export interface IKingdomFeedback {
@@ -51,8 +47,4 @@ export interface IKingdomFeedback {
   feedback_type: "easy" | "medium" | "hard" | "impossible";
   adjustment_made: number;
   created_at: string;
-}
-
-export interface IKingdomWithFullSongs extends IKingdom {
-  songs_parts: IKingdomPartType<ISong>;
 }

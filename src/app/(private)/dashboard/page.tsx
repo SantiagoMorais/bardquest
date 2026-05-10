@@ -13,6 +13,7 @@ export default function Dashboard() {
   const { isTabletUp } = useScreenSize();
 
   const kingdom = MOCK_KINGDOMS.find((k) => k.id === kingdomSelected);
+  const kingdomOrder = MOCK_KINGDOMS.findIndex((k) => k.id === kingdomSelected);
 
   return (
     <section className={styles.container}>
@@ -22,6 +23,7 @@ export default function Dashboard() {
           <KingdomCardContent
             setKingdomSelected={setKingdomSelected}
             kingdom={kingdom!}
+            kingdomOrder={kingdomOrder}
           />
         </div>
       ) : (
@@ -32,6 +34,7 @@ export default function Dashboard() {
           <KingdomCardContent
             setKingdomSelected={setKingdomSelected}
             kingdom={kingdom!}
+            kingdomOrder={kingdomOrder}
           />
         </Modal>
       )}

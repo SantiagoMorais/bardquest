@@ -2,14 +2,14 @@
 
 import { useState } from "react";
 import styles from "./index.module.scss";
-import { IKingdomWithFullSongs } from "@/interfaces/api/kingdom";
+import { IKingdom } from "@/interfaces/api/kingdom";
 import { IKingdomSongStatus } from "@/interfaces/kingdom-card";
 import { LuChevronLeft, LuChevronRight, LuLock } from "react-icons/lu";
 import { Button } from "@/components/button";
 import { cn } from "@/utils/functions/cn";
 
 interface IKingdomLoreProps {
-  kingdom: IKingdomWithFullSongs;
+  kingdom: IKingdom;
   songStatuses: Partial<Record<string, IKingdomSongStatus>>;
   onClose: () => void;
 }
